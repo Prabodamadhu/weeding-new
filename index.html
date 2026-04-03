@@ -25,12 +25,12 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, #8b2c1d 0%, #5e1a0f 100%);
+      background: radial-gradient(ellipse at 30% 40%, #7e2c1c, #40180e);
       z-index: 10000;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: opacity 1.2s cubic-bezier(0.23, 1, 0.32, 1), visibility 1.2s;
+      transition: opacity 1s cubic-bezier(0.23, 1, 0.32, 1), visibility 1s;
       opacity: 1;
       visibility: visible;
     }
@@ -66,7 +66,6 @@
       font-weight: 300;
       word-spacing: 4px;
       text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-      backdrop-filter: blur(2px);
     }
 
     /* main card / seal plaque */
@@ -80,7 +79,6 @@
       transition: all 0.4s;
     }
 
-    /* Royal sri lankan motif */
     .ornament-top {
       display: flex;
       justify-content: center;
@@ -156,11 +154,15 @@
       transition: all 0.2s ease;
       cursor: pointer;
       position: relative;
-      backdrop-filter: blur(1px);
     }
 
     .wax-seal:active {
       transform: scale(0.97);
+    }
+
+    .wax-seal:hover {
+      filter: brightness(1.03) drop-shadow(0 0 6px rgba(255,215,0,0.5));
+      transform: scale(1.02);
     }
 
     .seal-text {
@@ -238,29 +240,22 @@
         opacity: 0;
       }
     }
-    .crack-effect.crack-animate::after {
-      animation: crackShards 0.5s ease-out forwards;
-    }
     @keyframes crackShards {
       0% { background: radial-gradient(circle, #ffcc44 0%, #ffaa33 80%); opacity: 0.7; transform: translate(-50%, -50%) scale(0.9);}
       100% { background: radial-gradient(circle, #ffdd77 0%, #c97e2a 100%); opacity: 0; transform: translate(-50%, -50%) scale(1.6);}
     }
 
-    /* ribbon animation */
-    @keyframes gentleRise {
-      0% { opacity: 0; transform: translateY(20px);}
-      100% { opacity: 1; transform: translateY(0);}
-    }
-
     /* main website content (hidden until intro dismissed) */
     .main-content {
       opacity: 0;
-      transition: opacity 1s ease;
+      transition: opacity 0.8s ease;
       visibility: hidden;
+      display: none;
     }
     .main-content.visible {
       opacity: 1;
       visibility: visible;
+      display: block;
     }
 
     /* Rest of wedding site styles (elegant) */
@@ -359,6 +354,10 @@
       scroll-snap-align: start;
       box-shadow: 0 8px 18px rgba(0,0,0,0.1);
     }
+    .gallery-strip::-webkit-scrollbar { height: 5px; }
+    .gallery-strip::-webkit-scrollbar-track { background: #e4d5c3; border-radius: 10px; }
+    .gallery-strip::-webkit-scrollbar-thumb { background: #b48b4b; border-radius: 10px; }
+    
     footer {
       background: #1f1915;
       color: #cfb991;
@@ -435,7 +434,6 @@
     <div class="section-card">
       <h2 style="font-family: 'Cormorant Garamond', serif; text-align: center; font-size: 2.2rem;">Moments of Love</h2>
       <div class="gallery-strip" id="galleryStrip">
-        <!-- Placeholder high-quality wedding style images from unsplash (royal/romantic) -->
         <img src="https://images.pexels.com/photos/2253870/pexels-photo-2253870.jpeg?auto=compress&cs=tinysrgb&w=600" alt="couple love">
         <img src="https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=600" alt="wedding flowers">
         <img src="https://images.pexels.com/photos/2834917/pexels-photo-2834917.jpeg?auto=compress&cs=tinysrgb&w=600" alt="sri lankan wedding">
@@ -470,14 +468,12 @@
   <button id="musicToggleBtn" style="position: fixed; bottom: 24px; right: 24px; background: #2c241e; border: none; color: #e9c891; width: 48px; height: 48px; border-radius: 50%; font-size: 22px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 200;">🎵</button>
   <audio id="bgMusic" loop preload="auto">
     <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-    <!-- fallback if needed, but music will work if the url is accessible, else mute still fine -->
   </audio>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 <script>
   (function() {
-    // DOM elements
     const introDiv = document.getElementById('premiumIntro');
     const mainContent = document.getElementById('mainSite');
     const waxSealElement = document.getElementById('waxSeal');
@@ -487,16 +483,15 @@
 
     let isOpened = false;
 
-    // helper to trigger crack effect & confetti & transition
     function breakSealAndReveal() {
       if (isOpened) return;
       isOpened = true;
 
-      // add crack animation class
+      // Add crack animation
       waxSealElement.classList.add('crack-effect');
       waxSealElement.classList.add('crack-animate');
       
-      // tiny burst of confetti and sparkle effect
+      // Fire confetti celebration
       canvasConfetti({
         particleCount: 180,
         spread: 80,
@@ -505,7 +500,6 @@
         colors: ['#e9c891', '#ffd966', '#b87c2e', '#f5e6b0']
       });
       
-      // second wave of confetti
       setTimeout(() => {
         canvasConfetti({
           particleCount: 100,
@@ -521,31 +515,40 @@
         });
       }, 150);
 
-      // change seal text briefly to show "OPENED"
+      // Change seal text
       const sealTextDiv = waxSealElement.querySelector('.seal-text');
       if (sealTextDiv) {
         sealTextDiv.innerHTML = `✦ WELCOME ✦<small>Invitation Revealed</small>`;
       }
       
-      // after animation, fade out intro and show main site
+      // Fade out intro and show main content
       setTimeout(() => {
         introDiv.classList.add('fade-out');
+        
+        // Wait for fade out to complete, then hide intro and show main content
         setTimeout(() => {
           introDiv.style.display = 'none';
           mainContent.classList.add('visible');
-          // Play background music gently
+          
+          // Play background music
           if (audio) {
             audio.volume = 0.5;
-            audio.play().catch(e => console.log("autoplay blocked, user interaction needed, but music button works"));
+            audio.play().catch(e => console.log("Autoplay blocked - user can click music button"));
           }
-          // Fire extra celebratory confetti
-          canvasConfetti({ particleCount: 300, spread: 90, origin: { y: 0.7 }, startVelocity: 20 });
-        }, 800);
+          
+          // Final celebration confetti
+          canvasConfetti({ 
+            particleCount: 300, 
+            spread: 90, 
+            origin: { y: 0.7 }, 
+            startVelocity: 20,
+            colors: ['#ffd700', '#ffed4e', '#daa520']
+          });
+        }, 1000);
       }, 500);
     }
 
-    // Click on wax seal or entire container
-    const clickTarget = waxSealElement || sealContainer;
+    // Click handlers
     if (sealContainer) {
       sealContainer.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -559,7 +562,7 @@
       });
     }
 
-    // Countdown logic (16 July 2026 10:00)
+    // Countdown timer
     const weddingDate = new Date("July 16, 2026 10:00:00").getTime();
     const countdownElement = document.getElementById('countdownDisplay');
     
@@ -586,7 +589,7 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
     
-    // Personalized name via URL param ?name=Guest
+    // Personalized name via URL param
     const urlParams = new URLSearchParams(window.location.search);
     let guestName = urlParams.get('name');
     const greetingSpan = document.getElementById('personalGreeting');
@@ -596,7 +599,6 @@
     if (guestName && guestName.trim() !== "") {
       guestName = guestName.trim();
       if (greetingSpan) greetingSpan.innerHTML = `Dear ${guestName}, you are cordially invited 💌`;
-      // customize rsvp message
       const message = `Hi Praboda & Dewmi, I (${guestName}) am delighted to attend your royal wedding on 16th July 2026!`;
       rsvpBtn.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
     } else {
@@ -605,7 +607,7 @@
       rsvpBtn.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(defaultMsg)}`;
     }
     
-    // Music toggle functionality
+    // Music toggle
     let musicPlaying = false;
     if (musicBtn) {
       musicBtn.addEventListener('click', () => {
@@ -623,9 +625,7 @@
       });
     }
     
-    // auto attempt to play after user clicks seal? Actually seal triggers site reveal, then music plays if allowed.
-    // but we also try to let audio start only after seal click (already in breakSealAndReveal)
-    // Provide a smoother gallery scroll momentum
+    // Gallery drag scroll
     const galleryDiv = document.querySelector('.gallery-strip');
     if (galleryDiv) {
       let isDown = false;
@@ -645,23 +645,6 @@
         galleryDiv.scrollLeft = scrollLeft - walk;
       });
     }
-    
-    // Also add elegant fallback: if someone taps background intro it's fine
-    // ensure that wax seal is clearly premium
-    const style = document.createElement('style');
-    style.textContent = `
-      .gallery-strip::-webkit-scrollbar { height: 5px; }
-      .gallery-strip::-webkit-scrollbar-track { background: #e4d5c3; border-radius: 10px; }
-      .gallery-strip::-webkit-scrollbar-thumb { background: #b48b4b; border-radius: 10px; }
-      .wax-seal { transition: all 0.2s; cursor: pointer; }
-      .wax-seal:hover { filter: brightness(1.03) drop-shadow(0 0 6px rgba(255,215,0,0.5)); transform: scale(1.02); }
-      .intro-premium { background: radial-gradient(ellipse at 30% 40%, #7e2c1c, #40180e); }
-    `;
-    document.head.appendChild(style);
-    
-    // preload optional images not needed but overall first page is pristine
-    // ensure confetti after reveal complete
-    // extra: if no name param, fallback link works
   })();
 </script>
 </body>
