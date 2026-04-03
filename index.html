@@ -66,9 +66,9 @@ body {
 .open .flap { transform: rotateX(180deg); }
 .open .letter { transform: translateY(0); }
 
-/* HERO */
+/* HERO (UPDATED IMAGE HERE) */
 .hero {
-  background: url('image1.jpg') center/cover no-repeat;
+  background: url('image3.jpg') center/cover no-repeat;
   height: 100vh;
   color: white;
   display: flex;
@@ -76,6 +76,7 @@ body {
   justify-content: center;
   background-blend-mode: darken;
   background-color: rgba(0,0,0,0.5);
+  background-position: center top;
 }
 
 h1, h2 { font-family: 'Playfair Display', serif; }
@@ -185,7 +186,6 @@ h1, h2 { font-family: 'Playfair Display', serif; }
 <!-- GALLERY -->
 <div class="section">
   <h2>Gallery</h2>
-
   <div class="slider">
     <div class="slides" id="slides">
       <img src="image1.jpg">
@@ -193,7 +193,6 @@ h1, h2 { font-family: 'Playfair Display', serif; }
       <img src="image3.jpg">
     </div>
   </div>
-
 </div>
 
 <!-- LOCATION -->
@@ -276,13 +275,11 @@ let index = 0;
 const slides = document.getElementById("slides");
 const totalSlides = slides.children.length;
 
-/* AUTO */
 setInterval(() => {
   index = (index + 1) % totalSlides;
   slides.style.transform = `translateX(-${index * 100}%)`;
 }, 3000);
 
-/* SWIPE */
 let startX = 0;
 
 slides.addEventListener("touchstart", e => {
