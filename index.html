@@ -29,12 +29,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: opacity 1s cubic-bezier(0.23, 1, 0.32, 1), visibility 1s;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
       opacity: 1;
       visibility: visible;
     }
 
-    .invitation-first-page.fade-out {
+    .invitation-first-page.hide {
       opacity: 0;
       visibility: hidden;
     }
@@ -62,7 +62,6 @@
       }
     }
 
-    /* Decorative border */
     .invitation-card::before {
       content: '';
       position: absolute;
@@ -128,7 +127,6 @@
       margin: 1rem 0;
     }
 
-    /* BREAK THE SEAL BUTTON */
     .break-seal-btn {
       margin: 2rem auto 1rem;
       display: inline-block;
@@ -184,7 +182,6 @@
       text-transform: uppercase;
     }
 
-    /* crack animation for seal */
     .seal-circle.cracking {
       position: relative;
     }
@@ -214,19 +211,18 @@
     /* ========== MAIN WEDDING PAGE (SECOND PAGE) ========== */
     .main-wedding-page {
       opacity: 0;
-      transition: opacity 0.8s ease;
       visibility: hidden;
       display: none;
       background: #fef7ef;
+      min-height: 100vh;
     }
 
-    .main-wedding-page.visible {
+    .main-wedding-page.show {
       opacity: 1;
       visibility: visible;
       display: block;
     }
 
-    /* Hero Section */
     .hero {
       background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat;
       height: 100vh;
@@ -267,6 +263,7 @@
       font-size: 2.5rem;
       margin-bottom: 2rem;
       color: #5a2a1a;
+      text-align: center;
     }
 
     .count-box {
@@ -286,6 +283,7 @@
       font-size: 2rem;
       font-weight: bold;
       color: #b8860b;
+      text-align: center;
     }
 
     .count-box div span {
@@ -293,6 +291,7 @@
       font-size: 0.8rem;
       color: #666;
       font-weight: normal;
+      margin-top: 5px;
     }
 
     .gallery-slider {
@@ -351,6 +350,8 @@
 
     iframe {
       border-radius: 15px;
+      display: block;
+      margin: 0 auto;
     }
 
     @media (max-width: 768px) {
@@ -391,7 +392,6 @@
       ✦ Sri Lankan Tradition ✦
     </div>
 
-    <!-- BREAK THE SEAL BUTTON -->
     <div class="break-seal-btn" id="breakSealBtn">
       <div class="seal-circle" id="sealCircle">
         <div class="seal-text-main">
@@ -409,28 +409,24 @@
 
 <!-- SECOND PAGE: FULL WEDDING DETAILS -->
 <div id="secondPage" class="main-wedding-page">
-  <!-- Hero Section -->
   <div class="hero">
     <h1>Praboda ❤️ Dewmi</h1>
     <p id="guestText">We are getting married</p>
   </div>
 
-  <!-- Save The Date -->
   <div class="section" style="background: #2c1a0c; color: white;">
     <h2 style="color: #e9c891;">Save The Date</h2>
-    <h1 style="font-size: 3rem; margin-top: 1rem;">16 • 07 • 2026</h1>
+    <h1 style="font-size: 3rem; margin-top: 1rem; text-align: center;">16 • 07 • 2026</h1>
   </div>
 
-  <!-- Wedding Details -->
   <div class="section">
     <h2>Wedding Details</h2>
-    <p style="font-size: 1.2rem; margin: 10px 0;">📅 16th July 2026</p>
-    <p style="font-size: 1.2rem; margin: 10px 0;">⏰ 10:00 AM – 4:00 PM</p>
-    <p style="font-size: 1.2rem; margin: 10px 0;">📍 Hotel Nildiya, Matara</p>
+    <p style="font-size: 1.2rem; margin: 10px 0; text-align: center;">📅 16th July 2026</p>
+    <p style="font-size: 1.2rem; margin: 10px 0; text-align: center;">⏰ 10:00 AM – 4:00 PM</p>
+    <p style="font-size: 1.2rem; margin: 10px 0; text-align: center;">📍 Hotel Nildiya, Matara</p>
     <div id="countdown" class="count-box"></div>
   </div>
 
-  <!-- Gallery -->
   <div class="section">
     <h2>Gallery</h2>
     <div class="gallery-slider">
@@ -442,21 +438,20 @@
     </div>
   </div>
 
-  <!-- Location -->
   <div class="section">
     <h2>Location</h2>
     <iframe src="https://maps.google.com/maps?q=Hotel%20Nildiya%20Matara&output=embed" width="90%" height="300" style="border-radius:15px; border:0;"></iframe>
   </div>
 
-  <!-- RSVP -->
   <div class="section">
     <h2>RSVP</h2>
-    <a class="button" id="rsvpBtn" href="#">Confirm via WhatsApp</a>
+    <div style="text-align: center;">
+      <a class="button" id="rsvpBtn" href="#">Confirm via WhatsApp</a>
+    </div>
   </div>
 
-  <!-- Footer -->
   <div class="section" style="background: #2c1a0c; color: #e9c891;">
-    <p>With Love ❤️<br>Praboda & Dewmi</p>
+    <p style="text-align: center;">With Love ❤️<br>Praboda & Dewmi</p>
   </div>
 
   <button class="music-btn" onclick="toggleMusic()">🎵</button>
@@ -476,12 +471,11 @@
   
   let isOpened = false;
 
-  // Function to break seal and transition to second page
   function breakSeal() {
     if (isOpened) return;
     isOpened = true;
 
-    // Add crack animation to seal
+    // Add crack animation
     sealCircle.classList.add('cracking');
     
     // Confetti burst
@@ -512,18 +506,22 @@
       sealTextDiv.innerHTML = '✨ OPENED ✨<small>Welcome!</small>';
     }
     
-    // Fade out first page and show second page
+    // Hide first page and show second page
     setTimeout(() => {
-      firstPage.classList.add('fade-out');
+      firstPage.classList.add('hide');
       
       setTimeout(() => {
         firstPage.style.display = 'none';
-        secondPage.classList.add('visible');
+        secondPage.classList.add('show');
+        secondPage.style.display = 'block';
+        
+        // Scroll to top of second page
+        window.scrollTo(0, 0);
         
         // Play music
         if (audio) {
           audio.volume = 0.5;
-          audio.play().catch(e => console.log('Autoplay blocked'));
+          audio.play().catch(e => console.log('Autoplay blocked - click music button to play'));
         }
         
         // Final celebration
@@ -533,11 +531,11 @@
           origin: { y: 0.6 },
           startVelocity: 25
         });
-      }, 1000);
+      }, 800);
     }, 400);
   }
 
-  // Click event for break seal button
+  // Click event
   breakSealBtn.addEventListener('click', breakSeal);
 
   // Countdown timer
@@ -547,15 +545,21 @@
     const now = new Date().getTime();
     const distance = countDownDate - now;
     
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    
-    document.getElementById("countdown").innerHTML = `
-      <div>${days}<span>Days</span></div>
-      <div>${hours}<span>Hours</span></div>
-      <div>${minutes}<span>Min</span></div>
-    `;
+    if (distance > 0) {
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      
+      document.getElementById("countdown").innerHTML = `
+        <div>${days}<span>Days</span></div>
+        <div>${hours}<span>Hours</span></div>
+        <div>${minutes}<span>Mins</span></div>
+        <div>${seconds}<span>Secs</span></div>
+      `;
+    } else {
+      document.getElementById("countdown").innerHTML = `<div>🎉 Today is the Day! 🎉<span>Celebrating Now!</span></div>`;
+    }
   }, 1000);
 
   // Personalized name from URL
@@ -564,7 +568,7 @@
   const guestText = document.getElementById("guestText");
   const rsvpBtn = document.getElementById("rsvpBtn");
   
-  if (guest) {
+  if (guest && guest.trim() !== "") {
     guestText.innerHTML = "Dear " + guest + ", you are invited 💌";
     rsvpBtn.href = "https://wa.me/94772636665?text=Hi Praboda & Dewmi, I (" + guest + ") will attend your wedding!";
   } else {
@@ -574,40 +578,43 @@
   // Gallery slider
   let slideIndex = 0;
   const slides = document.getElementById("slides");
-  const totalSlides = slides.children.length;
-  
-  setInterval(() => {
-    slideIndex = (slideIndex + 1) % totalSlides;
-    slides.style.transform = `translateX(-${slideIndex * 100}%)`;
-  }, 3000);
-  
-  // Touch swipe for mobile
-  let touchStart = 0;
-  slides.addEventListener("touchstart", e => {
-    touchStart = e.touches[0].clientX;
-  });
-  
-  slides.addEventListener("touchend", e => {
-    let touchEnd = e.changedTouches[0].clientX;
-    if (touchStart - touchEnd > 50) {
+  if (slides) {
+    const totalSlides = slides.children.length;
+    
+    setInterval(() => {
       slideIndex = (slideIndex + 1) % totalSlides;
-    } else if (touchEnd - touchStart > 50) {
-      slideIndex = (slideIndex - 1 + totalSlides) % totalSlides;
-    }
-    slides.style.transform = `translateX(-${slideIndex * 100}%)`;
-  });
+      slides.style.transform = `translateX(-${slideIndex * 100}%)`;
+    }, 3000);
+    
+    // Touch swipe for mobile
+    let touchStart = 0;
+    slides.addEventListener("touchstart", e => {
+      touchStart = e.touches[0].clientX;
+    });
+    
+    slides.addEventListener("touchend", e => {
+      let touchEnd = e.changedTouches[0].clientX;
+      if (touchStart - touchEnd > 50) {
+        slideIndex = (slideIndex + 1) % totalSlides;
+      } else if (touchEnd - touchStart > 50) {
+        slideIndex = (slideIndex - 1 + totalSlides) % totalSlides;
+      }
+      slides.style.transform = `translateX(-${slideIndex * 100}%)`;
+    });
+  }
 
   // Music toggle
   let musicPlaying = false;
   function toggleMusic() {
+    const musicBtn = document.querySelector('.music-btn');
     if (musicPlaying) {
       audio.pause();
       musicPlaying = false;
-      document.querySelector('.music-btn').innerHTML = '🎵';
+      musicBtn.innerHTML = '🎵';
     } else {
       audio.play().catch(e => console.log('error'));
       musicPlaying = true;
-      document.querySelector('.music-btn').innerHTML = '🔊';
+      musicBtn.innerHTML = '🔊';
     }
   }
 </script>
