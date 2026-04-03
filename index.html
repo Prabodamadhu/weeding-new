@@ -20,12 +20,12 @@ body {
   text-align: center;
 }
 
-/* ===== PREMIUM INTRO ===== */
+/* ===== RED PREMIUM INTRO ===== */
 #intro {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #f8efe8, #f3e3d3);
+  background: radial-gradient(circle, #7a0f0f, #2b0000);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,36 +41,39 @@ body {
   font-family: 'Playfair Display', serif;
   font-size: 26px;
   margin-bottom: 20px;
-  color: #8b6f5c;
+  color: #ffd9d9;
   letter-spacing: 2px;
 }
 
+/* ENVELOPE BODY */
 .envelope {
-  width: 280px;
-  height: 180px;
-  background: #e6d3c3;
+  width: 300px;
+  height: 190px;
+  background: #b22222;
   position: relative;
   border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.4);
   overflow: hidden;
 }
 
+/* FLAP */
 .flap {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: #d8bfae;
-  clip-path: polygon(0 0, 100% 0, 50% 55%);
+  background: #8b0000;
+  clip-path: polygon(0 0, 100% 0, 50% 60%);
   transform-origin: top;
   transition: 0.8s ease;
-  z-index: 2;
+  z-index: 3;
 }
 
+/* LETTER */
 .letter {
   position: absolute;
   width: 90%;
   height: 90%;
-  background: white;
+  background: #fff;
   top: 5%;
   left: 5%;
   border-radius: 10px;
@@ -78,20 +81,43 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transform: translateY(100%);
+  transform: translateY(110%);
   transition: 0.8s ease;
   z-index: 1;
 }
 
-.letter h2 { margin: 0; font-size: 20px; }
-.letter p { margin-top: 8px; font-size: 14px; color: gray; }
+/* WAX SEAL */
+.seal {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle, #ff4d4d, #8b0000);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-weight: bold;
+  font-family: 'Playfair Display', serif;
+}
 
-.open .flap { transform: rotateX(180deg); }
-.open .letter { transform: translateY(0); }
+/* OPEN ANIMATION */
+.open .flap {
+  transform: rotateX(180deg);
+}
 
-@keyframes fadeIn {
-  from {opacity: 0; transform: translateY(20px);}
-  to {opacity: 1; transform: translateY(0);}
+.open .letter {
+  transform: translateY(0);
+}
+
+.open .seal {
+  opacity: 0;
+  transition: 0.4s;
 }
 
 /* HERO */
@@ -104,7 +130,6 @@ body {
   justify-content: center;
   background-blend-mode: darken;
   background-color: rgba(0,0,0,0.5);
-  background-position: center top;
 }
 
 h1, h2 { font-family: 'Playfair Display', serif; }
@@ -126,7 +151,6 @@ h1, h2 { font-family: 'Playfair Display', serif; }
   padding: 15px;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  min-width: 70px;
 }
 
 /* GALLERY */
@@ -145,7 +169,6 @@ h1, h2 { font-family: 'Playfair Display', serif; }
 .slides img {
   width: 100%;
   flex-shrink: 0;
-  border-radius: 15px;
 }
 
 /* BUTTON */
@@ -169,6 +192,11 @@ h1, h2 { font-family: 'Playfair Display', serif; }
   border: none;
 }
 
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
 </style>
 </head>
 
@@ -178,13 +206,18 @@ h1, h2 { font-family: 'Playfair Display', serif; }
 <div id="intro">
   <div class="invite-container" onclick="openInvite()">
     <div class="invite-text">You’re Invited 💌</div>
+
     <div class="envelope">
       <div class="flap"></div>
+
+      <div class="seal">P&D</div>
+
       <div class="letter">
         <h2>Praboda ❤️ Dewmi</h2>
         <p>Tap to Open</p>
       </div>
     </div>
+
   </div>
 </div>
 
@@ -208,9 +241,6 @@ h1, h2 { font-family: 'Playfair Display', serif; }
 <!-- DETAILS -->
 <div class="section">
   <h2>Wedding Details</h2>
-  <p>📅 16th July 2026</p>
-  <p>⏰ 10:00 AM – 4:00 PM</p>
-  <p>📍 Hotel Nildiya, Matara</p>
   <div id="countdown" class="count-box"></div>
 </div>
 
@@ -226,22 +256,10 @@ h1, h2 { font-family: 'Playfair Display', serif; }
   </div>
 </div>
 
-<!-- LOCATION -->
-<div class="section">
-  <h2>Location</h2>
-  <iframe src="https://maps.google.com/maps?q=Hotel%20Nildiya%20Matara&output=embed"
-  width="90%" height="250" style="border-radius:10px;"></iframe>
-</div>
-
 <!-- RSVP -->
 <div class="section">
   <h2>RSVP</h2>
   <a class="button" id="rsvpBtn" href="#">Confirm via WhatsApp</a>
-</div>
-
-<!-- FOOTER -->
-<div class="section">
-  <p>With Love ❤️<br>Praboda & Dewmi</p>
 </div>
 
 <button class="music-btn" onclick="toggleMusic()">🎵</button>
@@ -283,21 +301,6 @@ setInterval(function() {
      <div>${hours}<br>Hours</div>
      <div>${minutes}<br>Min</div>`;
 }, 1000);
-
-/* PERSONALIZED NAME */
-const params = new URLSearchParams(window.location.search);
-const guest = params.get("name");
-
-if (guest) {
-  document.getElementById("guestText").innerHTML =
-    "Dear " + guest + ", you are invited 💌";
-
-  document.getElementById("rsvpBtn").href =
-    "https://wa.me/94772636665?text=Hi Praboda & Dewmi, I (" + guest + ") will attend your wedding!";
-} else {
-  document.getElementById("rsvpBtn").href =
-    "https://wa.me/94772636665?text=Hi Praboda & Dewmi, I will attend your wedding!";
-}
 
 /* SLIDER */
 let index = 0;
