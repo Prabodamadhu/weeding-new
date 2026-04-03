@@ -10,7 +10,6 @@
 
 <style>
 
-/* ===== GENERAL STYLES ===== */
 html { scroll-behavior: smooth; }
 
 body {
@@ -36,7 +35,6 @@ body {
 .invite-container {
   text-align: center;
   animation: fadeIn 1.5s ease;
-  cursor: pointer;
 }
 
 .invite-text {
@@ -51,28 +49,28 @@ body {
 .envelope {
   width: 280px;
   height: 180px;
-  background: #8B0000; /* Dark red */
+  background: #8B0000; /* Dark red envelope */
   position: relative;
   border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
   overflow: hidden;
 }
 
-/* GOLD BAND (Professional) */
-.gold-band {
+/* GOLD BAND */
+.envelope::before {
+  content: '';
   position: absolute;
   top: 40%;
   left: 0;
   width: 100%;
-  height: 22px;
-  background: linear-gradient(90deg, #FFD700 0%, #FFF8DC 50%, #FFD700 100%);
-  border-radius: 12px;
-  box-shadow: inset 0 2px 6px rgba(0,0,0,0.2), 0 2px 4px rgba(0,0,0,0.15);
-  transform: skewY(-2deg);
+  height: 20px;
+  background: linear-gradient(45deg, #FFD700, #FFC107); /* Gold gradient */
   z-index: 3;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
-/* GOLD SEAL (Premium) */
+/* GOLD SEAL */
 .seal {
   position: absolute;
   top: 50%;
@@ -80,23 +78,32 @@ body {
   transform: translate(-50%, -50%);
   width: 70px;
   height: 70px;
-  background: radial-gradient(circle at 30% 30%, #FFFACD, #FFD700, #DAA520);
+  background: radial-gradient(circle at 30% 30%, #FFD700, #FFA500); /* Realistic gold */
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: 'Playfair Display', serif;
-  color: #8B0000; /* Dark red letters */
-  font-size: 13px;
+  color: #8B0000; /* Dark red letters on gold */
+  font-size: 12px;
   font-weight: bold;
+  z-index: 4;
   text-align: center;
   line-height: 1.1;
-  box-shadow:
-    inset 0 2px 6px rgba(255,255,255,0.5),
-    0 4px 8px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
 }
 
-/* LETTER */
+.flap {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #700000; /* Slightly darker red flap */
+  clip-path: polygon(0 0, 100% 0, 50% 55%);
+  transform-origin: top;
+  transition: 0.8s ease;
+  z-index: 2;
+}
+
 .letter {
   position: absolute;
   width: 90%;
@@ -116,18 +123,6 @@ body {
 
 .letter h2 { margin: 0; font-size: 20px; }
 .letter p { margin-top: 8px; font-size: 14px; color: gray; }
-
-/* FLAP */
-.flap {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: #700000; /* Slightly darker red flap */
-  clip-path: polygon(0 0, 100% 0, 50% 55%);
-  transform-origin: top;
-  transition: 0.8s ease;
-  z-index: 2;
-}
 
 .open .flap { transform: rotateX(180deg); }
 .open .letter { transform: translateY(0); }
@@ -222,13 +217,12 @@ h1, h2 { font-family: 'Playfair Display', serif; }
   <div class="invite-container" onclick="openInvite()">
     <div class="invite-text">You’re Invited 💌</div>
     <div class="envelope">
-      <div class="gold-band"></div>
+      <div class="flap"></div>
       <div class="seal">Praboda &<br>Dewmi</div>
       <div class="letter">
         <h2>Praboda ❤️ Dewmi</h2>
         <p>Tap to Open</p>
       </div>
-      <div class="flap"></div>
     </div>
   </div>
 </div>
