@@ -25,7 +25,7 @@ body {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #f8efe8, #f3e3d3);
+  background: #b71c1c; /* Dark red matching envelope */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,25 +41,62 @@ body {
   font-family: 'Playfair Display', serif;
   font-size: 26px;
   margin-bottom: 20px;
-  color: #8b6f5c;
+  color: #ffd700; /* Gold color text */
   letter-spacing: 2px;
 }
 
+/* ENVELOPE */
 .envelope {
   width: 280px;
   height: 180px;
-  background: #e6d3c3;
+  background: #d32f2f; /* Red envelope */
   position: relative;
   border-radius: 12px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.15);
   overflow: hidden;
 }
 
+/* GOLD BAND */
+.envelope::before {
+  content: '';
+  position: absolute;
+  top: 40%;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: #ffd700; /* Gold band */
+  z-index: 3;
+  border-radius: 10px;
+}
+
+/* GOLD SEAL */
+.seal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70px;
+  height: 70px;
+  background: #ffd700; /* Gold */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Playfair Display', serif;
+  color: #b71c1c; /* Red text on gold */
+  font-size: 12px;
+  font-weight: bold;
+  z-index: 4;
+  text-align: center;
+  line-height: 1.1;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
 .flap {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: #d8bfae;
+  background: #c62828; /* Slightly darker red for flap */
   clip-path: polygon(0 0, 100% 0, 50% 55%);
   transform-origin: top;
   transition: 0.8s ease;
@@ -180,6 +217,7 @@ h1, h2 { font-family: 'Playfair Display', serif; }
     <div class="invite-text">You’re Invited 💌</div>
     <div class="envelope">
       <div class="flap"></div>
+      <div class="seal">Praboda &<br>Dewmi</div>
       <div class="letter">
         <h2>Praboda ❤️ Dewmi</h2>
         <p>Tap to Open</p>
