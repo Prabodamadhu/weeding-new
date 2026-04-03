@@ -25,7 +25,7 @@ body {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: #b71c1c; /* Dark red matching envelope */
+  background: #f28b8b; /* Light red background */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,7 +41,7 @@ body {
   font-family: 'Playfair Display', serif;
   font-size: 26px;
   margin-bottom: 20px;
-  color: #ffd700; /* Gold color text */
+  color: #FFD700; /* Gold text */
   letter-spacing: 2px;
 }
 
@@ -49,10 +49,10 @@ body {
 .envelope {
   width: 280px;
   height: 180px;
-  background: #d32f2f; /* Red envelope */
+  background: #8B0000; /* Dark red envelope */
   position: relative;
   border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
   overflow: hidden;
 }
 
@@ -64,9 +64,10 @@ body {
   left: 0;
   width: 100%;
   height: 20px;
-  background: #ffd700; /* Gold band */
+  background: linear-gradient(45deg, #FFD700, #FFC107); /* Gold gradient */
   z-index: 3;
   border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
 /* GOLD SEAL */
@@ -77,26 +78,26 @@ body {
   transform: translate(-50%, -50%);
   width: 70px;
   height: 70px;
-  background: #ffd700; /* Gold */
+  background: radial-gradient(circle at 30% 30%, #FFD700, #FFA500); /* Realistic gold */
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: 'Playfair Display', serif;
-  color: #b71c1c; /* Red text on gold */
+  color: #8B0000; /* Dark red letters on gold */
   font-size: 12px;
   font-weight: bold;
   z-index: 4;
   text-align: center;
   line-height: 1.1;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
 }
 
 .flap {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: #c62828; /* Slightly darker red for flap */
+  background: #700000; /* Slightly darker red flap */
   clip-path: polygon(0 0, 100% 0, 50% 55%);
   transform-origin: top;
   transition: 0.8s ease;
