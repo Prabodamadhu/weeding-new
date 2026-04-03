@@ -15,17 +15,16 @@
     body {
       font-family: 'Inter', sans-serif;
       overflow-x: hidden;
-      background: #0a0806;
     }
 
-    /* ========== PREMIUM INTRO / SEAL PAGE ========== */
-    .intro-premium {
+    /* ========== FIRST PAGE - PURE INVITATION WITH SEAL ========== */
+    .invitation-first-page {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(ellipse at 30% 40%, #7e2c1c, #40180e);
+      background: linear-gradient(135deg, #8b1a1a 0%, #5e0e0e 100%);
       z-index: 10000;
       display: flex;
       align-items: center;
@@ -35,182 +34,161 @@
       visibility: visible;
     }
 
-    .intro-premium.fade-out {
+    .invitation-first-page.fade-out {
       opacity: 0;
       visibility: hidden;
     }
 
-    /* Ornate container */
-    .royal-seal-container {
+    .invitation-card {
       text-align: center;
       max-width: 90%;
-      width: 520px;
+      width: 550px;
+      padding: 3rem 2rem;
+      background: rgba(255, 245, 235, 0.95);
+      border-radius: 60px 60px 80px 80px;
+      box-shadow: 0 40px 60px rgba(0,0,0,0.4), inset 0 1px 4px rgba(255,255,200,0.5);
       position: relative;
-      cursor: pointer;
-      transform: translateY(0);
-      transition: transform 0.3s ease;
+      animation: fadeInUp 0.8s ease;
     }
 
-    .royal-seal-container:hover {
-      transform: scale(1.01);
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    /* Royal decorative text above */
-    .invitation-suptitle {
+    /* Decorative border */
+    .invitation-card::before {
+      content: '';
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      right: 15px;
+      bottom: 15px;
+      border: 1px solid rgba(180, 100, 50, 0.3);
+      border-radius: 50px 50px 70px 70px;
+      pointer-events: none;
+    }
+
+    .royal-badge {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem;
+      font-size: 0.85rem;
       letter-spacing: 6px;
+      color: #8b4513;
       text-transform: uppercase;
-      color: #e9c891;
-      margin-bottom: 1.8rem;
-      font-weight: 300;
-      word-spacing: 4px;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-    }
-
-    /* main card / seal plaque */
-    .seal-plaque {
-      background: rgba(22, 12, 8, 0.65);
-      backdrop-filter: blur(8px);
-      border-radius: 48px;
-      padding: 2.2rem 2rem 2.8rem;
-      border: 1px solid rgba(233, 200, 145, 0.5);
-      box-shadow: 0 30px 50px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,240,0.1);
-      transition: all 0.4s;
-    }
-
-    .ornament-top {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
       margin-bottom: 1.5rem;
     }
-    .ornament-top span {
-      font-size: 1.6rem;
-      color: #e9c891;
-      font-weight: 300;
+
+    .ornament-line {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin: 1rem 0;
     }
 
-    .royal-title {
+    .ornament-line span {
+      font-size: 1.2rem;
+      color: #b8860b;
+    }
+
+    .ornament-line .line {
+      width: 50px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #b8860b, transparent);
+    }
+
+    .couple-name-large {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 2.1rem;
-      font-weight: 500;
-      letter-spacing: 3px;
-      color: #f7e5c2;
-      text-transform: uppercase;
-      margin-bottom: 0.75rem;
-      word-spacing: 6px;
-    }
-
-    .divider-luxury {
-      width: 120px;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, #e9c891, #d4af5a, #e9c891, transparent);
-      margin: 1rem auto;
-    }
-
-    .couple-names {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 3.4rem;
+      font-size: 3.8rem;
       font-weight: 700;
-      color: #fff3e0;
-      margin: 0.5rem 0 0.2rem;
-      letter-spacing: 2px;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.4);
-    }
-
-    .sanskrit-dot {
-      font-size: 1.4rem;
-      color: #e9c891;
+      color: #5e1a0f;
+      letter-spacing: 3px;
       margin: 0.5rem 0;
     }
 
-    .date-announce {
-      font-size: 1.1rem;
-      font-weight: 300;
+    .invitation-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      color: #6b3a2a;
+      margin: 1rem 0;
+      font-style: italic;
+    }
+
+    .sri-lankan-text {
+      font-size: 0.9rem;
+      letter-spacing: 3px;
+      color: #b8860b;
       text-transform: uppercase;
-      color: #eedbae;
-      letter-spacing: 2px;
-      margin-top: 1rem;
+      margin: 1rem 0;
     }
 
-    /* THE SEAL (wax seal style) */
-    .wax-seal-wrapper {
-      margin: 2rem auto 1.8rem;
-      position: relative;
+    /* BREAK THE SEAL BUTTON */
+    .break-seal-btn {
+      margin: 2rem auto 1rem;
       display: inline-block;
+      cursor: pointer;
+      transition: transform 0.3s ease;
     }
 
-    .wax-seal {
-      width: 130px;
-      height: 130px;
-      background: radial-gradient(circle at 35% 35%, #e9b13b, #b57c1c);
+    .seal-circle {
+      width: 140px;
+      height: 140px;
+      background: radial-gradient(circle at 35% 35%, #e9b13b, #c1851e);
       border-radius: 50%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 15px 25px rgba(0,0,0,0.5), inset 0 2px 4px rgba(255,245,180,0.7), 0 0 0 6px rgba(210, 150, 50, 0.3);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.4), inset 0 2px 5px rgba(255,245,180,0.8), 0 0 0 8px rgba(200, 130, 50, 0.4);
       transition: all 0.2s ease;
-      cursor: pointer;
-      position: relative;
     }
 
-    .wax-seal:active {
+    .seal-circle:hover {
+      transform: scale(1.03);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.5), inset 0 2px 5px rgba(255,245,180,0.8), 0 0 0 10px rgba(200, 130, 50, 0.5);
+    }
+
+    .seal-circle:active {
       transform: scale(0.97);
     }
 
-    .wax-seal:hover {
-      filter: brightness(1.03) drop-shadow(0 0 6px rgba(255,215,0,0.5));
-      transform: scale(1.02);
-    }
-
-    .seal-text {
+    .seal-text-main {
       font-family: 'Cormorant Garamond', serif;
-      font-weight: 700;
-      font-size: 1.2rem;
+      font-weight: 800;
+      font-size: 1.3rem;
       text-transform: uppercase;
-      color: #2d1c0c;
-      letter-spacing: 1px;
+      color: #3d1e0a;
       text-align: center;
       line-height: 1.3;
-      background: rgba(0,0,0,0.1);
-      padding: 6px 12px;
-      border-radius: 40px;
+      letter-spacing: 1px;
     }
 
-    .seal-text small {
+    .seal-text-main small {
       font-size: 0.7rem;
       display: block;
       font-weight: 500;
+      margin-top: 5px;
     }
 
-    .ribbon-text {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.9rem;
+    .break-hint-text {
+      font-size: 0.7rem;
       letter-spacing: 3px;
-      color: #f1dfb0;
+      color: #b8860b;
       margin-top: 1rem;
-      font-weight: 400;
-    }
-
-    .break-hint {
-      font-size: 0.75rem;
-      letter-spacing: 2px;
-      color: #cfb37a;
-      margin-top: 2rem;
       text-transform: uppercase;
-      border-top: 1px dashed rgba(233,200,145,0.4);
-      display: inline-block;
-      padding-top: 1rem;
     }
 
-    /* crack effect animation */
-    .crack-effect {
+    /* crack animation for seal */
+    .seal-circle.cracking {
       position: relative;
     }
-    .crack-effect::before,
-    .crack-effect::after {
+    .seal-circle.cracking::before {
       content: '';
       position: absolute;
       top: 50%;
@@ -218,54 +196,40 @@
       width: 100%;
       height: 100%;
       border-radius: 50%;
+      background: radial-gradient(circle, #ffdd88, #ffaa33);
+      animation: crackFlash 0.5s ease-out forwards;
       pointer-events: none;
     }
-    .crack-effect.crack-animate::before {
-      animation: crackLines 0.4s ease-out forwards;
-    }
-    @keyframes crackLines {
+    @keyframes crackFlash {
       0% {
-        box-shadow: 0 0 0 0 rgba(255,215,0,0);
         transform: translate(-50%, -50%) scale(0.8);
-        opacity: 0;
-      }
-      30% {
-        box-shadow: 0 0 0 12px rgba(255,215,0,0.6);
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 1;
+        opacity: 0.8;
       }
       100% {
-        box-shadow: 0 0 0 40px rgba(255,215,0,0);
-        transform: translate(-50%, -50%) scale(1.2);
+        transform: translate(-50%, -50%) scale(1.8);
         opacity: 0;
       }
     }
-    @keyframes crackShards {
-      0% { background: radial-gradient(circle, #ffcc44 0%, #ffaa33 80%); opacity: 0.7; transform: translate(-50%, -50%) scale(0.9);}
-      100% { background: radial-gradient(circle, #ffdd77 0%, #c97e2a 100%); opacity: 0; transform: translate(-50%, -50%) scale(1.6);}
-    }
 
-    /* main website content (hidden until intro dismissed) */
-    .main-content {
+    /* ========== MAIN WEDDING PAGE (SECOND PAGE) ========== */
+    .main-wedding-page {
       opacity: 0;
       transition: opacity 0.8s ease;
       visibility: hidden;
       display: none;
+      background: #fef7ef;
     }
-    .main-content.visible {
+
+    .main-wedding-page.visible {
       opacity: 1;
       visibility: visible;
       display: block;
     }
 
-    /* Rest of wedding site styles (elegant) */
-    .wedding-site {
-      background: #fef7ef;
-      font-family: 'Inter', sans-serif;
-    }
-    .hero-wedding {
-      background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.55)), url('https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat;
-      height: 95vh;
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat;
+      height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -273,379 +237,380 @@
       color: white;
       text-align: center;
     }
-    .hero-wedding h1 {
+
+    .hero h1 {
       font-family: 'Cormorant Garamond', serif;
       font-size: 4rem;
       letter-spacing: 4px;
-      margin-bottom: 0.5rem;
-      font-weight: 600;
+      margin-bottom: 1rem;
     }
-    .hero-wedding p {
+
+    .hero p {
       font-size: 1.2rem;
       letter-spacing: 2px;
     }
-    .section-card {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 4rem 1.5rem;
+
+    .section {
+      padding: 60px 20px;
     }
-    .detail-grid {
+
+    .section:nth-child(even) {
+      background: #fff;
+    }
+
+    .section:nth-child(odd) {
+      background: #f8efe8;
+    }
+
+    .section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: #5a2a1a;
+    }
+
+    .count-box {
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
-      gap: 2rem;
+      gap: 20px;
+      flex-wrap: wrap;
       margin-top: 2rem;
     }
-    .detail-item {
+
+    .count-box div {
       background: white;
-      padding: 1.5rem 2rem;
-      border-radius: 28px;
-      box-shadow: 0 12px 24px rgba(0,0,0,0.05);
-      min-width: 200px;
-    }
-    .countdown-timer {
-      display: flex;
-      gap: 1.2rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .time-block {
-      background: #2c241e;
-      color: #f7e5c2;
-      padding: 1rem 1.8rem;
-      border-radius: 20px;
-      font-weight: 600;
-      font-size: 2rem;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
       min-width: 100px;
-      font-family: monospace;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #b8860b;
     }
-    .time-block span {
-      font-size: 0.8rem;
+
+    .count-box div span {
       display: block;
-      font-weight: 400;
-      letter-spacing: 1px;
+      font-size: 0.8rem;
+      color: #666;
+      font-weight: normal;
     }
-    .btn-gold {
+
+    .gallery-slider {
+      width: 90%;
+      max-width: 1000px;
+      margin: auto;
+      overflow: hidden;
+      border-radius: 20px;
+      position: relative;
+    }
+
+    .slides {
+      display: flex;
+      transition: transform 0.4s ease-in-out;
+    }
+
+    .slides img {
+      width: 100%;
+      flex-shrink: 0;
+      border-radius: 20px;
+      height: 400px;
+      object-fit: cover;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 14px 35px;
       background: #b8860b;
-      padding: 12px 30px;
-      border-radius: 40px;
       color: white;
       text-decoration: none;
+      border-radius: 50px;
       font-weight: 500;
-      transition: 0.2s;
-      display: inline-block;
+      transition: 0.3s;
     }
-    .btn-gold:hover {
-      background: #9a6e0a;
-      transform: scale(1.02);
+
+    .button:hover {
+      background: #8b6508;
+      transform: scale(1.05);
     }
-    .gallery-strip {
-      display: flex;
-      gap: 1rem;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      padding: 1rem 0;
+
+    .music-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #2c241e;
+      color: #e9c891;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
-    .gallery-strip img {
-      width: 280px;
-      height: 340px;
-      object-fit: cover;
-      border-radius: 28px;
-      scroll-snap-align: start;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+
+    iframe {
+      border-radius: 15px;
     }
-    .gallery-strip::-webkit-scrollbar { height: 5px; }
-    .gallery-strip::-webkit-scrollbar-track { background: #e4d5c3; border-radius: 10px; }
-    .gallery-strip::-webkit-scrollbar-thumb { background: #b48b4b; border-radius: 10px; }
-    
-    footer {
-      background: #1f1915;
-      color: #cfb991;
-      padding: 2rem;
-      font-size: 0.85rem;
-    }
-    @media (max-width: 640px) {
-      .couple-names { font-size: 2.3rem; }
-      .royal-title { font-size: 1.4rem; }
-      .wax-seal { width: 100px; height: 100px; }
-      .seal-text { font-size: 0.9rem; }
-      .hero-wedding h1 { font-size: 2.5rem; }
+
+    @media (max-width: 768px) {
+      .couple-name-large { font-size: 2.5rem; }
+      .hero h1 { font-size: 2.5rem; }
+      .slides img { height: 250px; }
+      .count-box div { min-width: 70px; font-size: 1.5rem; padding: 12px; }
     }
   </style>
 </head>
 <body>
 
-<!-- PROFESSIONAL "BREAK THE SEAL" FIRST PAGE -->
-<div id="premiumIntro" class="intro-premium">
-  <div class="royal-seal-container" id="sealTrigger">
-    <div class="invitation-suptitle">✦ ROYAL SRI LANKAN WEDDING ✦</div>
-    <div class="seal-plaque">
-      <div class="ornament-top">
-        <span>✧</span> <span>✧</span> <span>✧</span>
-      </div>
-      <div class="royal-title">With Blessings of The Family</div>
-      <div class="divider-luxury"></div>
-      <div class="couple-names">Praboda & Dewmi</div>
-      <div class="sanskrit-dot">◈ 𑁍 ◈</div>
-      <div class="date-announce">Request the honour of your presence</div>
-      
-      <!-- WAX SEAL (Break to reveal) -->
-      <div class="wax-seal-wrapper">
-        <div class="wax-seal" id="waxSeal">
-          <div class="seal-text">
-            BREAK<br>THE SEAL
-            <small>✧ TO REVEAL ✧</small>
-          </div>
+<!-- FIRST PAGE: PURE INVITATION WITH SEAL -->
+<div id="firstPage" class="invitation-first-page">
+  <div class="invitation-card">
+    <div class="royal-badge">✦ ROYAL INVITATION ✦</div>
+    
+    <div class="ornament-line">
+      <span>✧</span>
+      <div class="line"></div>
+      <span>✧</span>
+    </div>
+    
+    <div class="couple-name-large">Praboda & Dewmi</div>
+    
+    <div class="ornament-line">
+      <span>✧</span>
+      <div class="line"></div>
+      <span>✧</span>
+    </div>
+    
+    <div class="invitation-text">
+      Request the honour of your presence<br>
+      at their Royal Sri Lankan Wedding
+    </div>
+    
+    <div class="sri-lankan-text">
+      ✦ Sri Lankan Tradition ✦
+    </div>
+
+    <!-- BREAK THE SEAL BUTTON -->
+    <div class="break-seal-btn" id="breakSealBtn">
+      <div class="seal-circle" id="sealCircle">
+        <div class="seal-text-main">
+          BREAK<br>THE SEAL
+          <small>✦ TO REVEAL ✦</small>
         </div>
       </div>
-      <div class="ribbon-text">❤️ 16th July 2026 ❤️</div>
-      <div class="break-hint">▼ click the royal seal ▼</div>
+    </div>
+    
+    <div class="break-hint-text">
+      ▼ click the seal above ▼
     </div>
   </div>
 </div>
 
-<!-- MAIN WEDDING WEBSITE (Revealed after seal is broken) -->
-<div id="mainSite" class="main-content">
-  <div class="wedding-site">
-    <!-- Hero Section -->
-    <div class="hero-wedding">
-      <h1>Praboda ❤️ Dewmi</h1>
-      <p id="personalGreeting">We are getting married</p>
-      <div style="margin-top: 2rem;">
-        <a href="#details" style="background: #e9c891; color: #2c1a0c; padding: 10px 24px; border-radius: 40px; text-decoration: none; font-weight: 600;">Save the Date</a>
-      </div>
-    </div>
-
-    <!-- Save the Date & Details -->
-    <div id="details" class="section-card" style="background: #fff6ed;">
-      <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; text-align: center;">The Celebration</h2>
-      <div class="detail-grid">
-        <div class="detail-item">📅 <strong>16 July 2026</strong><br>Thursday</div>
-        <div class="detail-item">⏰ <strong>10:00 AM – 4:00 PM</strong><br>Ceremony & Reception</div>
-        <div class="detail-item">📍 <strong>Hotel Nildiya, Matara</strong><br>Sri Lanka</div>
-      </div>
-      <div style="text-align: center; margin: 2rem 0;">
-        <h3 style="font-weight: 300;">Countdown to Forever</h3>
-        <div id="countdownDisplay" class="countdown-timer" style="margin-top: 1.5rem;"></div>
-      </div>
-    </div>
-
-    <!-- Gallery Section (Elegant) -->
-    <div class="section-card">
-      <h2 style="font-family: 'Cormorant Garamond', serif; text-align: center; font-size: 2.2rem;">Moments of Love</h2>
-      <div class="gallery-strip" id="galleryStrip">
-        <img src="https://images.pexels.com/photos/2253870/pexels-photo-2253870.jpeg?auto=compress&cs=tinysrgb&w=600" alt="couple love">
-        <img src="https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=600" alt="wedding flowers">
-        <img src="https://images.pexels.com/photos/2834917/pexels-photo-2834917.jpeg?auto=compress&cs=tinysrgb&w=600" alt="sri lankan wedding">
-        <img src="https://images.pexels.com/photos/3171811/pexels-photo-3171811.jpeg?auto=compress&cs=tinysrgb&w=600" alt="romantic couple">
-      </div>
-      <p style="text-align: center; margin-top: 1rem; font-size: 0.8rem; color: #7f6b5a;">✧ swipe to explore ✧</p>
-    </div>
-
-    <!-- Location Map -->
-    <div class="section-card" style="background: #f4ede5;">
-      <h2 style="font-family: 'Cormorant Garamond', serif; text-align: center;">Venue Location</h2>
-      <div style="border-radius: 32px; overflow: hidden; max-width: 800px; margin: 1.5rem auto; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
-        <iframe src="https://maps.google.com/maps?q=Hotel%20Nildiya%20Matara&output=embed" width="100%" height="280" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-      </div>
-      <div style="text-align: center;">
-        <a href="https://maps.google.com/?q=Hotel+Nildiya+Matara" target="_blank" class="btn-gold">Open in Maps →</a>
-      </div>
-    </div>
-
-    <!-- RSVP Section -->
-    <div class="section-card">
-      <h2 style="font-family: 'Cormorant Garamond', serif;">Kindly RSVP</h2>
-      <p>Please confirm your presence to help us celebrate this joyous occasion.</p>
-      <a id="rsvpWhatsappLink" href="#" class="btn-gold" style="margin-top: 1rem; display: inline-block;">📱 Confirm via WhatsApp</a>
-    </div>
-
-    <footer>
-      <p>With Love & Blessings  |  Praboda & Dewmi  |  16th July 2026  |  Matara, Sri Lanka</p>
-      <p style="margin-top: 0.8rem;">✨ ඔබගේ සහභාගිත්වය අපගේ සතුට දෙගුණ කරයි ✨</p>
-    </footer>
+<!-- SECOND PAGE: FULL WEDDING DETAILS -->
+<div id="secondPage" class="main-wedding-page">
+  <!-- Hero Section -->
+  <div class="hero">
+    <h1>Praboda ❤️ Dewmi</h1>
+    <p id="guestText">We are getting married</p>
   </div>
-  <button id="musicToggleBtn" style="position: fixed; bottom: 24px; right: 24px; background: #2c241e; border: none; color: #e9c891; width: 48px; height: 48px; border-radius: 50%; font-size: 22px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 200;">🎵</button>
-  <audio id="bgMusic" loop preload="auto">
+
+  <!-- Save The Date -->
+  <div class="section" style="background: #2c1a0c; color: white;">
+    <h2 style="color: #e9c891;">Save The Date</h2>
+    <h1 style="font-size: 3rem; margin-top: 1rem;">16 • 07 • 2026</h1>
+  </div>
+
+  <!-- Wedding Details -->
+  <div class="section">
+    <h2>Wedding Details</h2>
+    <p style="font-size: 1.2rem; margin: 10px 0;">📅 16th July 2026</p>
+    <p style="font-size: 1.2rem; margin: 10px 0;">⏰ 10:00 AM – 4:00 PM</p>
+    <p style="font-size: 1.2rem; margin: 10px 0;">📍 Hotel Nildiya, Matara</p>
+    <div id="countdown" class="count-box"></div>
+  </div>
+
+  <!-- Gallery -->
+  <div class="section">
+    <h2>Gallery</h2>
+    <div class="gallery-slider">
+      <div class="slides" id="slides">
+        <img src="https://images.pexels.com/photos/2253870/pexels-photo-2253870.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Wedding couple">
+        <img src="https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Wedding flowers">
+        <img src="https://images.pexels.com/photos/2834917/pexels-photo-2834917.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Sri Lankan wedding">
+      </div>
+    </div>
+  </div>
+
+  <!-- Location -->
+  <div class="section">
+    <h2>Location</h2>
+    <iframe src="https://maps.google.com/maps?q=Hotel%20Nildiya%20Matara&output=embed" width="90%" height="300" style="border-radius:15px; border:0;"></iframe>
+  </div>
+
+  <!-- RSVP -->
+  <div class="section">
+    <h2>RSVP</h2>
+    <a class="button" id="rsvpBtn" href="#">Confirm via WhatsApp</a>
+  </div>
+
+  <!-- Footer -->
+  <div class="section" style="background: #2c1a0c; color: #e9c891;">
+    <p>With Love ❤️<br>Praboda & Dewmi</p>
+  </div>
+
+  <button class="music-btn" onclick="toggleMusic()">🎵</button>
+  <audio id="bgMusic" loop>
     <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
   </audio>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
 <script>
-  (function() {
-    const introDiv = document.getElementById('premiumIntro');
-    const mainContent = document.getElementById('mainSite');
-    const waxSealElement = document.getElementById('waxSeal');
-    const sealContainer = document.getElementById('sealTrigger');
-    const audio = document.getElementById('bgMusic');
-    const musicBtn = document.getElementById('musicToggleBtn');
+  const firstPage = document.getElementById('firstPage');
+  const secondPage = document.getElementById('secondPage');
+  const breakSealBtn = document.getElementById('breakSealBtn');
+  const sealCircle = document.getElementById('sealCircle');
+  const audio = document.getElementById('bgMusic');
+  
+  let isOpened = false;
 
-    let isOpened = false;
+  // Function to break seal and transition to second page
+  function breakSeal() {
+    if (isOpened) return;
+    isOpened = true;
 
-    function breakSealAndReveal() {
-      if (isOpened) return;
-      isOpened = true;
-
-      // Add crack animation
-      waxSealElement.classList.add('crack-effect');
-      waxSealElement.classList.add('crack-animate');
-      
-      // Fire confetti celebration
+    // Add crack animation to seal
+    sealCircle.classList.add('cracking');
+    
+    // Confetti burst
+    canvasConfetti({
+      particleCount: 200,
+      spread: 100,
+      origin: { y: 0.5, x: 0.5 },
+      startVelocity: 20,
+      colors: ['#ffd700', '#ffed4e', '#daa520', '#ffb347']
+    });
+    
+    setTimeout(() => {
       canvasConfetti({
-        particleCount: 180,
-        spread: 80,
-        origin: { y: 0.55, x: 0.5 },
-        startVelocity: 18,
-        colors: ['#e9c891', '#ffd966', '#b87c2e', '#f5e6b0']
+        particleCount: 150,
+        spread: 120,
+        origin: { y: 0.4, x: 0.3 },
       });
+      canvasConfetti({
+        particleCount: 150,
+        spread: 120,
+        origin: { y: 0.4, x: 0.7 },
+      });
+    }, 150);
+    
+    // Change seal text
+    const sealTextDiv = sealCircle.querySelector('.seal-text-main');
+    if (sealTextDiv) {
+      sealTextDiv.innerHTML = '✨ OPENED ✨<small>Welcome!</small>';
+    }
+    
+    // Fade out first page and show second page
+    setTimeout(() => {
+      firstPage.classList.add('fade-out');
       
       setTimeout(() => {
-        canvasConfetti({
-          particleCount: 100,
-          spread: 110,
-          origin: { y: 0.5, x: 0.3 },
-          startVelocity: 15,
-        });
-        canvasConfetti({
-          particleCount: 100,
-          spread: 110,
-          origin: { y: 0.5, x: 0.7 },
-          startVelocity: 15,
-        });
-      }, 150);
-
-      // Change seal text
-      const sealTextDiv = waxSealElement.querySelector('.seal-text');
-      if (sealTextDiv) {
-        sealTextDiv.innerHTML = `✦ WELCOME ✦<small>Invitation Revealed</small>`;
-      }
-      
-      // Fade out intro and show main content
-      setTimeout(() => {
-        introDiv.classList.add('fade-out');
+        firstPage.style.display = 'none';
+        secondPage.classList.add('visible');
         
-        // Wait for fade out to complete, then hide intro and show main content
-        setTimeout(() => {
-          introDiv.style.display = 'none';
-          mainContent.classList.add('visible');
-          
-          // Play background music
-          if (audio) {
-            audio.volume = 0.5;
-            audio.play().catch(e => console.log("Autoplay blocked - user can click music button"));
-          }
-          
-          // Final celebration confetti
-          canvasConfetti({ 
-            particleCount: 300, 
-            spread: 90, 
-            origin: { y: 0.7 }, 
-            startVelocity: 20,
-            colors: ['#ffd700', '#ffed4e', '#daa520']
-          });
-        }, 1000);
-      }, 500);
-    }
-
-    // Click handlers
-    if (sealContainer) {
-      sealContainer.addEventListener('click', (e) => {
-        e.stopPropagation();
-        breakSealAndReveal();
-      });
-    }
-    if (waxSealElement) {
-      waxSealElement.addEventListener('click', (e) => {
-        e.stopPropagation();
-        breakSealAndReveal();
-      });
-    }
-
-    // Countdown timer
-    const weddingDate = new Date("July 16, 2026 10:00:00").getTime();
-    const countdownElement = document.getElementById('countdownDisplay');
-    
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const distance = weddingDate - now;
-      
-      if (distance < 0) {
-        countdownElement.innerHTML = `<div class="time-block">🎉<span>Celebrating Today!</span></div>`;
-        return;
-      }
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      
-      countdownElement.innerHTML = `
-        <div class="time-block">${days}<span>DAYS</span></div>
-        <div class="time-block">${hours}<span>HOURS</span></div>
-        <div class="time-block">${minutes}<span>MINUTES</span></div>
-        <div class="time-block">${seconds}<span>SECONDS</span></div>
-      `;
-    }
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-    
-    // Personalized name via URL param
-    const urlParams = new URLSearchParams(window.location.search);
-    let guestName = urlParams.get('name');
-    const greetingSpan = document.getElementById('personalGreeting');
-    const rsvpBtn = document.getElementById('rsvpWhatsappLink');
-    const whatsappNumber = "94772636665";
-    
-    if (guestName && guestName.trim() !== "") {
-      guestName = guestName.trim();
-      if (greetingSpan) greetingSpan.innerHTML = `Dear ${guestName}, you are cordially invited 💌`;
-      const message = `Hi Praboda & Dewmi, I (${guestName}) am delighted to attend your royal wedding on 16th July 2026!`;
-      rsvpBtn.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-    } else {
-      if (greetingSpan) greetingSpan.innerHTML = `We are getting married — join us!`;
-      const defaultMsg = `Hi Praboda & Dewmi, I will attend your beautiful wedding ceremony! 🎉`;
-      rsvpBtn.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(defaultMsg)}`;
-    }
-    
-    // Music toggle
-    let musicPlaying = false;
-    if (musicBtn) {
-      musicBtn.addEventListener('click', () => {
-        if (!audio) return;
-        if (musicPlaying) {
-          audio.pause();
-          musicBtn.innerHTML = '🎵';
-          musicBtn.style.opacity = '0.7';
-        } else {
-          audio.play().catch(e => console.log("audio play error", e));
-          musicBtn.innerHTML = '🔊';
-          musicBtn.style.opacity = '1';
+        // Play music
+        if (audio) {
+          audio.volume = 0.5;
+          audio.play().catch(e => console.log('Autoplay blocked'));
         }
-        musicPlaying = !musicPlaying;
-      });
-    }
+        
+        // Final celebration
+        canvasConfetti({
+          particleCount: 300,
+          spread: 100,
+          origin: { y: 0.6 },
+          startVelocity: 25
+        });
+      }, 1000);
+    }, 400);
+  }
+
+  // Click event for break seal button
+  breakSealBtn.addEventListener('click', breakSeal);
+
+  // Countdown timer
+  const countDownDate = new Date("July 16, 2026 10:00:00").getTime();
+  
+  setInterval(function() {
+    const now = new Date().getTime();
+    const distance = countDownDate - now;
     
-    // Gallery drag scroll
-    const galleryDiv = document.querySelector('.gallery-strip');
-    if (galleryDiv) {
-      let isDown = false;
-      let startX, scrollLeft;
-      galleryDiv.addEventListener('mousedown', (e) => {
-        isDown = true;
-        startX = e.pageX - galleryDiv.offsetLeft;
-        scrollLeft = galleryDiv.scrollLeft;
-      });
-      galleryDiv.addEventListener('mouseleave', () => isDown = false);
-      galleryDiv.addEventListener('mouseup', () => isDown = false);
-      galleryDiv.addEventListener('mousemove', (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - galleryDiv.offsetLeft;
-        const walk = (x - startX) * 1.5;
-        galleryDiv.scrollLeft = scrollLeft - walk;
-      });
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    
+    document.getElementById("countdown").innerHTML = `
+      <div>${days}<span>Days</span></div>
+      <div>${hours}<span>Hours</span></div>
+      <div>${minutes}<span>Min</span></div>
+    `;
+  }, 1000);
+
+  // Personalized name from URL
+  const params = new URLSearchParams(window.location.search);
+  const guest = params.get("name");
+  const guestText = document.getElementById("guestText");
+  const rsvpBtn = document.getElementById("rsvpBtn");
+  
+  if (guest) {
+    guestText.innerHTML = "Dear " + guest + ", you are invited 💌";
+    rsvpBtn.href = "https://wa.me/94772636665?text=Hi Praboda & Dewmi, I (" + guest + ") will attend your wedding!";
+  } else {
+    rsvpBtn.href = "https://wa.me/94772636665?text=Hi Praboda & Dewmi, I will attend your wedding!";
+  }
+
+  // Gallery slider
+  let slideIndex = 0;
+  const slides = document.getElementById("slides");
+  const totalSlides = slides.children.length;
+  
+  setInterval(() => {
+    slideIndex = (slideIndex + 1) % totalSlides;
+    slides.style.transform = `translateX(-${slideIndex * 100}%)`;
+  }, 3000);
+  
+  // Touch swipe for mobile
+  let touchStart = 0;
+  slides.addEventListener("touchstart", e => {
+    touchStart = e.touches[0].clientX;
+  });
+  
+  slides.addEventListener("touchend", e => {
+    let touchEnd = e.changedTouches[0].clientX;
+    if (touchStart - touchEnd > 50) {
+      slideIndex = (slideIndex + 1) % totalSlides;
+    } else if (touchEnd - touchStart > 50) {
+      slideIndex = (slideIndex - 1 + totalSlides) % totalSlides;
     }
-  })();
+    slides.style.transform = `translateX(-${slideIndex * 100}%)`;
+  });
+
+  // Music toggle
+  let musicPlaying = false;
+  function toggleMusic() {
+    if (musicPlaying) {
+      audio.pause();
+      musicPlaying = false;
+      document.querySelector('.music-btn').innerHTML = '🎵';
+    } else {
+      audio.play().catch(e => console.log('error'));
+      musicPlaying = true;
+      document.querySelector('.music-btn').innerHTML = '🔊';
+    }
+  }
 </script>
+
 </body>
 </html>
