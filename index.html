@@ -9,7 +9,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
 
 <style>
-/* ===== GENERAL STYLES ===== */
 html { scroll-behavior: smooth; }
 
 body {
@@ -25,76 +24,56 @@ body {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at center, #8b0000, #2a0000);
+  background: radial-gradient(circle, #7a0f0f, #2b0000);
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  color: white;
   z-index: 9999;
+}
+
+.invite-container {
+  text-align: center;
+  animation: fadeIn 1.5s ease;
   cursor: pointer;
 }
 
-/* ENVELOPE */
+.invite-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  margin-bottom: 20px;
+  color: #ffd9d9;
+  letter-spacing: 2px;
+}
+
+/* ENVELOPE BODY */
 .envelope {
-  width: 320px;
-  height: 200px;
-  background: linear-gradient(135deg, #ff1a1a, #b30000);
-  border-radius: 12px;
+  width: 300px;
+  height: 190px;
+  background: #b22222;
   position: relative;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.4);
   overflow: hidden;
 }
 
-/* FLAP TRIANGLE */
+/* FLAP */
 .flap {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #ff3333, #990000);
+  background: #8b0000;
   clip-path: polygon(0 0, 100% 0, 50% 60%);
-  transition: 0.8s;
   transform-origin: top;
+  transition: 0.8s ease;
   z-index: 3;
 }
 
-/* GOLD BAND */
-.band {
-  position: absolute;
-  width: 100%;
-  height: 50px;
-  background: linear-gradient(to right, #c9a23f, #f5d76e, #c9a23f);
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 2;
-}
-
-/* SEAL */
-.seal {
-  position: absolute;
-  width: 70px;
-  height: 70px;
-  background: radial-gradient(circle, #ff4d4d, #800000);
-  border-radius: 50%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 4;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Playfair Display', serif;
-  font-size: 20px;
-  color: gold;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-}
-
-/* LETTER INSIDE */
+/* LETTER */
 .letter {
   position: absolute;
   width: 90%;
   height: 90%;
-  background: white;
+  background: #fff;
   top: 5%;
   left: 5%;
   border-radius: 10px;
@@ -103,23 +82,36 @@ body {
   justify-content: center;
   align-items: center;
   transform: translateY(110%);
-  transition: 0.8s;
+  transition: 0.8s ease;
   z-index: 1;
 }
 
-.letter h2 { font-family: 'Playfair Display', serif; margin: 0; }
-.letter p { margin: 10px 0 0; }
+/* WAX SEAL */
+.seal {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle, #ff4d4d, #8b0000);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-weight: bold;
+  font-family: 'Playfair Display', serif;
+}
 
-/* OPEN EFFECT */
+/* OPEN ANIMATION */
 .open .flap { transform: rotateX(180deg); }
 .open .letter { transform: translateY(0); }
 .open .seal { opacity: 0; transition: 0.4s; }
 
-/* TEXT BELOW ENVELOPE */
-.title { margin-top: 30px; font-family: 'Playfair Display', serif; font-size: 24px; }
-.subtitle { font-size: 12px; letter-spacing: 2px; color: gold; margin-top: 10px; }
-
-/* HERO SECTION */
+/* HERO */
 .hero {
   background: url('image3.jpg') center/cover no-repeat;
   height: 100vh;
@@ -131,9 +123,9 @@ body {
   background-color: rgba(0,0,0,0.5);
 }
 
-h1, h2 { font-family: 'Playfair Display', serif; margin: 10px 0; }
+h1, h2 { font-family: 'Playfair Display', serif; }
 
-/* SECTIONS */
+/* SECTION */
 .section { padding: 40px 20px; }
 .section:nth-child(even) { background: #fff; }
 .section:nth-child(odd) { background: #f8efe8; }
@@ -144,7 +136,6 @@ h1, h2 { font-family: 'Playfair Display', serif; margin: 10px 0; }
   justify-content: center;
   gap: 10px;
 }
-
 .count-box div {
   background: white;
   padding: 15px;
@@ -159,12 +150,10 @@ h1, h2 { font-family: 'Playfair Display', serif; margin: 10px 0; }
   overflow: hidden;
   border-radius: 15px;
 }
-
 .slides {
   display: flex;
   transition: transform 0.4s ease-in-out;
 }
-
 .slides img {
   width: 100%;
   flex-shrink: 0;
@@ -177,6 +166,8 @@ h1, h2 { font-family: 'Playfair Display', serif; margin: 10px 0; }
   color: white;
   text-decoration: none;
   border-radius: 30px;
+  display: inline-block;
+  margin-top: 10px;
 }
 
 /* MUSIC BUTTON */
@@ -191,28 +182,53 @@ h1, h2 { font-family: 'Playfair Display', serif; margin: 10px 0; }
   border: none;
 }
 
+/* MESSAGE SECTION */
+.message-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.message-box textarea {
+  width: 80%;
+  height: 100px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  resize: none;
+  margin-bottom: 10px;
+}
+.message-box button {
+  padding: 12px 20px;
+  border-radius: 30px;
+  background: #8b0000;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
 @keyframes fadeIn {
   from {opacity: 0; transform: translateY(20px);}
   to {opacity: 1; transform: translateY(0);}
 }
+
 </style>
 </head>
 
 <body>
 
 <!-- INTRO -->
-<div id="intro" onclick="openInvite()">
-  <div class="envelope">
-    <div class="flap"></div>
-    <div class="band"></div>
-    <div class="seal">P<br>&<br>D</div>
-    <div class="letter">
-      <h2>Praboda ❤️ Dewmi</h2>
-      <p>Tap to Open</p>
+<div id="intro">
+  <div class="invite-container" onclick="openInvite()">
+    <div class="invite-text">You’re Invited 💌</div>
+    <div class="envelope">
+      <div class="flap"></div>
+      <div class="seal">P&D</div>
+      <div class="letter">
+        <h2>Praboda ❤️ Dewmi</h2>
+        <p>Tap to Open</p>
+      </div>
     </div>
   </div>
-  <div class="title">Royal Sri Lankan Invitation</div>
-  <div class="subtitle">BREAK THE SEAL TO REVEAL</div>
 </div>
 
 <!-- MUSIC -->
@@ -226,15 +242,21 @@ h1, h2 { font-family: 'Playfair Display', serif; margin: 10px 0; }
   <h2 id="guestText">We are getting married</h2>
 </div>
 
-<!-- SAVE THE DATE -->
+<!-- SAVE DATE -->
 <div class="section" style="background:black;color:white;">
   <h2>Save The Date</h2>
   <h1>16 • 07 • 2026</h1>
 </div>
 
-<!-- DETAILS -->
+<!-- WEDDING DETAILS -->
 <div class="section">
   <h2>Wedding Details</h2>
+  <p><strong>Date:</strong> 16th July 2026</p>
+  <p><strong>Time:</strong> 10:00 AM</p>
+  <p><strong>Venue:</strong> The Grand Ballroom, Colombo</p>
+  <p><strong>Address:</strong> 123 Wedding Street, Colombo, Sri Lanka</p>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.9281!2d79.8610!3d6.9271!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae25a47c21ebf5f%3A0x12abcd3456!2sColombo%2C%20Sri%20Lanka!5e0!3m2!1sen!2sus!4v161234567890" width="80%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+  <h3>Countdown to Wedding</h3>
   <div id="countdown" class="count-box"></div>
 </div>
 
@@ -250,10 +272,25 @@ h1, h2 { font-family: 'Playfair Display', serif; margin: 10px 0; }
   </div>
 </div>
 
+<!-- DRESS CODE -->
+<div class="section">
+  <h2>Dress Code</h2>
+  <p>Formal Attire | Gentlemen: Suit & Tie | Ladies: Cocktail Dress</p>
+</div>
+
+<!-- MESSAGE -->
+<div class="section">
+  <h2>Send Your Wishes</h2>
+  <div class="message-box">
+    <textarea placeholder="Write your message here..."></textarea>
+    <button onclick="alert('Thank you for your message!')">Send</button>
+  </div>
+</div>
+
 <!-- RSVP -->
 <div class="section">
   <h2>RSVP</h2>
-  <a class="button" id="rsvpBtn" href="#">Confirm via WhatsApp</a>
+  <a class="button" id="rsvpBtn" href="https://wa.me/94712345678?text=Hello%20Praboda%20and%20Dewmi%2C%20I%20will%20attend%20the%20wedding">Confirm via WhatsApp</a>
 </div>
 
 <button class="music-btn" onclick="toggleMusic()">🎵</button>
@@ -261,10 +298,10 @@ h1, h2 { font-family: 'Playfair Display', serif; margin: 10px 0; }
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <script>
+
 /* OPEN INVITE */
 function openInvite() {
   document.querySelector('.envelope').classList.add('open');
-
   setTimeout(() => {
     document.getElementById("intro").style.display = "none";
     document.getElementById("music").play();
@@ -306,13 +343,16 @@ setInterval(() => {
 }, 3000);
 
 let startX = 0;
+
 slides.addEventListener("touchstart", e => { startX = e.touches[0].clientX; });
+
 slides.addEventListener("touchend", e => {
   let endX = e.changedTouches[0].clientX;
   if (startX - endX > 50) index = (index + 1) % totalSlides;
   else if (endX - startX > 50) index = (index - 1 + totalSlides) % totalSlides;
   slides.style.transform = `translateX(-${index * 100}%)`;
 });
+
 </script>
 
 </body>
