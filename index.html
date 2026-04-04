@@ -2,170 +2,243 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Royal Sri Lankan Invitation | Praboda & Dewmi</title>
+<title>Praboda & Dewmi Wedding</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Inter',sans-serif;overflow-x:hidden;}
 
-/* FIRST PAGE */
-.invitation-first-page{
-position:fixed;width:100%;height:100%;
-background:linear-gradient(135deg,#8b1a1a,#5e0e0e);
-display:flex;justify-content:center;align-items:center;
-z-index:10000;transition:.8s;
+/* ===== GENERAL ===== */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
 }
 
-.invitation-first-page.hide{
-opacity:0;visibility:hidden;
+/* ===== FIRST PAGE (ROYAL SEAL) ===== */
+#firstPage {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg,#8b1a1a,#5e0e0e);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
 }
 
-.invitation-card{
-background:rgba(255,245,235,0.95);
-padding:3rem 2rem;
-border-radius:60px;
-text-align:center;
-box-shadow:0 40px 60px rgba(0,0,0,0.4);
-max-width:550px;width:90%;
+.invitation-card {
+  background: #fff5eb;
+  padding: 40px;
+  border-radius: 40px;
+  text-align: center;
 }
 
-.couple-name-large{
-font-family:'Cormorant Garamond',serif;
-font-size:3.5rem;color:#5e1a0f;
+.seal-circle {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: radial-gradient(circle,#ffd700,#c1851e);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto;
+  cursor: pointer;
 }
 
-.invitation-text{
-margin:15px 0;font-style:italic;
+/* ===== SECOND PAGE ===== */
+#mainPage {
+  display: none;
 }
 
-.seal-circle{
-width:130px;height:130px;
-margin:30px auto;
-border-radius:50%;
-background:radial-gradient(circle,#ffd700,#c1851e);
-display:flex;align-items:center;justify-content:center;
-cursor:pointer;
-box-shadow:0 10px 25px rgba(0,0,0,0.4);
-transition:.2s;
+/* ===== INTRO (ENVELOPE PAGE) ===== */
+#intro {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: #f28b8b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5000;
 }
 
-.seal-circle:active{transform:scale(.95);}
-
-/* SECOND PAGE */
-.main-wedding-page{display:none;background:#fef7ef;}
-.main-wedding-page.show{display:block;}
-
-.hero{
-height:100vh;
-display:flex;flex-direction:column;justify-content:center;align-items:center;
-background:url('https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg') center/cover;
-color:white;text-align:center;
+.envelope {
+  width: 280px;
+  height: 180px;
+  background: #8B0000;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
-.section{padding:60px 20px;}
-.button{background:#b8860b;color:white;padding:14px 30px;border-radius:50px;text-decoration:none;}
+.envelope::before {
+  content:'';
+  position:absolute;
+  top:40%;
+  width:100%;
+  height:20px;
+  background:linear-gradient(45deg,#FFD700,#FFC107);
+  z-index:3;
+}
+
+.seal {
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:70px;height:70px;
+  background:radial-gradient(circle,#FFD700,#FFA500);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:12px;
+}
+
+.flap {
+  position:absolute;
+  width:100%;height:100%;
+  background:#700000;
+  clip-path:polygon(0 0,100% 0,50% 55%);
+  transition:.8s;
+}
+
+.letter {
+  position:absolute;
+  width:90%;
+  height:90%;
+  background:white;
+  top:5%;left:5%;
+  transform:translateY(100%);
+  transition:.8s;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.open .flap { transform:rotateX(180deg); }
+.open .letter { transform:translateY(0); }
+
+/* HERO */
+.hero {
+  background: url('image3.jpg') center/cover no-repeat;
+  height: 100vh;
+  color: white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  background-color: rgba(0,0,0,0.5);
+  background-blend-mode: darken;
+}
+
+/* SECTION */
+.section { padding:40px; text-align:center; }
+
+/* BUTTON */
+.button {
+  padding:12px 20px;
+  background:black;
+  color:white;
+  text-decoration:none;
+  border-radius:30px;
+}
+
+/* MUSIC */
+.music-btn {
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  padding:10px;
+}
+
 </style>
 </head>
 
 <body>
 
 <!-- FIRST PAGE -->
-<div id="firstPage" class="invitation-first-page">
-<div class="invitation-card">
-<div class="couple-name-large">Praboda & Dewmi</div>
-
-<div class="invitation-text">
-Request the honour of your presence
-</div>
-
-<div id="sealCircle" class="seal-circle">
-BREAK
-</div>
-</div>
+<div id="firstPage">
+  <div class="invitation-card">
+    <h2>Praboda & Dewmi</h2>
+    <p>Royal Invitation</p>
+    <div class="seal-circle" onclick="openMain()">OPEN</div>
+  </div>
 </div>
 
 <!-- SECOND PAGE -->
-<div id="secondPage" class="main-wedding-page">
+<div id="mainPage">
+
+<!-- ENVELOPE INTRO -->
+<div id="intro" onclick="openInvite()">
+  <div class="envelope">
+    <div class="flap"></div>
+    <div class="seal">P&D</div>
+    <div class="letter">Tap to Open</div>
+  </div>
+</div>
+
+<audio id="music" loop>
+  <source src="music.mp3">
+</audio>
 
 <div class="hero">
-<h1>Praboda ❤️ Dewmi</h1>
-<p id="guestText">We are getting married</p>
+  <h1>Praboda ❤️ Dewmi</h1>
+  <h2 id="guestText">We are getting married</h2>
 </div>
 
 <div class="section">
-<h2>Wedding Details</h2>
-<p>📅 16 July 2026</p>
-<p>⏰ 10:00 AM</p>
-<p>📍 Hotel Nildiya</p>
+  <h2>Wedding Details</h2>
+  <p>📅 16 July 2026</p>
+  <p>⏰ 10 AM</p>
+  <p>📍 Hotel Nildiya</p>
 </div>
 
 <div class="section">
-<a id="rsvpBtn" class="button">Confirm via WhatsApp</a>
+  <a id="rsvpBtn" class="button">RSVP</a>
 </div>
 
-</div>
+<button class="music-btn" onclick="toggleMusic()">🎵</button>
 
-<audio id="bgMusic" loop>
-<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
-</audio>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <script>
 
-const firstPage = document.getElementById('firstPage');
-const secondPage = document.getElementById('secondPage');
-const seal = document.getElementById('sealCircle');
-const audio = document.getElementById('bgMusic');
+/* OPEN FIRST PAGE */
+function openMain(){
+  document.getElementById("firstPage").style.display="none";
+  document.getElementById("mainPage").style.display="block";
 
-let opened = false;
+  confetti({particleCount:150,spread:80});
+}
 
-seal.addEventListener('click', function(){
+/* OPEN ENVELOPE */
+function openInvite(){
+  document.querySelector('.envelope').classList.add('open');
 
-if(opened) return;
-opened = true;
+  setTimeout(()=>{
+    document.getElementById("intro").style.display="none";
+    document.getElementById("music").play();
+  },1000);
+}
 
-/* CONFETTI */
-confetti({
-particleCount:200,
-spread:100,
-origin:{y:0.5}
-});
+/* MUSIC */
+function toggleMusic(){
+  let m=document.getElementById("music");
+  m.paused?m.play():m.pause();
+}
 
-/* TRANSITION */
-setTimeout(()=>{
-firstPage.classList.add('hide');
-
-setTimeout(()=>{
-firstPage.style.display='none';
-secondPage.classList.add('show');
-
-/* PLAY MUSIC */
-audio.muted = false;
-audio.play().catch(()=>{});
-
-},800);
-
-},400);
-
-});
-
-/* PERSONALIZED NAME */
-const params = new URLSearchParams(window.location.search);
-const guest = params.get("name");
-
-const guestText = document.getElementById("guestText");
-const rsvpBtn = document.getElementById("rsvpBtn");
+/* PERSONAL NAME */
+const guest=new URLSearchParams(window.location.search).get("name");
 
 if(guest){
-guestText.innerHTML = "Dear "+guest+", you are invited 💌";
-rsvpBtn.href = "https://wa.me/94772636665?text=Hi I ("+guest+") will attend";
+  document.getElementById("guestText").innerHTML="Dear "+guest+", you are invited 💌";
+  document.getElementById("rsvpBtn").href="https://wa.me/94772636665?text=Hi I ("+guest+") will attend";
 }else{
-rsvpBtn.href = "https://wa.me/94772636665?text=I will attend";
+  document.getElementById("rsvpBtn").href="https://wa.me/94772636665?text=I will attend";
 }
 
 </script>
