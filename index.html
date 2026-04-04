@@ -2,368 +2,704 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Praboda & Dewmi Wedding</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Praboda & Dewmi | Wedding Invitation</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #fdf8f4;
+    color: #3e2c27;
+    overflow-x: hidden;
+  }
 
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: #fdf6f0;
-  color: #5a4a42;
-  text-align: center;
-}
+  /* PREMIUM INTRO OVERLAY */
+  #intro {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #8B2A2A 0%, #5E1A1A 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    backdrop-filter: blur(0px);
+    transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    opacity: 1;
+  }
 
-/* ===== PREMIUM INTRO ===== */
-#intro {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: #f28b8b; /* Light red background */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
+  /* Main invite card container */
+  .invite-card {
+    perspective: 1200px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
 
-.invite-container {
-  text-align: center;
-  animation: fadeIn 1.5s ease;
-}
+  .invite-card:hover {
+    transform: scale(1.02);
+  }
 
-.invite-text {
-  font-family: 'Playfair Display', serif;
-  font-size: 26px;
-  margin-bottom: 20px;
-  color: #FFD700; /* Gold text */
-  letter-spacing: 2px;
-}
+  /* 3D envelope container */
+  .envelope-3d {
+    width: 320px;
+    height: 210px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 30px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(212, 175, 55, 0.3);
+    border-radius: 16px;
+  }
 
-/* ENVELOPE */
-.envelope {
-  width: 280px;
-  height: 180px;
-  background: #8B0000; /* Dark red envelope */
-  position: relative;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-  overflow: hidden;
-}
+  /* Envelope body */
+  .env-body {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #9E2A2A;
+    background-image: radial-gradient(circle at 25% 40%, rgba(255,215,0,0.08) 2%, transparent 2.5%);
+    background-size: 28px 28px;
+    border-radius: 16px;
+    box-shadow: inset 0 2px 8px rgba(0,0,0,0.1), 0 8px 20px rgba(0,0,0,0.2);
+    border: 1px solid rgba(212, 175, 55, 0.5);
+  }
 
-/* GOLD BAND */
-.envelope::before {
-  content: '';
-  position: absolute;
-  top: 40%;
-  left: 0;
-  width: 100%;
-  height: 20px;
-  background: linear-gradient(45deg, #FFD700, #FFC107); /* Gold gradient */
-  z-index: 3;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-}
+  /* Gold decorative border */
+  .env-body::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    border: 1px solid rgba(212, 175, 55, 0.6);
+    border-radius: 12px;
+    pointer-events: none;
+  }
 
-/* GOLD SEAL */
-.seal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 70px;
-  height: 70px;
-  background: radial-gradient(circle at 30% 30%, #FFD700, #FFA500); /* Realistic gold */
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Playfair Display', serif;
-  color: #8B0000; /* Dark red letters on gold */
-  font-size: 12px;
-  font-weight: bold;
-  z-index: 4;
-  text-align: center;
-  line-height: 1.1;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
-}
+  /* Elegant gold band (center ribbon) */
+  .gold-band {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 24px;
+    background: linear-gradient(110deg, #D4AF37 0%, #FFDF73 30%, #D4AF37 50%, #FFDF73 70%, #B8860B 100%);
+    transform: translateY(-50%);
+    z-index: 5;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+    border-top: 1px solid rgba(255,235,140,0.8);
+    border-bottom: 1px solid rgba(139,69,19,0.6);
+  }
 
-.flap {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: #700000; /* Slightly darker red flap */
-  clip-path: polygon(0 0, 100% 0, 50% 55%);
-  transform-origin: top;
-  transition: 0.8s ease;
-  z-index: 2;
-}
+  /* Gold band pattern */
+  .gold-band::before {
+    content: "✦ ✦ ✦";
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    letter-spacing: 12px;
+    color: #5a3a1a;
+    font-size: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: 400;
+    opacity: 0.4;
+  }
 
-.letter {
-  position: absolute;
-  width: 90%;
-  height: 90%;
-  background: white;
-  top: 5%;
-  left: 5%;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  transform: translateY(100%);
-  transition: 0.8s ease;
-  z-index: 1;
-}
+  /* Wax seal premium */
+  .wax-seal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 78px;
+    height: 78px;
+    background: radial-gradient(circle at 35% 30%, #FFE28A, #C9992E);
+    border-radius: 50%;
+    z-index: 10;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.3), inset 0 1px 3px rgba(255,245,180,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: #561C1C;
+    text-align: center;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    backdrop-filter: blur(1px);
+    border: 1px solid #FFE18A;
+  }
 
-.letter h2 { margin: 0; font-size: 20px; }
-.letter p { margin-top: 8px; font-size: 14px; color: gray; }
+  .wax-seal span {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    text-shadow: 0 1px 0 rgba(255,245,180,0.5);
+  }
 
-.open .flap { transform: rotateX(180deg); }
-.open .letter { transform: translateY(0); }
+  /* Envelope flap (triangle on top) */
+  .env-flap {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #7A2323;
+    background: linear-gradient(145deg, #8E2A2A, #691C1C);
+    clip-path: polygon(0 0, 100% 0, 50% 58%);
+    transform-origin: top;
+    transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: 20;
+    border-radius: 16px 16px 0 0;
+    cursor: pointer;
+  }
 
-@keyframes fadeIn {
-  from {opacity: 0; transform: translateY(20px);}
-  to {opacity: 1; transform: translateY(0);}
-}
+  /* Inner letter */
+  .inner-letter {
+    position: absolute;
+    width: 88%;
+    height: 84%;
+    background: #FFFDF7;
+    top: 8%;
+    left: 6%;
+    border-radius: 12px;
+    z-index: 3;
+    transform: translateY(100%);
+    transition: transform 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    padding: 18px 12px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #EAD8B0;
+  }
 
-/* HERO */
-.hero {
-  background: url('image3.jpg') center/cover no-repeat;
-  height: 100vh;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-blend-mode: darken;
-  background-color: rgba(0,0,0,0.5);
-  background-position: center top;
-}
+  .inner-letter h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: #8B2A2A;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
 
-h1, h2 { font-family: 'Playfair Display', serif; }
+  .inner-letter .monogram {
+    font-size: 28px;
+    font-weight: 700;
+    color: #B8860B;
+    font-family: 'Cormorant Garamond', serif;
+  }
 
-/* SECTION */
-.section { padding: 40px 20px; }
-.section:nth-child(even) { background: #fff; }
-.section:nth-child(odd) { background: #f8efe8; }
+  .inner-letter p {
+    font-size: 13px;
+    color: #5a4a42;
+    font-weight: 400;
+  }
 
-/* COUNTDOWN */
-.count-box {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
+  .inner-letter .open-hint {
+    background: #f0e4d0;
+    padding: 6px 14px;
+    border-radius: 40px;
+    font-size: 11px;
+    font-weight: 500;
+    color: #7a3e2a;
+    margin-top: 6px;
+  }
 
-.count-box div {
-  background: white;
-  padding: 15px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  min-width: 70px;
-}
+  /* open state */
+  .envelope-3d.open .env-flap {
+    transform: rotateX(180deg);
+  }
 
-/* GALLERY */
-.slider {
-  width: 90%;
-  margin: auto;
-  overflow: hidden;
-  border-radius: 15px;
-}
+  .envelope-3d.open .inner-letter {
+    transform: translateY(0);
+  }
 
-.slides {
-  display: flex;
-  transition: transform 0.4s ease-in-out;
-}
+  /* instruction text */
+  .invite-instruction {
+    margin-top: 32px;
+    font-family: 'Inter', sans-serif;
+    color: #FFE1B3;
+    letter-spacing: 2px;
+    font-size: 14px;
+    font-weight: 300;
+    text-transform: uppercase;
+    background: rgba(0,0,0,0.2);
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 40px;
+    backdrop-filter: blur(4px);
+    animation: softPulse 1.8s infinite;
+  }
 
-.slides img {
-  width: 100%;
-  flex-shrink: 0;
-  border-radius: 15px;
-}
+  @keyframes softPulse {
+    0% { opacity: 0.6; transform: scale(0.98);}
+    100% { opacity: 1; transform: scale(1);}
+    50% { opacity: 0.9; transform: scale(1.02);}
+  }
 
-/* BUTTON */
-.button {
-  padding: 14px 22px;
-  background: black;
-  color: white;
-  text-decoration: none;
-  border-radius: 30px;
-}
+  /* decorative line */
+  .ornament {
+    font-size: 22px;
+    letter-spacing: 8px;
+    color: #D4AF37;
+    margin: 12px 0;
+  }
 
-/* MUSIC BUTTON */
-.music-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  padding: 12px;
-  border-radius: 50%;
-  background: black;
-  color: white;
-  border: none;
-}
+  /* fade out intro animation */
+  .intro-fadeout {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.9s ease, visibility 0s 0.9s;
+  }
 
+  /* REST OF SITE STYLES (polished) */
+  .hero {
+    background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.55)), url('image3.jpg') center/cover no-repeat;
+    height: 100vh;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-attachment: fixed;
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  }
+
+  .hero h2 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    background: rgba(0,0,0,0.4);
+    padding: 0.5rem 1.5rem;
+    border-radius: 60px;
+    backdrop-filter: blur(6px);
+  }
+
+  .section {
+    padding: 70px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section:nth-child(even) {
+    background: #fffaf5;
+  }
+
+  .section:nth-child(odd) {
+    background: #ffffff;
+  }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem;
+    color: #8B2A2A;
+    margin-bottom: 24px;
+    letter-spacing: 1px;
+  }
+
+  .count-box {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+  }
+
+  .count-box div {
+    background: white;
+    padding: 20px 24px;
+    border-radius: 28px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+    font-weight: 700;
+    font-size: 2rem;
+    min-width: 100px;
+    font-family: 'Cormorant Garamond', serif;
+    color: #5e2a1c;
+    border: 1px solid #ecd9c2;
+  }
+
+  .count-box div span {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 400;
+    font-family: 'Inter', sans-serif;
+    color: #b97f5a;
+    margin-top: 8px;
+  }
+
+  .slider {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 28px;
+    box-shadow: 0 20px 35px -12px rgba(0,0,0,0.2);
+  }
+
+  .slides {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.4, 1);
+  }
+
+  .slides img {
+    width: 100%;
+    flex-shrink: 0;
+    object-fit: cover;
+    height: 480px;
+    display: block;
+  }
+
+  .button {
+    display: inline-block;
+    padding: 14px 38px;
+    background: #8B2A2A;
+    color: white;
+    text-decoration: none;
+    border-radius: 60px;
+    font-weight: 500;
+    transition: all 0.2s;
+    box-shadow: 0 6px 14px rgba(139,42,42,0.3);
+    border: none;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.5px;
+  }
+
+  .button:hover {
+    background: #6b1f1f;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+  }
+
+  iframe {
+    border-radius: 24px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border: none;
+  }
+
+  .music-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: #2c1a14;
+    backdrop-filter: blur(8px);
+    border: 1px solid #d4af37;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    color: #ffdf8c;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 99;
+    transition: all 0.2s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .music-btn:hover {
+    transform: scale(1.05);
+    background: #4f2a20;
+  }
+
+  footer {
+    background: #2c1a14;
+    color: #e9cfb0;
+    padding: 40px 20px;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 2.5rem; }
+    .hero h2 { font-size: 1rem; }
+    .count-box div { padding: 12px 16px; min-width: 70px; font-size: 1.5rem; }
+    .slides img { height: 320px; }
+    .invite-card { transform: scale(0.95); }
+  }
 </style>
 </head>
-
 <body>
 
-<!-- INTRO -->
+<!-- PROFESSIONAL INTRO PAGE (fixed overlay) -->
 <div id="intro">
-  <div class="invite-container" onclick="openInvite()">
-    <div class="invite-text">You’re Invited 💌</div>
-    <div class="envelope">
-      <div class="flap"></div>
-      <div class="seal">Praboda &<br>Dewmi</div>
-      <div class="letter">
-        <h2>Praboda ❤️ Dewmi</h2>
-        <p>Tap to Open</p>
+  <div style="text-align: center;">
+    <div class="invite-card" onclick="openInvitation()">
+      <div class="envelope-3d" id="envelope3d">
+        <div class="env-body"></div>
+        <div class="gold-band"></div>
+        <div class="wax-seal"><span>P & D<br>✦ 2026 ✦</span></div>
+        <div class="env-flap"></div>
+        <div class="inner-letter">
+          <div class="ornament">❦ ❦ ❦</div>
+          <h3>You are cordially invited</h3>
+          <div class="monogram">Praboda ✧ Dewmi</div>
+          <p>to celebrate their union<br>in holy matrimony</p>
+          <div class="open-hint">✨ tap to open ✨</div>
+        </div>
       </div>
     </div>
+    <div class="invite-instruction">⌇ open the seal ⌇</div>
   </div>
 </div>
 
-<!-- MUSIC -->
-<audio id="music" loop>
+<!-- BACKGROUND MUSIC -->
+<audio id="bgMusic" loop preload="auto">
   <source src="music.mp3" type="audio/mpeg">
+  <!-- fallback if no music, silent -->
 </audio>
 
-<!-- HERO -->
+<!-- MAIN WEBSITE CONTENT -->
 <div class="hero">
   <h1>Praboda ❤️ Dewmi</h1>
   <h2 id="guestText">We are getting married</h2>
 </div>
 
-<!-- SAVE DATE -->
-<div class="section" style="background:black;color:white;">
-  <h2>Save The Date</h2>
-  <h1>16 • 07 • 2026</h1>
+<div class="section" style="background: #1f110c; color: #fae6cf;">
+  <h2 style="color: #FFD97C;">Save The Date</h2>
+  <h1 style="font-family: 'Cormorant Garamond', serif; font-size: 3rem;">16 • 07 • 2026</h1>
 </div>
 
-<!-- DETAILS -->
 <div class="section">
   <h2>Wedding Details</h2>
-  <p>📅 16th July 2026</p>
-  <p>⏰ 10:00 AM – 4:00 PM</p>
-  <p>📍 Hotel Nildiya, Matara</p>
+  <p style="font-size: 1.2rem; margin: 12px 0;">📅 16th July 2026 (Thursday)</p>
+  <p style="font-size: 1.2rem; margin: 8px 0;">⏰ 10:00 AM – 4:00 PM</p>
+  <p style="font-size: 1.2rem; margin: 8px 0;">📍 Hotel Nildiya, Matara, Sri Lanka</p>
   <div id="countdown" class="count-box"></div>
 </div>
 
-<!-- GALLERY -->
 <div class="section">
-  <h2>Gallery</h2>
+  <h2>Moments to Cherish</h2>
   <div class="slider">
     <div class="slides" id="slides">
-      <img src="image1.jpg">
-      <img src="image2.jpg">
-      <img src="image3.jpg">
+      <img src="image1.jpg" alt="Wedding couple 1">
+      <img src="image2.jpg" alt="Wedding couple 2">
+      <img src="image3.jpg" alt="Wedding couple 3">
     </div>
   </div>
+  <p style="margin-top: 20px; font-size: 14px; opacity: 0.7;">Swipe photos →</p>
 </div>
 
-<!-- LOCATION -->
 <div class="section">
-  <h2>Location</h2>
-  <iframe src="https://maps.google.com/maps?q=Hotel%20Nildiya%20Matara&output=embed"
-  width="90%" height="250" style="border-radius:10px;"></iframe>
+  <h2>Venue Location</h2>
+  <iframe src="https://maps.google.com/maps?q=Hotel%20Nildiya%20Matara&output=embed" width="100%" height="280" style="border-radius:24px; max-width:800px; display:block; margin:0 auto;"></iframe>
+  <p style="margin-top: 18px;"><a href="https://maps.google.com/?q=Hotel+Nildiya+Matara" target="_blank" style="color:#8B2A2A;">Open in Google Maps ↗</a></p>
 </div>
 
-<!-- RSVP -->
 <div class="section">
-  <h2>RSVP</h2>
-  <a class="button" id="rsvpBtn" href="#">Confirm via WhatsApp</a>
+  <h2>Kindly Respond</h2>
+  <p style="margin-bottom: 24px;">Please confirm your presence with a personal message</p>
+  <a class="button" id="rsvpBtn" href="#">✧ RSVP via WhatsApp ✧</a>
 </div>
 
-<!-- FOOTER -->
-<div class="section">
-  <p>With Love ❤️<br>Praboda & Dewmi</p>
-</div>
+<footer>
+  <p>With Love & Endless Joy ❤️</p>
+  <p style="margin-top: 10px; font-size: 0.85rem;">Praboda & Dewmi | 16.07.2026</p>
+</footer>
 
 <button class="music-btn" onclick="toggleMusic()">🎵</button>
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <script>
+  // ---------- PROFESSIONAL OPENING ----------
+  const introDiv = document.getElementById('intro');
+  const envelope = document.getElementById('envelope3d');
+  let opened = false;
 
-/* OPEN INVITE */
-function openInvite() {
-  document.querySelector('.envelope').classList.add('open');
+  function openInvitation() {
+    if (opened) return;
+    opened = true;
+    // Add open class to envelope to animate flap and letter
+    envelope.classList.add('open');
 
-  setTimeout(() => {
-    document.getElementById("intro").style.display = "none";
-    document.getElementById("music").play();
-    confetti({ particleCount: 120, spread: 80 });
-  }, 1200);
-}
+    // After the letter animation finishes, fade out intro and play music & confetti
+    setTimeout(() => {
+      introDiv.classList.add('intro-fadeout');
+      // Play music
+      const music = document.getElementById('bgMusic');
+      music.play().catch(e => console.log("Audio play blocked, user interaction later"));
+      // Confetti blast
+      canvasConfetti({
+        particleCount: 180,
+        spread: 85,
+        origin: { y: 0.6 },
+        startVelocity: 18,
+        colors: ['#D4AF37', '#FFDF73', '#B8860B', '#ffffff']
+      });
+      // Additional burst after 0.2s
+      setTimeout(() => {
+        canvasConfetti({
+          particleCount: 90,
+          spread: 55,
+          origin: { y: 0.5, x: 0.3 },
+          startVelocity: 12,
+        });
+        canvasConfetti({
+          particleCount: 90,
+          spread: 55,
+          origin: { y: 0.5, x: 0.7 },
+          startVelocity: 12,
+        });
+      }, 150);
+      // Remove intro after transition
+      setTimeout(() => {
+        introDiv.style.display = 'none';
+      }, 900);
+    }, 700); // wait for flap animation to feel satisfying
+  }
 
-/* MUSIC */
-function toggleMusic() {
-  var m = document.getElementById("music");
-  m.paused ? m.play() : m.pause();
-}
+  // Enable manual toggle music (also handles playing if intro hidden but music not started)
+  function toggleMusic() {
+    const music = document.getElementById('bgMusic');
+    if (music.paused) {
+      music.play().catch(e => console.log("playback failed"));
+    } else {
+      music.pause();
+    }
+  }
 
-/* COUNTDOWN */
-var countDownDate = new Date("July 16, 2026 10:00:00").getTime();
+  // COUNTDOWN TIMER
+  const weddingDate = new Date("July 16, 2026 10:00:00").getTime();
+  const countdownEl = document.getElementById("countdown");
 
-setInterval(function() {
-  var now = new Date().getTime();
-  var d = countDownDate - now;
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = weddingDate - now;
+    if (distance < 0) {
+      countdownEl.innerHTML = `<div>0<span>Days</span></div><div>0<span>Hours</span></div><div>0<span>Min</span></div>`;
+      return;
+    }
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (86400000)) / (3600000));
+    const minutes = Math.floor((distance % (3600000)) / (60000));
+    countdownEl.innerHTML = `
+      <div>${days}<span>Days</span></div>
+      <div>${hours}<span>Hours</span></div>
+      <div>${minutes}<span>Minutes</span></div>
+    `;
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 60000);
 
-  var days = Math.floor(d / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((d % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((d % (1000 * 60 * 60)) / (1000 * 60));
+  // GET NAME FROM URL for personalized invitation
+  const urlParams = new URLSearchParams(window.location.search);
+  const guestName = urlParams.get("name");
+  const guestTextSpan = document.getElementById("guestText");
+  const rsvpBtn = document.getElementById("rsvpBtn");
 
-  document.getElementById("countdown").innerHTML =
-    `<div>${days}<br>Days</div>
-     <div>${hours}<br>Hours</div>
-     <div>${minutes}<br>Min</div>`;
-}, 1000);
+  if (guestName && guestName.trim() !== "") {
+    const decodedName = decodeURIComponent(guestName);
+    guestTextSpan.innerHTML = `Dear ${decodedName}, you are invited 💌`;
+    rsvpBtn.href = `https://wa.me/94772636665?text=Hi Praboda & Dewmi, I (${decodedName}) will attend your wedding with joy! 🎉`;
+  } else {
+    guestTextSpan.innerHTML = "We are getting married";
+    rsvpBtn.href = "https://wa.me/94772636665?text=Hi Praboda & Dewmi, I will attend your wedding! ✨";
+  }
 
-/* PERSONALIZED NAME */
-const params = new URLSearchParams(window.location.search);
-const guest = params.get("name");
+  // SLIDER with touch and auto-slide
+  const slidesContainer = document.getElementById("slides");
+  const slideImages = slidesContainer.children;
+  const total = slideImages.length;
+  let currentIndex = 0;
+  let autoInterval;
 
-if (guest) {
-  document.getElementById("guestText").innerHTML =
-    "Dear " + guest + ", you are invited 💌";
+  function updateSlide(index) {
+    if (index >= total) currentIndex = 0;
+    if (index < 0) currentIndex = total - 1;
+    slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+  }
 
-  document.getElementById("rsvpBtn").href =
-    "https://wa.me/94772636665?text=Hi Praboda & Dewmi, I (" + guest + ") will attend your wedding!";
-} else {
-  document.getElementById("rsvpBtn").href =
-    "https://wa.me/94772636665?text=Hi Praboda & Dewmi, I will attend your wedding!";
-}
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % total;
+    updateSlide(currentIndex);
+  }
 
-/* SLIDER */
-let index = 0;
-const slides = document.getElementById("slides");
-const totalSlides = slides.children.length;
+  function startAutoSlide() {
+    autoInterval = setInterval(nextSlide, 3500);
+  }
+  startAutoSlide();
 
-setInterval(() => {
-  index = (index + 1) % totalSlides;
-  slides.style.transform = `translateX(-${index * 100}%)`;
-}, 3000);
+  // Touch swipe for mobile
+  let touchStart = 0;
+  slidesContainer.addEventListener("touchstart", (e) => {
+    touchStart = e.touches[0].clientX;
+    clearInterval(autoInterval);
+  });
 
-let startX = 0;
+  slidesContainer.addEventListener("touchend", (e) => {
+    if (!touchStart) return;
+    let touchEnd = e.changedTouches[0].clientX;
+    let diff = touchStart - touchEnd;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) {
+        currentIndex = (currentIndex + 1) % total;
+      } else {
+        currentIndex = (currentIndex - 1 + total) % total;
+      }
+      updateSlide(currentIndex);
+    }
+    startAutoSlide();
+    touchStart = 0;
+  });
 
-slides.addEventListener("touchstart", e => {
-  startX = e.touches[0].clientX;
-});
+  // also for mouse drag (optional)
+  let mouseDownX = false;
+  slidesContainer.addEventListener("mousedown", (e) => {
+    mouseDownX = e.clientX;
+    clearInterval(autoInterval);
+    e.preventDefault();
+  });
+  slidesContainer.addEventListener("mouseup", (e) => {
+    if (mouseDownX !== false) {
+      let diff = mouseDownX - e.clientX;
+      if (Math.abs(diff) > 40) {
+        if (diff > 0) currentIndex = (currentIndex + 1) % total;
+        else currentIndex = (currentIndex - 1 + total) % total;
+        updateSlide(currentIndex);
+      }
+      startAutoSlide();
+      mouseDownX = false;
+    }
+  });
 
-slides.addEventListener("touchend", e => {
-  let endX = e.changedTouches[0].clientX;
+  // Ensure all images load gracefully
+  window.addEventListener("load", () => {
+    // If intro never opened? but envelope click works, also background check
+    // Preload any missing images?
+    console.log("Wedding site loaded");
+  });
 
-  if (startX - endX > 50) index = (index + 1) % totalSlides;
-  else if (endX - startX > 50) index = (index - 1 + totalSlides) % totalSlides;
-
-  slides.style.transform = `translateX(-${index * 100}%)`;
-});
-
+  // AUTO-PLAY music attempt only after user explicitly opens invite (already in openInvitation)
+  // But if user clicks music button before opening, we allow music but intro is still open -> style still fine
+  // Enhance: prevent body scroll while intro visible
+  document.body.style.overflow = 'hidden';
+  const observer = new MutationObserver(() => {
+    if (introDiv.style.display === 'none') {
+      document.body.style.overflow = 'auto';
+      observer.disconnect();
+    }
+  });
+  observer.observe(introDiv, { attributes: true, attributeFilter: ['style'] });
 </script>
-
 </body>
 </html>
