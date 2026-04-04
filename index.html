@@ -10,147 +10,201 @@
 
 <style>
 
-/* ===== GENERAL ===== */
+html { scroll-behavior: smooth; }
+
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
+  background: #fdf6f0;
+  color: #5a4a42;
+  text-align: center;
 }
 
-/* ===== FIRST PAGE (ROYAL SEAL) ===== */
-#firstPage {
+/* ===== PREMIUM INTRO ===== */
+#intro {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg,#8b1a1a,#5e0e0e);
+  background: #f28b8b; /* Light red background */
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
 }
 
-.invitation-card {
-  background: #fff5eb;
-  padding: 40px;
-  border-radius: 40px;
+.invite-container {
   text-align: center;
+  animation: fadeIn 1.5s ease;
 }
 
-.seal-circle {
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-  background: radial-gradient(circle,#ffd700,#c1851e);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 20px auto;
-  cursor: pointer;
+.invite-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  margin-bottom: 20px;
+  color: #FFD700; /* Gold text */
+  letter-spacing: 2px;
 }
 
-/* ===== SECOND PAGE ===== */
-#mainPage {
-  display: none;
-}
-
-/* ===== INTRO (ENVELOPE PAGE) ===== */
-#intro {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: #f28b8b;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 5000;
-}
-
+/* ENVELOPE */
 .envelope {
   width: 280px;
   height: 180px;
-  background: #8B0000;
+  background: #8B0000; /* Dark red envelope */
   position: relative;
   border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
   overflow: hidden;
 }
 
+/* GOLD BAND */
 .envelope::before {
-  content:'';
-  position:absolute;
-  top:40%;
-  width:100%;
-  height:20px;
-  background:linear-gradient(45deg,#FFD700,#FFC107);
-  z-index:3;
+  content: '';
+  position: absolute;
+  top: 40%;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: linear-gradient(45deg, #FFD700, #FFC107); /* Gold gradient */
+  z-index: 3;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
+/* GOLD SEAL */
 .seal {
-  position:absolute;
-  top:50%;left:50%;
-  transform:translate(-50%,-50%);
-  width:70px;height:70px;
-  background:radial-gradient(circle,#FFD700,#FFA500);
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:12px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70px;
+  height: 70px;
+  background: radial-gradient(circle at 30% 30%, #FFD700, #FFA500); /* Realistic gold */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Playfair Display', serif;
+  color: #8B0000; /* Dark red letters on gold */
+  font-size: 12px;
+  font-weight: bold;
+  z-index: 4;
+  text-align: center;
+  line-height: 1.1;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
 }
 
 .flap {
-  position:absolute;
-  width:100%;height:100%;
-  background:#700000;
-  clip-path:polygon(0 0,100% 0,50% 55%);
-  transition:.8s;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #700000; /* Slightly darker red flap */
+  clip-path: polygon(0 0, 100% 0, 50% 55%);
+  transform-origin: top;
+  transition: 0.8s ease;
+  z-index: 2;
 }
 
 .letter {
-  position:absolute;
-  width:90%;
-  height:90%;
-  background:white;
-  top:5%;left:5%;
-  transform:translateY(100%);
-  transition:.8s;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  background: white;
+  top: 5%;
+  left: 5%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(100%);
+  transition: 0.8s ease;
+  z-index: 1;
 }
 
-.open .flap { transform:rotateX(180deg); }
-.open .letter { transform:translateY(0); }
+.letter h2 { margin: 0; font-size: 20px; }
+.letter p { margin-top: 8px; font-size: 14px; color: gray; }
+
+.open .flap { transform: rotateX(180deg); }
+.open .letter { transform: translateY(0); }
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
 
 /* HERO */
 .hero {
   background: url('image3.jpg') center/cover no-repeat;
   height: 100vh;
   color: white;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  flex-direction:column;
-  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background-blend-mode: darken;
+  background-color: rgba(0,0,0,0.5);
+  background-position: center top;
 }
 
+h1, h2 { font-family: 'Playfair Display', serif; }
+
 /* SECTION */
-.section { padding:40px; text-align:center; }
+.section { padding: 40px 20px; }
+.section:nth-child(even) { background: #fff; }
+.section:nth-child(odd) { background: #f8efe8; }
+
+/* COUNTDOWN */
+.count-box {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.count-box div {
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  min-width: 70px;
+}
+
+/* GALLERY */
+.slider {
+  width: 90%;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.4s ease-in-out;
+}
+
+.slides img {
+  width: 100%;
+  flex-shrink: 0;
+  border-radius: 15px;
+}
 
 /* BUTTON */
 .button {
-  padding:12px 20px;
-  background:black;
-  color:white;
-  text-decoration:none;
-  border-radius:30px;
+  padding: 14px 22px;
+  background: black;
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
 }
 
-/* MUSIC */
+/* MUSIC BUTTON */
 .music-btn {
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  padding:10px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px;
+  border-radius: 50%;
+  background: black;
+  color: white;
+  border: none;
 }
 
 </style>
@@ -158,88 +212,156 @@ body {
 
 <body>
 
-<!-- FIRST PAGE -->
-<div id="firstPage">
-  <div class="invitation-card">
-    <h2>Praboda & Dewmi</h2>
-    <p>Royal Invitation</p>
-    <div class="seal-circle" onclick="openMain()">OPEN</div>
+<!-- INTRO -->
+<div id="intro">
+  <div class="invite-container" onclick="openInvite()">
+    <div class="invite-text">You’re Invited 💌</div>
+    <div class="envelope">
+      <div class="flap"></div>
+      <div class="seal">Praboda &<br>Dewmi</div>
+      <div class="letter">
+        <h2>Praboda ❤️ Dewmi</h2>
+        <p>Tap to Open</p>
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- SECOND PAGE -->
-<div id="mainPage">
-
-<!-- ENVELOPE INTRO -->
-<div id="intro" onclick="openInvite()">
-  <div class="envelope">
-    <div class="flap"></div>
-    <div class="seal">P&D</div>
-    <div class="letter">Tap to Open</div>
-  </div>
-</div>
-
+<!-- MUSIC -->
 <audio id="music" loop>
-  <source src="music.mp3">
+  <source src="music.mp3" type="audio/mpeg">
 </audio>
 
+<!-- HERO -->
 <div class="hero">
   <h1>Praboda ❤️ Dewmi</h1>
   <h2 id="guestText">We are getting married</h2>
 </div>
 
-<div class="section">
-  <h2>Wedding Details</h2>
-  <p>📅 16 July 2026</p>
-  <p>⏰ 10 AM</p>
-  <p>📍 Hotel Nildiya</p>
+<!-- SAVE DATE -->
+<div class="section" style="background:black;color:white;">
+  <h2>Save The Date</h2>
+  <h1>16 • 07 • 2026</h1>
 </div>
 
+<!-- DETAILS -->
 <div class="section">
-  <a id="rsvpBtn" class="button">RSVP</a>
+  <h2>Wedding Details</h2>
+  <p>📅 16th July 2026</p>
+  <p>⏰ 10:00 AM – 4:00 PM</p>
+  <p>📍 Hotel Nildiya, Matara</p>
+  <div id="countdown" class="count-box"></div>
+</div>
+
+<!-- GALLERY -->
+<div class="section">
+  <h2>Gallery</h2>
+  <div class="slider">
+    <div class="slides" id="slides">
+      <img src="image1.jpg">
+      <img src="image2.jpg">
+      <img src="image3.jpg">
+    </div>
+  </div>
+</div>
+
+<!-- LOCATION -->
+<div class="section">
+  <h2>Location</h2>
+  <iframe src="https://maps.google.com/maps?q=Hotel%20Nildiya%20Matara&output=embed"
+  width="90%" height="250" style="border-radius:10px;"></iframe>
+</div>
+
+<!-- RSVP -->
+<div class="section">
+  <h2>RSVP</h2>
+  <a class="button" id="rsvpBtn" href="#">Confirm via WhatsApp</a>
+</div>
+
+<!-- FOOTER -->
+<div class="section">
+  <p>With Love ❤️<br>Praboda & Dewmi</p>
 </div>
 
 <button class="music-btn" onclick="toggleMusic()">🎵</button>
-
-</div>
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <script>
 
-/* OPEN FIRST PAGE */
-function openMain(){
-  document.getElementById("firstPage").style.display="none";
-  document.getElementById("mainPage").style.display="block";
-
-  confetti({particleCount:150,spread:80});
-}
-
-/* OPEN ENVELOPE */
-function openInvite(){
+/* OPEN INVITE */
+function openInvite() {
   document.querySelector('.envelope').classList.add('open');
 
-  setTimeout(()=>{
-    document.getElementById("intro").style.display="none";
+  setTimeout(() => {
+    document.getElementById("intro").style.display = "none";
     document.getElementById("music").play();
-  },1000);
+    confetti({ particleCount: 120, spread: 80 });
+  }, 1200);
 }
 
 /* MUSIC */
-function toggleMusic(){
-  let m=document.getElementById("music");
-  m.paused?m.play():m.pause();
+function toggleMusic() {
+  var m = document.getElementById("music");
+  m.paused ? m.play() : m.pause();
 }
 
-/* PERSONAL NAME */
-const guest=new URLSearchParams(window.location.search).get("name");
+/* COUNTDOWN */
+var countDownDate = new Date("July 16, 2026 10:00:00").getTime();
 
-if(guest){
-  document.getElementById("guestText").innerHTML="Dear "+guest+", you are invited 💌";
-  document.getElementById("rsvpBtn").href="https://wa.me/94772636665?text=Hi I ("+guest+") will attend";
-}else{
-  document.getElementById("rsvpBtn").href="https://wa.me/94772636665?text=I will attend";
+setInterval(function() {
+  var now = new Date().getTime();
+  var d = countDownDate - now;
+
+  var days = Math.floor(d / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((d % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((d % (1000 * 60 * 60)) / (1000 * 60));
+
+  document.getElementById("countdown").innerHTML =
+    `<div>${days}<br>Days</div>
+     <div>${hours}<br>Hours</div>
+     <div>${minutes}<br>Min</div>`;
+}, 1000);
+
+/* PERSONALIZED NAME */
+const params = new URLSearchParams(window.location.search);
+const guest = params.get("name");
+
+if (guest) {
+  document.getElementById("guestText").innerHTML =
+    "Dear " + guest + ", you are invited 💌";
+
+  document.getElementById("rsvpBtn").href =
+    "https://wa.me/94772636665?text=Hi Praboda & Dewmi, I (" + guest + ") will attend your wedding!";
+} else {
+  document.getElementById("rsvpBtn").href =
+    "https://wa.me/94772636665?text=Hi Praboda & Dewmi, I will attend your wedding!";
 }
+
+/* SLIDER */
+let index = 0;
+const slides = document.getElementById("slides");
+const totalSlides = slides.children.length;
+
+setInterval(() => {
+  index = (index + 1) % totalSlides;
+  slides.style.transform = `translateX(-${index * 100}%)`;
+}, 3000);
+
+let startX = 0;
+
+slides.addEventListener("touchstart", e => {
+  startX = e.touches[0].clientX;
+});
+
+slides.addEventListener("touchend", e => {
+  let endX = e.changedTouches[0].clientX;
+
+  if (startX - endX > 50) index = (index + 1) % totalSlides;
+  else if (endX - startX > 50) index = (index - 1 + totalSlides) % totalSlides;
+
+  slides.style.transform = `translateX(-${index * 100}%)`;
+});
 
 </script>
 
