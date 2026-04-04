@@ -1,622 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>Royal Sri Lankan Invitation | Praboda & Dewmi</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
-    body {
-      font-family: 'Inter', sans-serif;
-      overflow-x: hidden;
-    }
+<title>Royal Sri Lankan Invitation | Praboda & Dewmi</title>
 
-    /* ========== FIRST PAGE - PURE INVITATION WITH SEAL ========== */
-    .invitation-first-page {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, #8b1a1a 0%, #5e0e0e 100%);
-      z-index: 10000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 0.8s ease, visibility 0.8s ease;
-      opacity: 1;
-      visibility: visible;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
-    .invitation-first-page.hide {
-      opacity: 0;
-      visibility: hidden;
-    }
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;overflow-x:hidden;}
 
-    .invitation-card {
-      text-align: center;
-      max-width: 90%;
-      width: 550px;
-      padding: 3rem 2rem;
-      background: rgba(255, 245, 235, 0.95);
-      border-radius: 60px 60px 80px 80px;
-      box-shadow: 0 40px 60px rgba(0,0,0,0.4), inset 0 1px 4px rgba(255,255,200,0.5);
-      position: relative;
-      animation: fadeInUp 0.8s ease;
-    }
+/* FIRST PAGE */
+.invitation-first-page{
+position:fixed;width:100%;height:100%;
+background:linear-gradient(135deg,#8b1a1a,#5e0e0e);
+display:flex;justify-content:center;align-items:center;
+z-index:10000;transition:.8s;
+}
 
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+.invitation-first-page.hide{
+opacity:0;visibility:hidden;
+}
 
-    .invitation-card::before {
-      content: '';
-      position: absolute;
-      top: 15px;
-      left: 15px;
-      right: 15px;
-      bottom: 15px;
-      border: 1px solid rgba(180, 100, 50, 0.3);
-      border-radius: 50px 50px 70px 70px;
-      pointer-events: none;
-    }
+.invitation-card{
+background:rgba(255,245,235,0.95);
+padding:3rem 2rem;
+border-radius:60px;
+text-align:center;
+box-shadow:0 40px 60px rgba(0,0,0,0.4);
+max-width:550px;width:90%;
+}
 
-    .royal-badge {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.85rem;
-      letter-spacing: 6px;
-      color: #8b4513;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-    }
+.couple-name-large{
+font-family:'Cormorant Garamond',serif;
+font-size:3.5rem;color:#5e1a0f;
+}
 
-    .ornament-line {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 12px;
-      margin: 1rem 0;
-    }
+.invitation-text{
+margin:15px 0;font-style:italic;
+}
 
-    .ornament-line span {
-      font-size: 1.2rem;
-      color: #b8860b;
-    }
+.seal-circle{
+width:130px;height:130px;
+margin:30px auto;
+border-radius:50%;
+background:radial-gradient(circle,#ffd700,#c1851e);
+display:flex;align-items:center;justify-content:center;
+cursor:pointer;
+box-shadow:0 10px 25px rgba(0,0,0,0.4);
+transition:.2s;
+}
 
-    .ornament-line .line {
-      width: 50px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, #b8860b, transparent);
-    }
+.seal-circle:active{transform:scale(.95);}
 
-    .couple-name-large {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 3.8rem;
-      font-weight: 700;
-      color: #5e1a0f;
-      letter-spacing: 3px;
-      margin: 0.5rem 0;
-    }
+/* SECOND PAGE */
+.main-wedding-page{display:none;background:#fef7ef;}
+.main-wedding-page.show{display:block;}
 
-    .invitation-text {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.2rem;
-      color: #6b3a2a;
-      margin: 1rem 0;
-      font-style: italic;
-    }
+.hero{
+height:100vh;
+display:flex;flex-direction:column;justify-content:center;align-items:center;
+background:url('https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg') center/cover;
+color:white;text-align:center;
+}
 
-    .sri-lankan-text {
-      font-size: 0.9rem;
-      letter-spacing: 3px;
-      color: #b8860b;
-      text-transform: uppercase;
-      margin: 1rem 0;
-    }
-
-    .break-seal-btn {
-      margin: 2rem auto 1rem;
-      display: inline-block;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-
-    .seal-circle {
-      width: 140px;
-      height: 140px;
-      background: radial-gradient(circle at 35% 35%, #e9b13b, #c1851e);
-      border-radius: 50%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 12px 25px rgba(0,0,0,0.4), inset 0 2px 5px rgba(255,245,180,0.8), 0 0 0 8px rgba(200, 130, 50, 0.4);
-      transition: all 0.2s ease;
-    }
-
-    .seal-circle:hover {
-      transform: scale(1.03);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.5), inset 0 2px 5px rgba(255,245,180,0.8), 0 0 0 10px rgba(200, 130, 50, 0.5);
-    }
-
-    .seal-circle:active {
-      transform: scale(0.97);
-    }
-
-    .seal-text-main {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 800;
-      font-size: 1.3rem;
-      text-transform: uppercase;
-      color: #3d1e0a;
-      text-align: center;
-      line-height: 1.3;
-      letter-spacing: 1px;
-    }
-
-    .seal-text-main small {
-      font-size: 0.7rem;
-      display: block;
-      font-weight: 500;
-      margin-top: 5px;
-    }
-
-    .break-hint-text {
-      font-size: 0.7rem;
-      letter-spacing: 3px;
-      color: #b8860b;
-      margin-top: 1rem;
-      text-transform: uppercase;
-    }
-
-    .seal-circle.cracking {
-      position: relative;
-    }
-    .seal-circle.cracking::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: radial-gradient(circle, #ffdd88, #ffaa33);
-      animation: crackFlash 0.5s ease-out forwards;
-      pointer-events: none;
-    }
-    @keyframes crackFlash {
-      0% {
-        transform: translate(-50%, -50%) scale(0.8);
-        opacity: 0.8;
-      }
-      100% {
-        transform: translate(-50%, -50%) scale(1.8);
-        opacity: 0;
-      }
-    }
-
-    /* ========== MAIN WEDDING PAGE (SECOND PAGE) ========== */
-    .main-wedding-page {
-      opacity: 0;
-      visibility: hidden;
-      display: none;
-      background: #fef7ef;
-      min-height: 100vh;
-    }
-
-    .main-wedding-page.show {
-      opacity: 1;
-      visibility: visible;
-      display: block;
-    }
-
-    .hero {
-      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 4rem;
-      letter-spacing: 4px;
-      margin-bottom: 1rem;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      letter-spacing: 2px;
-    }
-
-    .section {
-      padding: 60px 20px;
-    }
-
-    .section:nth-child(even) {
-      background: #fff;
-    }
-
-    .section:nth-child(odd) {
-      background: #f8efe8;
-    }
-
-    .section h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
-      color: #5a2a1a;
-      text-align: center;
-    }
-
-    .count-box {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-top: 2rem;
-    }
-
-    .count-box div {
-      background: white;
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      min-width: 100px;
-      font-size: 2rem;
-      font-weight: bold;
-      color: #b8860b;
-      text-align: center;
-    }
-
-    .count-box div span {
-      display: block;
-      font-size: 0.8rem;
-      color: #666;
-      font-weight: normal;
-      margin-top: 5px;
-    }
-
-    .gallery-slider {
-      width: 90%;
-      max-width: 1000px;
-      margin: auto;
-      overflow: hidden;
-      border-radius: 20px;
-      position: relative;
-    }
-
-    .slides {
-      display: flex;
-      transition: transform 0.4s ease-in-out;
-    }
-
-    .slides img {
-      width: 100%;
-      flex-shrink: 0;
-      border-radius: 20px;
-      height: 400px;
-      object-fit: cover;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 14px 35px;
-      background: #b8860b;
-      color: white;
-      text-decoration: none;
-      border-radius: 50px;
-      font-weight: 500;
-      transition: 0.3s;
-    }
-
-    .button:hover {
-      background: #8b6508;
-      transform: scale(1.05);
-    }
-
-    .music-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background: #2c241e;
-      color: #e9c891;
-      border: none;
-      font-size: 24px;
-      cursor: pointer;
-      z-index: 1000;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
-
-    iframe {
-      border-radius: 15px;
-      display: block;
-      margin: 0 auto;
-    }
-
-    @media (max-width: 768px) {
-      .couple-name-large { font-size: 2.5rem; }
-      .hero h1 { font-size: 2.5rem; }
-      .slides img { height: 250px; }
-      .count-box div { min-width: 70px; font-size: 1.5rem; padding: 12px; }
-    }
-  </style>
+.section{padding:60px 20px;}
+.button{background:#b8860b;color:white;padding:14px 30px;border-radius:50px;text-decoration:none;}
+</style>
 </head>
+
 <body>
 
-<!-- FIRST PAGE: PURE INVITATION WITH SEAL -->
+<!-- FIRST PAGE -->
 <div id="firstPage" class="invitation-first-page">
-  <div class="invitation-card">
-    <div class="royal-badge">✦ ROYAL INVITATION ✦</div>
-    
-    <div class="ornament-line">
-      <span>✧</span>
-      <div class="line"></div>
-      <span>✧</span>
-    </div>
-    
-    <div class="couple-name-large">Praboda & Dewmi</div>
-    
-    <div class="ornament-line">
-      <span>✧</span>
-      <div class="line"></div>
-      <span>✧</span>
-    </div>
-    
-    <div class="invitation-text">
-      Request the honour of your presence<br>
-      at their Royal Sri Lankan Wedding
-    </div>
-    
-    <div class="sri-lankan-text">
-      ✦ Sri Lankan Tradition ✦
-    </div>
+<div class="invitation-card">
+<div class="couple-name-large">Praboda & Dewmi</div>
 
-    <div class="break-seal-btn" id="breakSealBtn">
-      <div class="seal-circle" id="sealCircle">
-        <div class="seal-text-main">
-          BREAK<br>THE SEAL
-          <small>✦ TO REVEAL ✦</small>
-        </div>
-      </div>
-    </div>
-    
-    <div class="break-hint-text">
-      ▼ click the seal above ▼
-    </div>
-  </div>
+<div class="invitation-text">
+Request the honour of your presence
 </div>
 
-<!-- SECOND PAGE: FULL WEDDING DETAILS -->
+<div id="sealCircle" class="seal-circle">
+BREAK
+</div>
+</div>
+</div>
+
+<!-- SECOND PAGE -->
 <div id="secondPage" class="main-wedding-page">
-  <div class="hero">
-    <h1>Praboda ❤️ Dewmi</h1>
-    <p id="guestText">We are getting married</p>
-  </div>
 
-  <div class="section" style="background: #2c1a0c; color: white;">
-    <h2 style="color: #e9c891;">Save The Date</h2>
-    <h1 style="font-size: 3rem; margin-top: 1rem; text-align: center;">16 • 07 • 2026</h1>
-  </div>
-
-  <div class="section">
-    <h2>Wedding Details</h2>
-    <p style="font-size: 1.2rem; margin: 10px 0; text-align: center;">📅 16th July 2026</p>
-    <p style="font-size: 1.2rem; margin: 10px 0; text-align: center;">⏰ 10:00 AM – 4:00 PM</p>
-    <p style="font-size: 1.2rem; margin: 10px 0; text-align: center;">📍 Hotel Nildiya, Matara</p>
-    <div id="countdown" class="count-box"></div>
-  </div>
-
-  <div class="section">
-    <h2>Gallery</h2>
-    <div class="gallery-slider">
-      <div class="slides" id="slides">
-        <img src="https://images.pexels.com/photos/2253870/pexels-photo-2253870.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Wedding couple">
-        <img src="https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Wedding flowers">
-        <img src="https://images.pexels.com/photos/2834917/pexels-photo-2834917.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Sri Lankan wedding">
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <h2>Location</h2>
-    <iframe src="https://maps.google.com/maps?q=Hotel%20Nildiya%20Matara&output=embed" width="90%" height="300" style="border-radius:15px; border:0;"></iframe>
-  </div>
-
-  <div class="section">
-    <h2>RSVP</h2>
-    <div style="text-align: center;">
-      <a class="button" id="rsvpBtn" href="#">Confirm via WhatsApp</a>
-    </div>
-  </div>
-
-  <div class="section" style="background: #2c1a0c; color: #e9c891;">
-    <p style="text-align: center;">With Love ❤️<br>Praboda & Dewmi</p>
-  </div>
-
-  <button class="music-btn" onclick="toggleMusic()">🎵</button>
-  <audio id="bgMusic" loop>
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-  </audio>
+<div class="hero">
+<h1>Praboda ❤️ Dewmi</h1>
+<p id="guestText">We are getting married</p>
 </div>
+
+<div class="section">
+<h2>Wedding Details</h2>
+<p>📅 16 July 2026</p>
+<p>⏰ 10:00 AM</p>
+<p>📍 Hotel Nildiya</p>
+</div>
+
+<div class="section">
+<a id="rsvpBtn" class="button">Confirm via WhatsApp</a>
+</div>
+
+</div>
+
+<audio id="bgMusic" loop>
+<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+</audio>
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <script>
-  const firstPage = document.getElementById('firstPage');
-  const secondPage = document.getElementById('secondPage');
-  const breakSealBtn = document.getElementById('breakSealBtn');
-  const sealCircle = document.getElementById('sealCircle');
-  const audio = document.getElementById('bgMusic');
-  
-  let isOpened = false;
 
-  function breakSeal() {
-    if (isOpened) return;
-    isOpened = true;
+const firstPage = document.getElementById('firstPage');
+const secondPage = document.getElementById('secondPage');
+const seal = document.getElementById('sealCircle');
+const audio = document.getElementById('bgMusic');
 
-    // Add crack animation
-    sealCircle.classList.add('cracking');
-    
-    // Confetti burst
-    canvasConfetti({
-      particleCount: 200,
-      spread: 100,
-      origin: { y: 0.5, x: 0.5 },
-      startVelocity: 20,
-      colors: ['#ffd700', '#ffed4e', '#daa520', '#ffb347']
-    });
-    
-    setTimeout(() => {
-      canvasConfetti({
-        particleCount: 150,
-        spread: 120,
-        origin: { y: 0.4, x: 0.3 },
-      });
-      canvasConfetti({
-        particleCount: 150,
-        spread: 120,
-        origin: { y: 0.4, x: 0.7 },
-      });
-    }, 150);
-    
-    // Change seal text
-    const sealTextDiv = sealCircle.querySelector('.seal-text-main');
-    if (sealTextDiv) {
-      sealTextDiv.innerHTML = '✨ OPENED ✨<small>Welcome!</small>';
-    }
-    
-    // Hide first page and show second page
-    setTimeout(() => {
-      firstPage.classList.add('hide');
-      
-      setTimeout(() => {
-        firstPage.style.display = 'none';
-        secondPage.classList.add('show');
-        secondPage.style.display = 'block';
-        
-        // Scroll to top of second page
-        window.scrollTo(0, 0);
-        
-        // Play music
-        if (audio) {
-          audio.volume = 0.5;
-          audio.play().catch(e => console.log('Autoplay blocked - click music button to play'));
-        }
-        
-        // Final celebration
-        canvasConfetti({
-          particleCount: 300,
-          spread: 100,
-          origin: { y: 0.6 },
-          startVelocity: 25
-        });
-      }, 800);
-    }, 400);
-  }
+let opened = false;
 
-  // Click event
-  breakSealBtn.addEventListener('click', breakSeal);
+seal.addEventListener('click', function(){
 
-  // Countdown timer
-  const countDownDate = new Date("July 16, 2026 10:00:00").getTime();
-  
-  setInterval(function() {
-    const now = new Date().getTime();
-    const distance = countDownDate - now;
-    
-    if (distance > 0) {
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      
-      document.getElementById("countdown").innerHTML = `
-        <div>${days}<span>Days</span></div>
-        <div>${hours}<span>Hours</span></div>
-        <div>${minutes}<span>Mins</span></div>
-        <div>${seconds}<span>Secs</span></div>
-      `;
-    } else {
-      document.getElementById("countdown").innerHTML = `<div>🎉 Today is the Day! 🎉<span>Celebrating Now!</span></div>`;
-    }
-  }, 1000);
+if(opened) return;
+opened = true;
 
-  // Personalized name from URL
-  const params = new URLSearchParams(window.location.search);
-  const guest = params.get("name");
-  const guestText = document.getElementById("guestText");
-  const rsvpBtn = document.getElementById("rsvpBtn");
-  
-  if (guest && guest.trim() !== "") {
-    guestText.innerHTML = "Dear " + guest + ", you are invited 💌";
-    rsvpBtn.href = "https://wa.me/94772636665?text=Hi Praboda & Dewmi, I (" + guest + ") will attend your wedding!";
-  } else {
-    rsvpBtn.href = "https://wa.me/94772636665?text=Hi Praboda & Dewmi, I will attend your wedding!";
-  }
+/* CONFETTI */
+confetti({
+particleCount:200,
+spread:100,
+origin:{y:0.5}
+});
 
-  // Gallery slider
-  let slideIndex = 0;
-  const slides = document.getElementById("slides");
-  if (slides) {
-    const totalSlides = slides.children.length;
-    
-    setInterval(() => {
-      slideIndex = (slideIndex + 1) % totalSlides;
-      slides.style.transform = `translateX(-${slideIndex * 100}%)`;
-    }, 3000);
-    
-    // Touch swipe for mobile
-    let touchStart = 0;
-    slides.addEventListener("touchstart", e => {
-      touchStart = e.touches[0].clientX;
-    });
-    
-    slides.addEventListener("touchend", e => {
-      let touchEnd = e.changedTouches[0].clientX;
-      if (touchStart - touchEnd > 50) {
-        slideIndex = (slideIndex + 1) % totalSlides;
-      } else if (touchEnd - touchStart > 50) {
-        slideIndex = (slideIndex - 1 + totalSlides) % totalSlides;
-      }
-      slides.style.transform = `translateX(-${slideIndex * 100}%)`;
-    });
-  }
+/* TRANSITION */
+setTimeout(()=>{
+firstPage.classList.add('hide');
 
-  // Music toggle
-  let musicPlaying = false;
-  function toggleMusic() {
-    const musicBtn = document.querySelector('.music-btn');
-    if (musicPlaying) {
-      audio.pause();
-      musicPlaying = false;
-      musicBtn.innerHTML = '🎵';
-    } else {
-      audio.play().catch(e => console.log('error'));
-      musicPlaying = true;
-      musicBtn.innerHTML = '🔊';
-    }
-  }
+setTimeout(()=>{
+firstPage.style.display='none';
+secondPage.classList.add('show');
+
+/* PLAY MUSIC */
+audio.muted = false;
+audio.play().catch(()=>{});
+
+},800);
+
+},400);
+
+});
+
+/* PERSONALIZED NAME */
+const params = new URLSearchParams(window.location.search);
+const guest = params.get("name");
+
+const guestText = document.getElementById("guestText");
+const rsvpBtn = document.getElementById("rsvpBtn");
+
+if(guest){
+guestText.innerHTML = "Dear "+guest+", you are invited 💌";
+rsvpBtn.href = "https://wa.me/94772636665?text=Hi I ("+guest+") will attend";
+}else{
+rsvpBtn.href = "https://wa.me/94772636665?text=I will attend";
+}
+
 </script>
 
 </body>
