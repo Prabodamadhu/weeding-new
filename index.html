@@ -20,54 +20,59 @@ body {
   text-align: center;
 }
 
-/* ===== PREMIUM INTRO BACKGROUND ===== */
+/* ===== PREMIUM FIRST PAGE ===== */
 #intro {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #a83232, #5e0e0e);
+  background: radial-gradient(circle at center, #8b0000, #3b0000);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
 }
 
-.invite-container {
+.intro-content {
   text-align: center;
 }
 
-.invite-text {
-  font-family: 'Playfair Display', serif;
-  font-size: 26px;
-  margin-bottom: 20px;
-  color: #FFD700;
-  letter-spacing: 2px;
-}
-
-/* ===== ENVELOPE (PRO LEVEL) ===== */
+/* ENVELOPE */
 .envelope {
   width: 300px;
   height: 190px;
-  background: linear-gradient(145deg, #7a0000, #4d0000);
+  background: linear-gradient(135deg, #ff2a2a, #c40000);
+  border-radius: 12px;
   position: relative;
-  border-radius: 14px;
-  box-shadow:
-    0 15px 35px rgba(0,0,0,0.4),
-    inset 0 2px 6px rgba(255,255,255,0.1);
+  margin: auto;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
   overflow: hidden;
+}
+
+/* TEXTURE */
+.envelope::after {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(255,255,255,0.05),
+    rgba(255,255,255,0.05) 2px,
+    transparent 2px,
+    transparent 6px
+  );
+  top: -50%;
+  left: -50%;
 }
 
 /* GOLD BAND */
 .envelope::before {
-  content: '';
+  content: "";
   position: absolute;
-  top: 42%;
+  top: 45%;
   width: 100%;
-  height: 22px;
-  background: linear-gradient(90deg,#d4af37,#ffd700,#fff2a8,#ffd700,#b8962e);
-  box-shadow:
-    0 2px 6px rgba(0,0,0,0.3),
-    inset 0 1px 2px rgba(255,255,255,0.6);
+  height: 18px;
+  background: linear-gradient(90deg,#d4af37,#ffd700,#caa520);
   z-index: 3;
 }
 
@@ -77,22 +82,22 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  width: 75px;
-  height: 75px;
-  background: radial-gradient(circle at 30% 30%, #ffd700, #c99700);
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle at 30% 30%, #ff4d4d, #b30000);
   border-radius: 50%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: 'Playfair Display', serif;
-  color:#5c0000;
-  font-size:12px;
-  font-weight:bold;
-  z-index:4;
+  color: gold;
+  font-size: 16px;
+  font-weight: bold;
+  z-index: 4;
   box-shadow:
-    0 6px 15px rgba(0,0,0,0.4),
-    inset 0 2px 4px rgba(255,255,255,0.7),
-    inset 0 -3px 6px rgba(0,0,0,0.3);
+    0 10px 20px rgba(0,0,0,0.5),
+    inset 0 2px 6px rgba(255,255,255,0.4),
+    inset 0 -4px 8px rgba(0,0,0,0.4);
 }
 
 /* FLAP */
@@ -100,35 +105,34 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: linear-gradient(145deg, #5a0000, #300000);
+  background: linear-gradient(135deg, #d60000, #7a0000);
   clip-path: polygon(0 0, 100% 0, 50% 55%);
   transform-origin: top;
-  transition: 0.9s ease;
+  transition: 0.9s;
   z-index: 2;
 }
 
-/* LETTER */
-.letter {
-  position: absolute;
-  width: 90%;
-  height: 90%;
-  background: linear-gradient(#fff, #f9f9f9);
-  top: 5%;
-  left: 5%;
-  border-radius: 10px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  transform: translateY(100%);
-  transition: 0.9s ease;
+/* OPEN */
+.open .flap {
+  transform: rotateX(180deg);
 }
 
-/* OPEN EFFECT */
-.open .flap { transform: rotateX(180deg); }
-.open .letter { transform: translateY(0); }
+/* TEXT */
+.title {
+  margin-top: 30px;
+  font-family: 'Playfair Display', serif;
+  color: #fff;
+  font-size: 24px;
+}
 
-/* HERO */
+.subtitle {
+  color: gold;
+  font-size: 12px;
+  letter-spacing: 3px;
+  margin-top: 10px;
+}
+
+/* ===== HERO ===== */
 .hero {
   background: url('image3.jpg') center/cover no-repeat;
   height: 100vh;
@@ -205,17 +209,17 @@ body {
 <body>
 
 <!-- INTRO -->
-<div id="intro">
-  <div class="invite-container" onclick="openInvite()">
-    <div class="invite-text">You’re Invited 💌</div>
+<div id="intro" onclick="openInvite()">
+  <div class="intro-content">
+
     <div class="envelope">
       <div class="flap"></div>
-      <div class="seal">P & D</div>
-      <div class="letter">
-        <h2>Praboda ❤️ Dewmi</h2>
-        <p>Tap to Open</p>
-      </div>
+      <div class="seal">P<br>&<br>D</div>
     </div>
+
+    <h2 class="title">Royal Sri Lankan Invitation</h2>
+    <p class="subtitle">BREAK THE SEAL TO REVEAL</p>
+
   </div>
 </div>
 
@@ -289,7 +293,7 @@ function openInvite() {
     document.getElementById("intro").style.display = "none";
     document.getElementById("music").play();
     confetti({ particleCount: 150, spread: 90 });
-  }, 1200);
+  }, 1000);
 }
 
 /* MUSIC */
