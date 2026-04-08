@@ -20,7 +20,7 @@ body {
   text-align: center;
 }
 
-/* ===== NEW PREMIUM INTRO ===== */
+/* ===== PREMIUM INTRO ===== */
 #intro {
   position: fixed;
   width: 100%;
@@ -32,7 +32,6 @@ body {
   z-index: 9999;
 }
 
-/* Glass Card */
 .intro-box {
   backdrop-filter: blur(15px);
   background: rgba(255,255,255,0.08);
@@ -44,7 +43,6 @@ body {
   animation: fadeIn 1.5s ease;
 }
 
-/* Title */
 .intro-title {
   font-family: 'Playfair Display', serif;
   color: #fff;
@@ -59,7 +57,6 @@ body {
   margin-bottom: 30px;
 }
 
-/* Button */
 .open-btn {
   padding: 14px 25px;
   border-radius: 30px;
@@ -76,28 +73,44 @@ body {
   transform: scale(1.05);
 }
 
-/* Animation */
 @keyframes fadeIn {
   from {opacity: 0; transform: scale(0.9);}
   to {opacity: 1; transform: scale(1);}
 }
 
-/* HERO */
+/* ===== HERO (UPDATED) ===== */
 .hero {
   background: url('image1.jpg') center/cover no-repeat;
   height: 100vh;
   color: white;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+
+  justify-content: flex-start;   /* move text up */
+  padding-top: 90px;             /* adjust position */
+
   background-blend-mode: darken;
   background-color: rgba(0,0,0,0.5);
 }
 
+.hero h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+  text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+}
+
+.hero h2 {
+  font-size: 18px;
+  font-weight: normal;
+  text-shadow: 0 3px 10px rgba(0,0,0,0.6);
+}
+
+/* SECTION */
 .section { padding: 40px 20px; }
 .section:nth-child(even) { background: #fff; }
 .section:nth-child(odd) { background: #f8efe8; }
 
+/* COUNTDOWN */
 .count-box {
   display: flex;
   justify-content: center;
@@ -111,6 +124,7 @@ body {
   min-width: 70px;
 }
 
+/* GALLERY */
 .slider {
   width: 90%;
   margin: auto;
@@ -128,6 +142,7 @@ body {
   flex-shrink: 0;
 }
 
+/* BUTTON */
 .button {
   padding: 14px 22px;
   background: black;
@@ -136,6 +151,7 @@ body {
   border-radius: 30px;
 }
 
+/* MUSIC */
 .music-btn {
   position: fixed;
   bottom: 20px;
@@ -152,7 +168,7 @@ body {
 
 <body>
 
-<!-- NEW INTRO -->
+<!-- INTRO -->
 <div id="intro">
   <div class="intro-box">
     <h2 class="intro-title">Praboda ❤️ Dewmi</h2>
@@ -168,7 +184,7 @@ body {
 
 <!-- HERO -->
 <div class="hero">
-  <h1>Dewmi ❤️ Praboda</h1>
+  <h1>Praboda ❤️ Dewmi</h1>
   <h2 id="guestText">We are getting married</h2>
 </div>
 
