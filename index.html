@@ -9,7 +9,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
-
 html { scroll-behavior: smooth; }
 
 body {
@@ -19,7 +18,7 @@ body {
   text-align: center;
 }
 
-/* INTRO */
+/* ===== INTRO ===== */
 #intro {
   position: fixed;
   width: 100%;
@@ -41,7 +40,8 @@ body {
 
 .intro-title {
   font-family: 'Playfair Display', serif;
-  color: #fff;
+  color: white;
+  font-size: 36px;
 }
 
 .intro-sub {
@@ -57,7 +57,19 @@ body {
   cursor: pointer;
 }
 
-/* HERO */
+/* ===== SHIMMER GOLD NAMES ===== */
+.shimmer {
+  background: linear-gradient(90deg,#d4af37,#fff,#ffd700,#d4af37);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: shine 3s linear infinite;
+}
+@keyframes shine { to {background-position:200%;} }
+
+.heart { color: red; }
+
+/* ===== HERO ===== */
 .hero {
   background: url('image1.jpg') center/cover no-repeat;
   height: 100vh;
@@ -70,12 +82,13 @@ body {
   background-blend-mode: darken;
 }
 
-/* SECTIONS */
-.section {
-  padding: 50px 20px;
-}
+.hero h1 { font-size: 36px; }
+.hero h2 { font-size: 18px; }
 
-/* COUNTDOWN (UPGRADED) */
+/* ===== SECTIONS ===== */
+.section { padding: 50px 20px; }
+
+/* ===== COUNTDOWN ===== */
 .count-box {
   display: flex;
   justify-content: center;
@@ -92,7 +105,7 @@ body {
   font-weight: bold;
 }
 
-/* GALLERY (UPGRADED) */
+/* ===== GALLERY ===== */
 .slider {
   width: 90%;
   margin: auto;
@@ -111,7 +124,7 @@ body {
   border-radius: 15px;
 }
 
-/* BUTTON */
+/* ===== BUTTON ===== */
 .button {
   padding: 14px 22px;
   background: black;
@@ -120,7 +133,7 @@ body {
   border-radius: 30px;
 }
 
-/* MUSIC */
+/* ===== MUSIC ===== */
 .music-btn {
   position: fixed;
   bottom: 20px;
@@ -131,7 +144,6 @@ body {
   color: white;
   border: none;
 }
-
 </style>
 </head>
 
@@ -140,7 +152,11 @@ body {
 <!-- INTRO -->
 <div id="intro">
   <div class="intro-box">
-    <h2 class="intro-title">Praboda ❤️ Dewmi</h2>
+    <h2 class="intro-title">
+      <span class="shimmer">Praboda</span>
+      <span class="heart"> ❤️ </span>
+      <span class="shimmer">Dewmi</span>
+    </h2>
     <p class="intro-sub">YOU ARE INVITED</p>
     <button class="open-btn" onclick="openInvite()">Open Invitation</button>
   </div>
@@ -153,11 +169,15 @@ body {
 
 <!-- HERO -->
 <div class="hero">
-  <h1>Praboda ❤️ Dewmi</h1>
+  <h1>
+    <span class="shimmer">Praboda</span>
+    <span class="heart"> ❤️ </span>
+    <span class="shimmer">Dewmi</span>
+  </h1>
   <h2 id="guestText">We are getting married</h2>
 </div>
 
-<!-- SAVE DATE -->
+<!-- SAVE THE DATE -->
 <div class="section" style="background:black;color:white;">
   <h2>Save The Date</h2>
   <h1>16 • 07 • 2026</h1>
@@ -205,13 +225,10 @@ body {
 <button class="music-btn" onclick="toggleMusic()">🎵</button>
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
 <script>
-
 /* OPEN INVITE */
 function openInvite() {
   document.getElementById("intro").style.opacity = "0";
-
   setTimeout(() => {
     document.getElementById("intro").style.display = "none";
     document.getElementById("music").play();
@@ -225,17 +242,14 @@ function toggleMusic() {
   m.paused ? m.play() : m.pause();
 }
 
-/* COUNTDOWN (FIXED) */
+/* COUNTDOWN */
 var countDownDate = new Date("July 16, 2026 10:00:00").getTime();
-
 setInterval(function() {
   var now = new Date().getTime();
   var d = countDownDate - now;
-
   var days = Math.floor(d / (1000 * 60 * 60 * 24));
   var hours = Math.floor((d % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   var minutes = Math.floor((d % (1000 * 60 * 60)) / (1000 * 60));
-
   document.getElementById("countdown").innerHTML =
     `<div>${days}<br>Days</div>
      <div>${hours}<br>Hours</div>
@@ -245,11 +259,9 @@ setInterval(function() {
 /* PERSONALIZED NAME */
 const params = new URLSearchParams(window.location.search);
 const guest = params.get("name");
-
 if (guest) {
   document.getElementById("guestText").innerHTML =
     "Dear " + guest + ", you are invited 💌";
-
   document.getElementById("rsvpBtn").href =
     "https://wa.me/94772636665?text=Hi Praboda & Dewmi, I (" + guest + ") will attend your wedding!";
 } else {
@@ -257,16 +269,14 @@ if (guest) {
     "https://wa.me/94772636665?text=Hi Praboda & Dewmi, I will attend your wedding!";
 }
 
-/* SLIDER (FIXED) */
+/* SLIDER */
 let index = 0;
 const slides = document.getElementById("slides");
 const totalSlides = slides.children.length;
-
 setInterval(() => {
   index = (index + 1) % totalSlides;
   slides.style.transform = `translateX(-${index * 100}%)`;
 }, 3000);
-
 </script>
 
 </body>
