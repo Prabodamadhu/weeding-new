@@ -28,6 +28,24 @@ body {
   justify-content: center;
   align-items: center;
   z-index: 9999;
+  overflow: hidden;
+}
+
+/* Sparkling luxury stars */
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: gold;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: twinkle 3s infinite ease-in-out alternate;
+}
+
+@keyframes twinkle {
+  0% { opacity: 0.1; transform: scale(0.5); }
+  50% { opacity: 1; transform: scale(1.5); }
+  100% { opacity: 0.2; transform: scale(1); }
 }
 
 .intro-box {
@@ -36,6 +54,7 @@ body {
   border-radius: 20px;
   padding: 40px 30px;
   box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  z-index: 10;
 }
 
 .intro-title {
@@ -151,6 +170,16 @@ body {
 
 <!-- INTRO -->
 <div id="intro">
+  <!-- Stars -->
+  <div class="star" style="top:10%; left:15%; width:3px; height:3px;"></div>
+  <div class="star" style="top:30%; left:70%; width:2px; height:2px;"></div>
+  <div class="star" style="top:50%; left:40%; width:2px; height:2px;"></div>
+  <div class="star" style="top:20%; left:85%; width:3px; height:3px;"></div>
+  <div class="star" style="top:60%; left:10%; width:2px; height:2px;"></div>
+  <div class="star" style="top:75%; left:50%; width:3px; height:3px;"></div>
+  <div class="star" style="top:80%; left:25%; width:2px; height:2px;"></div>
+  <div class="star" style="top:15%; left:60%; width:2px; height:2px;"></div>
+
   <div class="intro-box">
     <h2 class="intro-title">
       <span class="shimmer">Praboda</span>
