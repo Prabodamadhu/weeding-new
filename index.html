@@ -18,7 +18,7 @@ body {
   text-align: center;
 }
 
-/* ===== INTRO ===== */
+/* ===== INTRO WITH PROFESSIONAL SPARKLE ===== */
 #intro {
   position: fixed;
   width: 100%;
@@ -27,56 +27,40 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
   overflow: hidden;
+  z-index: 9999;
 }
 
-/* Sparkling luxury stars */
-.star {
+/* Luxury sparkling particles */
+.particle {
   position: absolute;
-  width: 2px;
-  height: 2px;
-  background: gold;
+  background: radial-gradient(circle, #ffd700 0%, transparent 70%);
   border-radius: 50%;
+  animation: float 10s linear infinite;
   opacity: 0.8;
-  animation: twinkle 3s infinite ease-in-out alternate;
 }
 
-@keyframes twinkle {
-  0% { opacity: 0.1; transform: scale(0.5); }
-  50% { opacity: 1; transform: scale(1.5); }
-  100% { opacity: 0.2; transform: scale(1); }
+@keyframes float {
+  0% { transform: translateY(0) scale(0.5); opacity: 0.2; }
+  50% { transform: translateY(-1000px) scale(1.5); opacity: 1; }
+  100% { transform: translateY(-2000px) scale(0.5); opacity: 0; }
 }
 
 .intro-box {
+  position: relative;
+  z-index: 10;
   backdrop-filter: blur(15px);
   background: rgba(255,255,255,0.08);
   border-radius: 20px;
   padding: 40px 30px;
   box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-  z-index: 10;
 }
 
 .intro-title {
   font-family: 'Playfair Display', serif;
-  color: white;
   font-size: 36px;
 }
 
-.intro-sub {
-  color: white;
-  margin-bottom: 20px;
-}
-
-.open-btn {
-  padding: 14px 25px;
-  border-radius: 30px;
-  border: none;
-  background: gold;
-  cursor: pointer;
-}
-
-/* ===== SHIMMER GOLD NAMES ===== */
 .shimmer {
   background: linear-gradient(90deg,#d4af37,#fff,#ffd700,#d4af37);
   background-size: 200%;
@@ -87,6 +71,15 @@ body {
 @keyframes shine { to {background-position:200%;} }
 
 .heart { color: red; }
+
+.open-btn {
+  padding: 14px 25px;
+  border-radius: 30px;
+  border: none;
+  background: gold;
+  cursor: pointer;
+  font-weight: bold;
+}
 
 /* ===== HERO ===== */
 .hero {
@@ -170,15 +163,19 @@ body {
 
 <!-- INTRO -->
 <div id="intro">
-  <!-- Stars -->
-  <div class="star" style="top:10%; left:15%; width:3px; height:3px;"></div>
-  <div class="star" style="top:30%; left:70%; width:2px; height:2px;"></div>
-  <div class="star" style="top:50%; left:40%; width:2px; height:2px;"></div>
-  <div class="star" style="top:20%; left:85%; width:3px; height:3px;"></div>
-  <div class="star" style="top:60%; left:10%; width:2px; height:2px;"></div>
-  <div class="star" style="top:75%; left:50%; width:3px; height:3px;"></div>
-  <div class="star" style="top:80%; left:25%; width:2px; height:2px;"></div>
-  <div class="star" style="top:15%; left:60%; width:2px; height:2px;"></div>
+  <!-- Generate 100 sparkling particles -->
+  <script>
+    for(let i=0;i<100;i++){
+      const star = document.createElement('span');
+      star.classList.add('particle');
+      star.style.width = star.style.height = (Math.random()*3+1)+'px';
+      star.style.left = Math.random()*100+'%';
+      star.style.top = Math.random()*100+'%';
+      star.style.animationDuration = (5 + Math.random()*10)+'s';
+      star.style.animationDelay = Math.random()*10+'s';
+      document.getElementById('intro').appendChild(star);
+    }
+  </script>
 
   <div class="intro-box">
     <h2 class="intro-title">
@@ -186,7 +183,7 @@ body {
       <span class="heart"> ❤️ </span>
       <span class="shimmer">Dewmi</span>
     </h2>
-    <p class="intro-sub">YOU ARE INVITED</p>
+    <p style="color:white;">YOU ARE INVITED</p>
     <button class="open-btn" onclick="openInvite()">Open Invitation</button>
   </div>
 </div>
