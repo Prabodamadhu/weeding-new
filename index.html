@@ -66,7 +66,7 @@ body {
   to { transform: translateY(300px); }
 }
 
-/* ===== SHIMMER EFFECT ===== */
+/* ===== SHIMMER (ONLY NAMES) ===== */
 .shimmer {
   font-family: 'Playfair Display', serif;
   background: linear-gradient(
@@ -85,9 +85,12 @@ body {
 }
 
 @keyframes shimmerMove {
-  to {
-    background-position: 200% center;
-  }
+  to { background-position: 200% center; }
+}
+
+/* HEART FIX */
+.heart {
+  color: red;
 }
 
 /* Intro Box */
@@ -103,8 +106,9 @@ body {
   box-shadow: 0 20px 60px rgba(0,0,0,0.6);
 }
 
+/* TEXT */
 .intro-sub {
-  color: #d4af37;
+  color: #ffffff; /* ✅ changed to white */
   letter-spacing: 2px;
   font-size: 12px;
   margin-bottom: 30px;
@@ -207,7 +211,11 @@ body {
 <!-- INTRO -->
 <div id="intro">
   <div class="intro-box">
-    <h2 class="shimmer">Praboda ❤️ Dewmi</h2>
+    <h2>
+      <span class="shimmer">Praboda</span>
+      <span class="heart"> ❤️ </span>
+      <span class="shimmer">Dewmi</span>
+    </h2>
     <p class="intro-sub">YOU ARE INVITED</p>
     <button class="open-btn" onclick="openInvite()">Open Invitation</button>
   </div>
@@ -220,7 +228,11 @@ body {
 
 <!-- HERO -->
 <div class="hero">
-  <h1 class="shimmer">Praboda ❤️ Dewmi</h1>
+  <h1>
+    <span class="shimmer">Praboda</span>
+    <span class="heart"> ❤️ </span>
+    <span class="shimmer">Dewmi</span>
+  </h1>
   <h2 id="guestText">We are getting married</h2>
 </div>
 
