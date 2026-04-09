@@ -3,241 +3,334 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Praboda & Dewmi Wedding</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
-
+<title>Praboda &amp; Dewmi — 16 July 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cinzel:wght@400;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-
-html { scroll-behavior: smooth; }
-
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: #fdf6f0;
-  text-align: center;
-}
-
-/* INTRO */
-#intro {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at center, #2b0000, #000000);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  z-index: 9999;
-  transition: opacity 1s ease, transform 1s ease;
-}
-
-/* STARS */
-#intro::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-image:
-    radial-gradient(circle, rgba(255,215,0,0.9) 2px, transparent 2px),
-    radial-gradient(circle, rgba(255,255,255,0.8) 1.5px, transparent 2px);
-  background-size: 80px 80px, 120px 120px;
-}
-
-#intro::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-image: radial-gradient(circle, #fff 1px, transparent 1px);
-  background-size: 60px 60px;
-  animation: twinkle 2s infinite alternate;
-}
-
-@keyframes twinkle {
-  from { opacity: 0.3; }
-  to { opacity: 1; }
-}
-
-/* SHOOTING STARS */
-.shooting-star {
-  position: absolute;
-  width: 2px;
-  height: 80px;
-  background: linear-gradient(-45deg, white, transparent);
-  transform: rotate(45deg);
-  animation: shoot 6s linear infinite;
-}
-
-@keyframes shoot {
-  0% { opacity:0; }
-  10% { opacity:1; }
-  100% { opacity:0; transform: translate(300px,300px) rotate(45deg);}
-}
-
-/* INTRO BOX */
-.intro-box {
-  backdrop-filter: blur(20px);
-  background: rgba(255,255,255,0.05);
-  border-radius: 25px;
-  padding: 45px;
-  border: 1px solid rgba(255,215,0,0.3);
-  z-index: 2;
-}
-
-/* BUTTON */
-.open-btn {
-  padding: 14px 30px;
-  border-radius: 50px;
-  border: none;
-  font-weight: bold;
-  background: linear-gradient(45deg, gold, #ffcc70);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.open-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 20px gold;
-}
-
-/* HERO */
-.hero {
-  background: url('image1.jpg') center/cover no-repeat;
-  height: 100vh;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding-top: 90px;
-  background-color: rgba(0,0,0,0.5);
-  background-blend-mode: darken;
-}
-
-/* SECTIONS */
-.section {
-  padding: 50px 20px;
-  margin: 20px;
-  border-radius: 20px;
-  background: rgba(255,255,255,0.6);
-  backdrop-filter: blur(10px);
-}
-
-/* COUNTDOWN */
-.count-box {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-}
-
-.count-box div {
-  background: white;
-  padding: 18px;
-  border-radius: 15px;
-}
-
-/* ===== 🔥 FIXED GALLERY ===== */
-.slider {
-  width: 100%;
-  max-width: 500px;
-  height: 300px;
-  margin: auto;
-  overflow: hidden;
-  border-radius: 15px;
-  position: relative;
-}
-
-.slides {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.6s ease-in-out;
-}
-
-.slides img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  flex: 0 0 100%;
-}
-
-/* MOBILE */
-@media (max-width:600px){
-  .slider {
-    height: 220px;
+  :root {
+    --bg:       #fdfaf6;
+    --bg2:      #f7f0e8;
+    --card:     #ffffff;
+    --accent:   #c0514a;
+    --accent2:  #e8847e;
+    --rose:     #f9ede6;
+    --teal:     #2a9d8f;
+    --ink:      #1c1410;
+    --muted:    #8a7f78;
+    --border:   rgba(192,81,74,0.15);
   }
-}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--ink); font-family: 'Jost', sans-serif; font-weight: 300; overflow-x: hidden; }
 
-/* BUTTON */
-.button {
-  padding: 14px 22px;
-  background: black;
-  color: white;
-  border-radius: 30px;
-  text-decoration: none;
-}
+  /* CURSOR */
+  body { cursor: none; }
+  #cursor { position:fixed;pointer-events:none;z-index:99999;width:10px;height:10px;background:var(--accent);border-radius:50%;transform:translate(-50%,-50%);transition:width .2s,height .2s; }
+  #cursor-ring { position:fixed;pointer-events:none;z-index:99998;width:38px;height:38px;border:1px solid var(--accent);border-radius:50%;transform:translate(-50%,-50%);transition:all .35s ease;opacity:.4; }
 
-/* MUSIC */
-.music-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  padding: 12px;
-  border-radius: 50%;
-  background: black;
-  color: white;
-  border: none;
-}
+  /* INTRO */
+  #intro { position:fixed;inset:0;z-index:9000;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;transition:opacity 1.2s ease,visibility 1.2s; }
+  #intro.hidden { opacity:0;visibility:hidden;pointer-events:none; }
+  .orb { position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none;animation:orbFloat ease-in-out infinite alternate; }
+  .orb1 { width:320px;height:320px;background:rgba(192,81,74,.1);top:-80px;left:-80px;animation-duration:9s; }
+  .orb2 { width:260px;height:260px;background:rgba(42,157,143,.08);bottom:-60px;right:-60px;animation-duration:11s; }
+  .orb3 { width:180px;height:180px;background:rgba(249,237,230,.6);top:35%;right:8%;animation-duration:7s; }
+  @keyframes orbFloat { from{transform:translate(0,0) scale(1);}to{transform:translate(18px,28px) scale(1.08);} }
+  .intro-inner { position:relative;z-index:2;animation:fadeUp 1.4s ease both; }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);} }
+  .intro-eyebrow { font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.55em;color:var(--accent);text-transform:uppercase;margin-bottom:28px; }
+  .intro-names { font-family:'Cormorant Garamond',serif;font-size:clamp(3.5rem,13vw,7.5rem);font-weight:300;line-height:.95;color:var(--ink); }
+  .intro-names .amp { display:block;font-style:italic;font-size:.54em;color:var(--accent);margin:10px 0;letter-spacing:.1em; }
+  .intro-line { width:1px;height:56px;background:linear-gradient(to bottom,transparent,var(--accent),transparent);margin:26px auto; }
+  .intro-date { font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.35em;color:var(--muted); }
+  .open-btn { margin-top:40px;display:inline-block;padding:15px 46px;background:var(--accent);color:#fff;font-family:'Cinzel',serif;font-size:.67rem;letter-spacing:.35em;text-transform:uppercase;border:none;cursor:pointer;border-radius:60px;transition:transform .25s,box-shadow .25s;box-shadow:0 6px 30px rgba(192,81,74,.25); }
+  .open-btn:hover { transform:translateY(-3px);box-shadow:0 12px 40px rgba(192,81,74,.35); }
 
+  /* HERO */
+  #hero { position:relative;height:100svh;display:flex;align-items:flex-end;justify-content:flex-start;overflow:hidden; }
+  .hero-img { position:absolute;inset:0;background:url('image1.jpg') center/cover no-repeat;opacity:.55;transform:scale(1.05);animation:slowZoom 18s ease forwards; }
+  @keyframes slowZoom { to{transform:scale(1);} }
+  .hero-overlay { position:absolute;inset:0;background:linear-gradient(to top,rgba(28,20,16,.9) 0%,rgba(28,20,16,.35) 55%,rgba(28,20,16,.05) 100%); }
+  .hero-streak { position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),var(--teal),transparent); }
+  .hero-content { position:relative;z-index:2;padding:60px clamp(28px,7vw,110px);animation:fadeUp 1.4s 1s ease both; }
+  .hero-tag { display:inline-flex;align-items:center;gap:10px;font-family:'Cinzel',serif;font-size:.57rem;letter-spacing:.45em;color:var(--accent2);text-transform:uppercase;margin-bottom:18px; }
+  .hero-tag::before { content:'';width:28px;height:1px;background:var(--accent2); }
+  .hero-names { font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,10vw,8rem);font-weight:300;color:#fff;line-height:.92;letter-spacing:-.02em; }
+  .hero-names .amp { display:block;font-style:italic;font-size:.57em;color:var(--accent2);margin:8px 0; }
+  .hero-sub { margin-top:18px;font-size:.82rem;font-weight:300;letter-spacing:.15em;color:rgba(255,255,255,.55); }
+
+  /* SHARED */
+  section { padding:clamp(70px,10vw,130px) clamp(24px,6vw,80px);position:relative;z-index:1; }
+  .section-kicker { font-family:'Cinzel',serif;font-size:.57rem;letter-spacing:.5em;color:var(--accent);text-transform:uppercase;margin-bottom:12px;display:block; }
+  .section-title { font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3.4rem);font-weight:300;font-style:italic;color:var(--ink);margin-bottom:50px; }
+  .orn { display:flex;align-items:center;gap:14px;justify-content:center;margin-bottom:50px;font-family:'Cinzel',serif;font-size:.57rem;letter-spacing:.45em;color:var(--accent);text-transform:uppercase; }
+  .orn::before { content:'';flex:1;max-width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--accent)); }
+  .orn::after  { content:'';flex:1;max-width:80px;height:1px;background:linear-gradient(90deg,var(--accent),transparent); }
+
+  /* SAVE THE DATE */
+  #save-date { background:var(--rose);text-align:center;overflow:hidden; }
+  #save-date::before { content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 110%,rgba(192,81,74,.08),transparent); }
+  .std-inner { position:relative;z-index:1; }
+  .std-kicker { font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.5em;color:var(--accent);text-transform:uppercase;margin-bottom:14px;display:block; }
+  .std-num { font-family:'Cormorant Garamond',serif;font-size:clamp(6rem,22vw,16rem);font-weight:300;line-height:1;letter-spacing:-.04em;color:var(--ink); }
+  .std-month { font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,3.5vw,2rem);font-style:italic;color:var(--accent);letter-spacing:.1em;margin-top:-6px; }
+
+  /* DETAILS */
+  #details { background:#fff;text-align:center; }
+  .details-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1px;max-width:860px;margin:0 auto;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:var(--border); }
+  .detail-card { background:#fff;padding:46px 32px;text-align:center;transition:background .3s;position:relative;overflow:hidden; }
+  .detail-card::after { content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:0;transition:opacity .3s; }
+  .detail-card:hover { background:var(--bg); }
+  .detail-card:hover::after { opacity:1; }
+  .detail-icon { font-size:1.4rem;margin-bottom:16px;display:block; }
+  .detail-label { font-family:'Cinzel',serif;font-size:.54rem;letter-spacing:.45em;color:var(--accent);text-transform:uppercase;margin-bottom:10px;display:block; }
+  .detail-value { font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:var(--ink);line-height:1.5; }
+
+  /* COUNTDOWN */
+  #countdown-section { background:var(--bg2);text-align:center; }
+  .countdown-row { display:flex;justify-content:center;gap:clamp(10px,4vw,44px);flex-wrap:wrap;align-items:flex-start; }
+  .cd-unit { min-width:80px;text-align:center; }
+  .cd-num { font-family:'Cormorant Garamond',serif;font-size:clamp(3.5rem,9vw,6rem);font-weight:300;line-height:1;display:block;color:var(--ink); }
+  .cd-sep { font-size:3rem;color:var(--accent);font-weight:300;padding-top:4px;opacity:.4; }
+  .cd-label { font-family:'Cinzel',serif;font-size:.5rem;letter-spacing:.4em;color:var(--muted);text-transform:uppercase;margin-top:8px;display:block; }
+
+  /* GALLERY */
+  #gallery { background:#fff;overflow:hidden; }
+  .gallery-track-wrap { overflow:hidden; }
+  .gallery-track { display:flex;gap:14px;transition:transform .7s cubic-bezier(.4,0,.2,1); }
+  .gallery-track img { width:clamp(260px,42vw,520px);height:400px;object-fit:cover;flex-shrink:0;border-radius:10px;filter:saturate(.85) brightness(.95);transition:filter .4s,transform .4s; }
+  .gallery-track img:hover { filter:saturate(1.1) brightness(1.02);transform:scale(1.01); }
+  .gallery-nav { display:flex;gap:12px;justify-content:center;margin-top:28px; }
+  .gnav { width:48px;height:48px;border:1px solid var(--border);background:#fff;color:var(--accent);font-size:1rem;cursor:pointer;display:grid;place-items:center;border-radius:50%;transition:background .25s,transform .2s; }
+  .gnav:hover { background:var(--accent);color:#fff;transform:scale(1.1); }
+
+  /* LOCATION */
+  #location { background:var(--bg2); }
+  .map-wrap { width:100%;max-width:820px;margin:0 auto;border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(192,81,74,.06); }
+  .map-wrap iframe { display:block;width:100%;height:360px;border:0; }
+
+  /* RSVP */
+  #rsvp { background:var(--rose);text-align:center;overflow:hidden; }
+  .rsvp-glow { position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(192,81,74,.08) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;animation:glowPulse 4s ease-in-out infinite alternate; }
+  @keyframes glowPulse { from{opacity:.5;transform:translate(-50%,-50%) scale(1);}to{opacity:1;transform:translate(-50%,-50%) scale(1.2);} }
+  .rsvp-inner { position:relative;z-index:1; }
+  .rsvp-title { font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,8vw,5.5rem);font-weight:300;font-style:italic;color:var(--ink);margin-bottom:14px;line-height:1.1; }
+  .rsvp-sub { font-size:.82rem;font-weight:300;color:var(--muted);letter-spacing:.1em;margin-bottom:46px; }
+  .rsvp-btn { display:inline-flex;align-items:center;gap:12px;padding:17px 52px;background:var(--accent);color:#fff;font-family:'Cinzel',serif;font-size:.67rem;letter-spacing:.3em;text-decoration:none;text-transform:uppercase;border-radius:60px;box-shadow:0 8px 32px rgba(192,81,74,.25);transition:transform .25s,box-shadow .25s; }
+  .rsvp-btn:hover { transform:translateY(-4px);box-shadow:0 16px 48px rgba(192,81,74,.4); }
+
+  /* FOOTER */
+  footer { background:#fff;text-align:center;padding:64px 24px;border-top:1px solid var(--border); }
+  .footer-names { font-family:'Cormorant Garamond',serif;font-size:2rem;font-style:italic;color:var(--ink);margin-bottom:10px; }
+  .footer-note { font-size:.75rem;letter-spacing:.18em;color:var(--muted); }
+
+  /* MUSIC */
+  #music-btn { position:fixed;bottom:28px;right:28px;z-index:500;width:50px;height:50px;background:#fff;border:1px solid var(--border);color:var(--accent);border-radius:50%;display:grid;place-items:center;cursor:pointer;font-size:.9rem;box-shadow:0 4px 20px rgba(192,81,74,.12);transition:background .2s; }
+  #music-btn:hover { background:var(--accent);color:#fff; }
+  #music-btn.playing { animation:ringPulse 2.5s ease infinite; }
+  @keyframes ringPulse { 0%,100%{box-shadow:0 0 0 0 rgba(192,81,74,.4);}50%{box-shadow:0 0 0 12px rgba(192,81,74,0);} }
+
+  /* GUEST BANNER */
+  #guest-banner { background:var(--accent);color:#fff;text-align:center;padding:13px 24px;display:none;font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;position:relative;z-index:1; }
+
+  /* REVEAL */
+  .reveal { opacity:0;transform:translateY(28px);transition:opacity .85s ease,transform .85s ease; }
+  .reveal.visible { opacity:1;transform:none; }
+
+  @media (max-width:600px) {
+    .hero-names { font-size:2.8rem; }
+    .std-num { font-size:5rem; }
+  }
 </style>
 </head>
-
 <body>
+
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+<div id="guest-banner"></div>
 
 <!-- INTRO -->
 <div id="intro">
-  <div class="shooting-star"></div>
-  <div class="intro-box">
-    <h2 style="color:white;">Praboda ❤️ Dewmi</h2>
-    <p style="color:white;">YOU ARE INVITED</p>
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+  <div class="intro-inner">
+    <p class="intro-eyebrow">A Wedding Invitation</p>
+    <h1 class="intro-names">
+      Praboda
+      <span class="amp">&#10022; &amp; &#10022;</span>
+      Dewmi
+    </h1>
+    <div class="intro-line"></div>
+    <p class="intro-date">16 &middot; VII &middot; MMXXVI &nbsp;&middot;&nbsp; Matara, Sri Lanka</p>
     <button class="open-btn" onclick="openInvite()">Open Invitation</button>
   </div>
 </div>
 
-<audio id="music" loop>
-  <source src="music.mp3" type="audio/mpeg">
-</audio>
+<audio id="music" loop><source src="music.mp3" type="audio/mpeg"></audio>
 
-<div class="hero">
-  <h1>Praboda ❤️ Dewmi</h1>
-  <h2 id="guestText"></h2>
-</div>
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-streak"></div>
+  <div class="hero-content">
+    <p class="hero-tag">Together Forever</p>
+    <h2 class="hero-names">
+      Praboda
+      <span class="amp">&amp; Dewmi</span>
+    </h2>
+    <p class="hero-sub" id="hero-sub">We are getting married</p>
+  </div>
+</section>
 
-<div class="section">
-  <h2>Gallery</h2>
-  <div class="slider">
-    <div class="slides" id="slides">
-      <img src="image1.jpg">
-      <img src="image2.jpg">
-      <img src="image3.jpg">
+<main>
+
+<!-- SAVE THE DATE -->
+<section id="save-date" class="reveal">
+  <div class="std-inner">
+    <span class="std-kicker">Save the Date</span>
+    <p class="std-num">16</p>
+    <p class="std-month">July 2026 &nbsp;&mdash;&nbsp; A Day to Remember</p>
+  </div>
+</section>
+
+<!-- DETAILS -->
+<section id="details" class="reveal">
+  <div class="orn">Details</div>
+  <div class="details-grid">
+    <div class="detail-card">
+      <span class="detail-icon">&#128197;</span>
+      <span class="detail-label">Date</span>
+      <span class="detail-value">Wednesday<br>16th July 2026</span>
+    </div>
+    <div class="detail-card">
+      <span class="detail-icon">&#9200;</span>
+      <span class="detail-label">Time</span>
+      <span class="detail-value">10:00 AM<br>to 4:00 PM</span>
+    </div>
+    <div class="detail-card">
+      <span class="detail-icon">&#128205;</span>
+      <span class="detail-label">Venue</span>
+      <span class="detail-value">Hotel Nildiya<br>Matara, Sri Lanka</span>
     </div>
   </div>
-</div>
+</section>
 
+<!-- COUNTDOWN -->
+<section id="countdown-section" class="reveal">
+  <span class="section-kicker">Counting Down</span>
+  <h2 class="section-title">Until We Say &ldquo;I Do&rdquo;</h2>
+  <div class="countdown-row">
+    <div class="cd-unit"><span class="cd-num" id="cd-days">--</span><span class="cd-label">Days</span></div>
+    <span class="cd-sep">&middot;</span>
+    <div class="cd-unit"><span class="cd-num" id="cd-hrs">--</span><span class="cd-label">Hours</span></div>
+    <span class="cd-sep">&middot;</span>
+    <div class="cd-unit"><span class="cd-num" id="cd-min">--</span><span class="cd-label">Minutes</span></div>
+    <span class="cd-sep">&middot;</span>
+    <div class="cd-unit"><span class="cd-num" id="cd-sec">--</span><span class="cd-label">Seconds</span></div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="reveal">
+  <div class="orn">Gallery</div>
+  <div class="gallery-track-wrap">
+    <div class="gallery-track" id="gtrack">
+      <img src="image1.jpg" alt="Praboda and Dewmi">
+      <img src="image2.jpg" alt="Praboda and Dewmi">
+      <img src="image3.jpg" alt="Praboda and Dewmi">
+      <img src="image1.jpg" alt="">
+      <img src="image2.jpg" alt="">
+    </div>
+  </div>
+  <div class="gallery-nav">
+    <button class="gnav" id="gprev">&#8592;</button>
+    <button class="gnav" id="gnext">&#8594;</button>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section id="location" class="reveal">
+  <div class="orn">Find Us</div>
+  <div class="map-wrap">
+    <iframe src="https://maps.google.com/maps?q=Hotel%20Nildiya%20Matara&output=embed"
+      allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+</section>
+
+<!-- RSVP -->
+<section id="rsvp" class="reveal">
+  <div class="rsvp-glow"></div>
+  <div class="rsvp-inner">
+    <h2 class="rsvp-title">Will you join us?</h2>
+    <p class="rsvp-sub">Kindly confirm your attendance by 1st July 2026</p>
+    <a class="rsvp-btn" id="rsvp-btn"
+       href="https://wa.me/94772636665?text=Hi%20Praboda%20%26%20Dewmi%2C%20I%20will%20attend%20your%20wedding!"
+       target="_blank">&#9993;&nbsp; Confirm via WhatsApp</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p class="footer-names">Praboda &amp; Dewmi</p>
+  <p class="footer-note">16 &middot; VII &middot; MMXXVI &nbsp;&#10022;&nbsp; With all our love</p>
+</footer>
+
+<button id="music-btn" onclick="toggleMusic()" title="Toggle music">&#9836;</button>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 <script>
+const cur = document.getElementById('cursor'), ring = document.getElementById('cursor-ring');
+document.addEventListener('mousemove', e => {
+  cur.style.left=e.clientX+'px'; cur.style.top=e.clientY+'px';
+  ring.style.left=e.clientX+'px'; ring.style.top=e.clientY+'px';
+});
+document.querySelectorAll('a,button').forEach(el => {
+  el.addEventListener('mouseenter',()=>{cur.style.width='20px';cur.style.height='20px';ring.style.width='58px';ring.style.height='58px';ring.style.opacity='.22';});
+  el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px';ring.style.width='38px';ring.style.height='38px';ring.style.opacity='.4';});
+});
 
-/* SLIDER FIXED */
-let index = 0;
-const slides = document.getElementById("slides");
-const totalSlides = slides.children.length;
+function openInvite() {
+  const intro = document.getElementById('intro');
+  intro.classList.add('hidden');
+  setTimeout(()=>intro.style.display='none',1300);
+  try{document.getElementById('music').play();}catch(e){}
+  confetti({particleCount:180,spread:100,origin:{y:.55},colors:['#c0514a','#e8847e','#f9ede6','#2a9d8f','#ffffff']});
+}
 
-setInterval(() => {
-  index = (index + 1) % totalSlides;
-  slides.style.transform = `translateX(-${index * 100}%)`;
-}, 3000);
+function toggleMusic() {
+  const m=document.getElementById('music'),btn=document.getElementById('music-btn');
+  if(m.paused){m.play();btn.classList.add('playing');btn.innerHTML='&#9835;';}
+  else{m.pause();btn.classList.remove('playing');btn.innerHTML='&#9836;';}
+}
 
+function tick() {
+  const diff=new Date('July 16, 2026 10:00:00').getTime()-Date.now();
+  if(diff<0)return;
+  document.getElementById('cd-days').textContent=String(Math.floor(diff/86400000)).padStart(2,'0');
+  document.getElementById('cd-hrs').textContent=String(Math.floor(diff/3600000%24)).padStart(2,'0');
+  document.getElementById('cd-min').textContent=String(Math.floor(diff/60000%60)).padStart(2,'0');
+  document.getElementById('cd-sec').textContent=String(Math.floor(diff/1000%60)).padStart(2,'0');
+}
+tick();setInterval(tick,1000);
+
+const track=document.getElementById('gtrack'),imgs=track.querySelectorAll('img');
+let gIdx=0;
+function moveG(dir){gIdx=(gIdx+dir+imgs.length)%imgs.length;track.style.transform='translateX(-'+(gIdx*(imgs[0].offsetWidth+14))+'px)';}
+document.getElementById('gnext').onclick=()=>moveG(1);
+document.getElementById('gprev').onclick=()=>moveG(-1);
+setInterval(()=>moveG(1),4200);
+
+const guest=new URLSearchParams(location.search).get('name');
+if(guest){
+  document.getElementById('hero-sub').textContent='Dear '+guest+', you are cordially invited';
+  document.getElementById('rsvp-btn').href='https://wa.me/94772636665?text=Hi%20Praboda%20%26%20Dewmi%2C%20I%20('+encodeURIComponent(guest)+')%20will%20attend%20your%20wedding!';
+  const b=document.getElementById('guest-banner');b.textContent='A personal invitation for '+guest;b.style.display='block';
+}
+
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
-
 </body>
 </html>
