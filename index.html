@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
+
 html { scroll-behavior: smooth; }
 
 body {
@@ -18,12 +19,12 @@ body {
   text-align: center;
 }
 
-/* ===== INTRO WITH PROFESSIONAL SPARKLE ===== */
+/* ===== INTRO (UPGRADED) ===== */
 #intro {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #1a1a1a, #4b0000);
+  background: radial-gradient(circle at center, #2b0000, #000000);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,57 +32,67 @@ body {
   z-index: 9999;
 }
 
-/* Luxury sparkling particles */
-.particle {
+/* ⭐ STAR LAYER */
+#intro::before {
+  content: "";
   position: absolute;
-  background: radial-gradient(circle, #ffd700 0%, transparent 70%);
-  border-radius: 50%;
-  animation: float 10s linear infinite;
-  opacity: 0.8;
+  width: 100%;
+  height: 100%;
+
+  background-image:
+    radial-gradient(circle, rgba(255,215,0,0.9) 2px, transparent 2px),
+    radial-gradient(circle, rgba(255,255,255,0.7) 1.5px, transparent 2px);
+
+  background-size: 80px 80px, 120px 120px;
+  background-position: 0 0, 40px 40px;
+
+  animation: starsGlow 3s ease-in-out infinite alternate;
 }
 
-@keyframes float {
-  0% { transform: translateY(0) scale(0.5); opacity: 0.2; }
-  50% { transform: translateY(-1000px) scale(1.5); opacity: 1; }
-  100% { transform: translateY(-2000px) scale(0.5); opacity: 0; }
+/* ⭐ GLOW ANIMATION */
+@keyframes starsGlow {
+  0% {
+    opacity: 0.6;
+    filter: drop-shadow(0 0 3px gold);
+  }
+  100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 10px gold);
+  }
 }
 
+/* 💎 PREMIUM INTRO BOX */
 .intro-box {
   position: relative;
-  z-index: 10;
-  backdrop-filter: blur(15px);
-  background: rgba(255,255,255,0.08);
-  border-radius: 20px;
-  padding: 40px 30px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  backdrop-filter: blur(20px);
+  background: rgba(255,255,255,0.05);
+  border-radius: 25px;
+  padding: 45px 35px;
+  box-shadow: 0 25px 80px rgba(0,0,0,0.7);
+  border: 1px solid rgba(255,215,0,0.25);
+  z-index: 2;
 }
 
 .intro-title {
   font-family: 'Playfair Display', serif;
-  font-size: 36px;
+  color: #fff;
 }
 
-.shimmer {
-  background: linear-gradient(90deg,#d4af37,#fff,#ffd700,#d4af37);
-  background-size: 200%;
-  -webkit-background-clip: text;
-  color: transparent;
-  animation: shine 3s linear infinite;
+.intro-sub {
+  color: white;
+  margin-bottom: 20px;
 }
-@keyframes shine { to {background-position:200%;} }
-
-.heart { color: red; }
 
 .open-btn {
   padding: 14px 25px;
   border-radius: 30px;
   border: none;
-  background: gold;
+  background: linear-gradient(45deg, gold, #ffcc70);
   cursor: pointer;
   font-weight: bold;
 }
 
-/* ===== HERO ===== */
+/* HERO */
 .hero {
   background: url('image1.jpg') center/cover no-repeat;
   height: 100vh;
@@ -94,13 +105,12 @@ body {
   background-blend-mode: darken;
 }
 
-.hero h1 { font-size: 36px; }
-.hero h2 { font-size: 18px; }
+/* SECTIONS */
+.section {
+  padding: 50px 20px;
+}
 
-/* ===== SECTIONS ===== */
-.section { padding: 50px 20px; }
-
-/* ===== COUNTDOWN ===== */
+/* COUNTDOWN */
 .count-box {
   display: flex;
   justify-content: center;
@@ -117,7 +127,7 @@ body {
   font-weight: bold;
 }
 
-/* ===== GALLERY ===== */
+/* GALLERY */
 .slider {
   width: 90%;
   margin: auto;
@@ -136,7 +146,7 @@ body {
   border-radius: 15px;
 }
 
-/* ===== BUTTON ===== */
+/* BUTTON */
 .button {
   padding: 14px 22px;
   background: black;
@@ -145,7 +155,7 @@ body {
   border-radius: 30px;
 }
 
-/* ===== MUSIC ===== */
+/* MUSIC */
 .music-btn {
   position: fixed;
   bottom: 20px;
@@ -156,6 +166,7 @@ body {
   color: white;
   border: none;
 }
+
 </style>
 </head>
 
@@ -163,27 +174,9 @@ body {
 
 <!-- INTRO -->
 <div id="intro">
-  <!-- Generate 100 sparkling particles -->
-  <script>
-    for(let i=0;i<100;i++){
-      const star = document.createElement('span');
-      star.classList.add('particle');
-      star.style.width = star.style.height = (Math.random()*3+1)+'px';
-      star.style.left = Math.random()*100+'%';
-      star.style.top = Math.random()*100+'%';
-      star.style.animationDuration = (5 + Math.random()*10)+'s';
-      star.style.animationDelay = Math.random()*10+'s';
-      document.getElementById('intro').appendChild(star);
-    }
-  </script>
-
   <div class="intro-box">
-    <h2 class="intro-title">
-      <span class="shimmer">Praboda</span>
-      <span class="heart"> ❤️ </span>
-      <span class="shimmer">Dewmi</span>
-    </h2>
-    <p style="color:white;">YOU ARE INVITED</p>
+    <h2 class="intro-title">Praboda ❤️ Dewmi</h2>
+    <p class="intro-sub">YOU ARE INVITED</p>
     <button class="open-btn" onclick="openInvite()">Open Invitation</button>
   </div>
 </div>
@@ -195,15 +188,11 @@ body {
 
 <!-- HERO -->
 <div class="hero">
-  <h1>
-    <span class="shimmer">Praboda</span>
-    <span class="heart"> ❤️ </span>
-    <span class="shimmer">Dewmi</span>
-  </h1>
+  <h1>Praboda ❤️ Dewmi</h1>
   <h2 id="guestText">We are getting married</h2>
 </div>
 
-<!-- SAVE THE DATE -->
+<!-- SAVE DATE -->
 <div class="section" style="background:black;color:white;">
   <h2>Save The Date</h2>
   <h1>16 • 07 • 2026</h1>
@@ -251,10 +240,13 @@ body {
 <button class="music-btn" onclick="toggleMusic()">🎵</button>
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
 <script>
+
 /* OPEN INVITE */
 function openInvite() {
   document.getElementById("intro").style.opacity = "0";
+
   setTimeout(() => {
     document.getElementById("intro").style.display = "none";
     document.getElementById("music").play();
@@ -270,12 +262,15 @@ function toggleMusic() {
 
 /* COUNTDOWN */
 var countDownDate = new Date("July 16, 2026 10:00:00").getTime();
+
 setInterval(function() {
   var now = new Date().getTime();
   var d = countDownDate - now;
+
   var days = Math.floor(d / (1000 * 60 * 60 * 24));
   var hours = Math.floor((d % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   var minutes = Math.floor((d % (1000 * 60 * 60)) / (1000 * 60));
+
   document.getElementById("countdown").innerHTML =
     `<div>${days}<br>Days</div>
      <div>${hours}<br>Hours</div>
@@ -285,9 +280,11 @@ setInterval(function() {
 /* PERSONALIZED NAME */
 const params = new URLSearchParams(window.location.search);
 const guest = params.get("name");
+
 if (guest) {
   document.getElementById("guestText").innerHTML =
     "Dear " + guest + ", you are invited 💌";
+
   document.getElementById("rsvpBtn").href =
     "https://wa.me/94772636665?text=Hi Praboda & Dewmi, I (" + guest + ") will attend your wedding!";
 } else {
@@ -299,10 +296,12 @@ if (guest) {
 let index = 0;
 const slides = document.getElementById("slides");
 const totalSlides = slides.children.length;
+
 setInterval(() => {
   index = (index + 1) % totalSlides;
   slides.style.transform = `translateX(-${index * 100}%)`;
 }, 3000);
+
 </script>
 
 </body>
