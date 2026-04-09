@@ -19,7 +19,7 @@ body {
   text-align: center;
 }
 
-/* ===== INTRO CINEMATIC ===== */
+/* ===== INTRO ===== */
 #intro {
   position: fixed;
   width: 100%;
@@ -33,32 +33,26 @@ body {
   transition: opacity 1s ease, transform 1s ease;
 }
 
-/* ⭐ BASE STARS */
+/* STARS */
 #intro::before {
   content: "";
   position: absolute;
   width: 100%;
   height: 100%;
-
   background-image:
     radial-gradient(circle, rgba(255,215,0,0.9) 2px, transparent 2px),
     radial-gradient(circle, rgba(255,255,255,0.8) 1.5px, transparent 2px);
-
   background-size: 80px 80px, 120px 120px;
-  background-position: 0 0, 40px 40px;
 }
 
-/* ✨ TWINKLING STARS */
 #intro::after {
   content: "";
   position: absolute;
   width: 100%;
   height: 100%;
-  background-image:
-    radial-gradient(circle, #fff 1px, transparent 1px);
+  background-image: radial-gradient(circle, #fff 1px, transparent 1px);
   background-size: 60px 60px;
   animation: twinkle 2s infinite alternate;
-  opacity: 0.7;
 }
 
 @keyframes twinkle {
@@ -66,63 +60,52 @@ body {
   to { opacity: 1; }
 }
 
-/* 🌠 SHOOTING STAR */
+/* SHOOTING STARS */
 .shooting-star {
   position: absolute;
   width: 2px;
   height: 80px;
   background: linear-gradient(-45deg, white, transparent);
-  opacity: 0;
   transform: rotate(45deg);
   animation: shoot 6s linear infinite;
 }
-
-.shooting-star:nth-child(1) { top: 10%; left: 20%; animation-delay: 1s; }
-.shooting-star:nth-child(2) { top: 30%; left: 70%; animation-delay: 3s; }
-.shooting-star:nth-child(3) { top: 60%; left: 40%; animation-delay: 5s; }
+.shooting-star:nth-child(1){top:10%;left:20%;animation-delay:1s;}
+.shooting-star:nth-child(2){top:40%;left:70%;animation-delay:3s;}
+.shooting-star:nth-child(3){top:70%;left:40%;animation-delay:5s;}
 
 @keyframes shoot {
-  0% { opacity: 0; transform: translate(0,0) rotate(45deg); }
-  10% { opacity: 1; }
-  100% { opacity: 0; transform: translate(300px,300px) rotate(45deg); }
+  0% { opacity:0; transform: translate(0,0) rotate(45deg);}
+  10% { opacity:1;}
+  100% { opacity:0; transform: translate(300px,300px) rotate(45deg);}
 }
 
-/* 💎 INTRO BOX */
+/* INTRO BOX */
 .intro-box {
-  position: relative;
   backdrop-filter: blur(20px);
   background: rgba(255,255,255,0.05);
   border-radius: 25px;
-  padding: 45px 35px;
-  box-shadow: 0 25px 80px rgba(0,0,0,0.7);
+  padding: 45px;
   border: 1px solid rgba(255,215,0,0.3);
   z-index: 2;
-  animation: zoomIn 1.5s ease;
 }
 
-@keyframes zoomIn {
-  from { transform: scale(0.8); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
-.intro-title {
+/* ✨ GOLD NAME ANIMATION */
+.gold-text {
   font-family: 'Playfair Display', serif;
-  color: #fff;
+  font-size: 32px;
+  background: linear-gradient(90deg, gold, #fff, gold);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 3s linear infinite;
 }
 
-.intro-sub {
-  color: white;
-  margin-bottom: 20px;
+@keyframes shine {
+  0% { background-position: 0%; }
+  100% { background-position: 200%; }
 }
 
-.open-btn {
-  padding: 14px 25px;
-  border-radius: 30px;
-  border: none;
-  background: linear-gradient(45deg, gold, #ffcc70);
-  cursor: pointer;
-  font-weight: bold;
-}
+.intro-sub { color:white; }
 
 /* HERO */
 .hero {
@@ -137,50 +120,33 @@ body {
   background-blend-mode: darken;
 }
 
-/* SECTION */
-.section { padding: 50px 20px; }
+.section { padding:50px 20px; }
 
 /* COUNTDOWN */
-.count-box {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 20px;
-}
-
+.count-box { display:flex; justify-content:center; gap:15px; }
 .count-box div {
-  background: white;
-  padding: 18px;
-  border-radius: 15px;
-  min-width: 80px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-  font-weight: bold;
+  background:white; padding:18px; border-radius:15px;
 }
-
-/* GALLERY */
-.slider { width: 90%; margin: auto; overflow: hidden; border-radius: 15px; }
-.slides { display: flex; transition: transform 0.6s ease-in-out; }
-.slides img { width: 100%; flex-shrink: 0; }
 
 /* BUTTON */
 .button {
-  padding: 14px 22px;
-  background: black;
-  color: white;
-  text-decoration: none;
-  border-radius: 30px;
+  padding:14px 22px;
+  background:black;
+  color:white;
+  border-radius:30px;
+  text-decoration:none;
 }
 
-/* MUSIC */
+/* MUSIC BTN */
 .music-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  padding: 12px;
-  border-radius: 50%;
-  background: black;
-  color: white;
-  border: none;
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  padding:12px;
+  border-radius:50%;
+  background:black;
+  color:white;
+  border:none;
 }
 
 </style>
@@ -190,16 +156,14 @@ body {
 
 <!-- INTRO -->
 <div id="intro">
-
-  <!-- shooting stars -->
   <div class="shooting-star"></div>
   <div class="shooting-star"></div>
   <div class="shooting-star"></div>
 
   <div class="intro-box">
-    <h2 class="intro-title">Praboda ❤️ Dewmi</h2>
+    <h2 class="gold-text">Praboda ❤️ Dewmi</h2>
     <p class="intro-sub">YOU ARE INVITED</p>
-    <button class="open-btn" onclick="openInvite()">Open Invitation</button>
+    <button onclick="openInvite()">Open Invitation</button>
   </div>
 </div>
 
@@ -207,48 +171,15 @@ body {
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
+<!-- HERO -->
 <div class="hero">
-  <h1>Praboda ❤️ Dewmi</h1>
-  <h2 id="guestText">We are getting married</h2>
-</div>
-
-<div class="section" style="background:black;color:white;">
-  <h2>Save The Date</h2>
-  <h1>16 • 07 • 2026</h1>
+  <h1 class="gold-text">Praboda ❤️ Dewmi</h1>
+  <h2 id="guestText"></h2>
 </div>
 
 <div class="section">
   <h2>Wedding Details</h2>
-  <p>📅 16th July 2026</p>
-  <p>⏰ 10:00 AM – 4:00 PM</p>
-  <p>📍 Hotel Nildiya, Matara</p>
   <div id="countdown" class="count-box"></div>
-</div>
-
-<div class="section">
-  <h2>Gallery</h2>
-  <div class="slider">
-    <div class="slides" id="slides">
-      <img src="image1.jpg">
-      <img src="image2.jpg">
-      <img src="image3.jpg">
-    </div>
-  </div>
-</div>
-
-<div class="section">
-  <h2>Location</h2>
-  <iframe src="https://maps.google.com/maps?q=Hotel%20Nildiya%20Matara&output=embed"
-  width="90%" height="250" style="border-radius:15px;"></iframe>
-</div>
-
-<div class="section">
-  <h2>RSVP</h2>
-  <a class="button" id="rsvpBtn" href="#">Confirm via WhatsApp</a>
-</div>
-
-<div class="section">
-  <p>With Love ❤️<br>Praboda & Dewmi</p>
 </div>
 
 <button class="music-btn" onclick="toggleMusic()">🎵</button>
@@ -257,31 +188,66 @@ body {
 
 <script>
 
-/* OPEN INVITE - CINEMATIC + GOLD BURST */
+/* 🎬 CINEMATIC OPEN */
 function openInvite() {
   const intro = document.getElementById("intro");
-
   intro.style.opacity = "0";
   intro.style.transform = "scale(1.1)";
 
   setTimeout(() => {
     intro.style.display = "none";
-    document.getElementById("music").play();
 
-    /* 💛 GOLD BURST */
-    confetti({
-      particleCount: 200,
-      spread: 100,
-      colors: ['#FFD700', '#FFEC8B', '#FFF8DC']
-    });
-
+    startMusicFade();
+    goldConfetti();
+    typeGuest();
   }, 1000);
 }
 
-/* MUSIC */
-function toggleMusic() {
-  var m = document.getElementById("music");
-  m.paused ? m.play() : m.pause();
+/* 🎵 MUSIC FADE IN */
+function startMusicFade() {
+  const music = document.getElementById("music");
+  music.volume = 0;
+  music.play();
+
+  let vol = 0;
+  const fade = setInterval(() => {
+    if (vol < 1) {
+      vol += 0.05;
+      music.volume = vol;
+    } else {
+      clearInterval(fade);
+    }
+  }, 200);
+}
+
+/* 💛 GOLD CONFETTI */
+function goldConfetti() {
+  confetti({
+    particleCount: 200,
+    spread: 100,
+    colors: ['#FFD700','#FFF8DC','#FFEC8B']
+  });
+}
+
+/* ✍️ TYPING EFFECT */
+function typeGuest() {
+  const params = new URLSearchParams(window.location.search);
+  const guest = params.get("name") || "Dear Guest";
+
+  const text = "Dear " + guest + ", you are invited 💌";
+  let i = 0;
+
+  const speed = 50;
+  const el = document.getElementById("guestText");
+
+  function type() {
+    if (i < text.length) {
+      el.innerHTML += text.charAt(i);
+      i++;
+      setTimeout(type, speed);
+    }
+  }
+  type();
 }
 
 /* COUNTDOWN */
@@ -291,40 +257,15 @@ setInterval(function() {
   var now = new Date().getTime();
   var d = countDownDate - now;
 
-  var days = Math.floor(d / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((d % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((d % (1000 * 60 * 60)) / (1000 * 60));
-
   document.getElementById("countdown").innerHTML =
-    `<div>${days}<br>Days</div>
-     <div>${hours}<br>Hours</div>
-     <div>${minutes}<br>Min</div>`;
+    `<div>${Math.floor(d/(1000*60*60*24))}<br>Days</div>`;
 }, 1000);
 
-/* PERSONALIZED NAME */
-const params = new URLSearchParams(window.location.search);
-const guest = params.get("name");
-
-if (guest) {
-  document.getElementById("guestText").innerHTML =
-    "Dear " + guest + ", you are invited 💌";
-
-  document.getElementById("rsvpBtn").href =
-    "https://wa.me/94772636665?text=Hi Praboda & Dewmi, I (" + guest + ") will attend your wedding!";
-} else {
-  document.getElementById("rsvpBtn").href =
-    "https://wa.me/94772636665?text=Hi Praboda & Dewmi, I will attend your wedding!";
+/* MUSIC TOGGLE */
+function toggleMusic(){
+  var m=document.getElementById("music");
+  m.paused?m.play():m.pause();
 }
-
-/* SLIDER */
-let index = 0;
-const slides = document.getElementById("slides");
-const totalSlides = slides.children.length;
-
-setInterval(() => {
-  index = (index + 1) % totalSlides;
-  slides.style.transform = `translateX(-${index * 100}%)`;
-}, 3000);
 
 </script>
 
